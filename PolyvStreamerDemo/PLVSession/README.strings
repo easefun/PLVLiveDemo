@@ -1,0 +1,16 @@
+/* 
+  README.strings
+  PolyvStreamerDemo
+
+  Created by FT on 16/3/17.
+  Copyright © 2016年 polyv. All rights reserved.
+*/
+
+/*
+ 使用说明：
+ 
+1.polyvStreamer.a静态库文件用于真机，polyvStreamer_imulator.a用于模拟机测试使用
+2.使用该SDK需要在工程中导入libc++.tbd 和 VideoToolbox.framework框架（具体步骤：project-targets-Build Phases-Link binary with Libraries中添加这两个库
+3.iOS9之后需要在Info.plist中添加Dictionary类型的App Transport Security Settings条目
+  并在该条目下添加Boolean类型的Allow Arbitrary Loads条目，值为YES
+*/
