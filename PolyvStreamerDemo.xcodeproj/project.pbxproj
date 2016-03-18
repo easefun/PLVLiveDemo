@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67F15FD21C9A48DC003E7E6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FD11C9A48DC003E7E6F /* main.m */; };
+		67F15FD51C9A48DC003E7E6F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FD41C9A48DC003E7E6F /* AppDelegate.m */; };
+		67F15FD81C9A48DC003E7E6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FD71C9A48DC003E7E6F /* ViewController.m */; };
+		67F15FDB1C9A48DC003E7E6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F15FD91C9A48DC003E7E6F /* Main.storyboard */; };
+		67F15FDD1C9A48DC003E7E6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67F15FDC1C9A48DC003E7E6F /* Assets.xcassets */; };
+		67F15FE01C9A48DC003E7E6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F15FDE1C9A48DC003E7E6F /* LaunchScreen.storyboard */; };
+		67F15FEB1C9A48DC003E7E6F /* PolyvStreamerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FEA1C9A48DC003E7E6F /* PolyvStreamerDemoTests.m */; };
+		67F15FF61C9A48DC003E7E6F /* PolyvStreamerDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FF51C9A48DC003E7E6F /* PolyvStreamerDemoUITests.m */; };
+		67F1600B1C9A4B38003E7E6F /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F1600A1C9A4B38003E7E6F /* CameraViewController.m */; };
+		67F1605D1C9AAF5C003E7E6F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F1605C1C9AAF5C003E7E6F /* libc++.tbd */; };
+		67F1605F1C9AAF6C003E7E6F /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F1605E1C9AAF6C003E7E6F /* VideoToolbox.framework */; };
+		67F5F94B1C9BA6C10053BD66 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 67F5F9481C9BA6C10053BD66 /* block.png */; };
+		67F5F94C1C9BA6C10053BD66 /* to_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 67F5F9491C9BA6C10053BD66 /* to_start.png */; };
+		67F5F94D1C9BA6C10053BD66 /* to_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 67F5F94A1C9BA6C10053BD66 /* to_stop.png */; };
+		67F5F9561C9BD30B0053BD66 /* libPolyvStreamer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F5F9551C9BD30B0053BD66 /* libPolyvStreamer.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		67F15FE71C9A48DC003E7E6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67F15FC51C9A48DC003E7E6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67F15FCC1C9A48DC003E7E6F;
+			remoteInfo = PolyvStreamerDemo;
+		};
+		67F15FF21C9A48DC003E7E6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 67F15FC51C9A48DC003E7E6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 67F15FCC1C9A48DC003E7E6F;
+			remoteInfo = PolyvStreamerDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		67F15FCD1C9A48DC003E7E6F /* PolyvStreamerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolyvStreamerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		67F15FD11C9A48DC003E7E6F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		67F15FD31C9A48DC003E7E6F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		67F15FD41C9A48DC003E7E6F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		67F15FD61C9A48DC003E7E6F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		67F15FD71C9A48DC003E7E6F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		67F15FDA1C9A48DC003E7E6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		67F15FDC1C9A48DC003E7E6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		67F15FDF1C9A48DC003E7E6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		67F15FE11C9A48DC003E7E6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67F15FE61C9A48DC003E7E6F /* PolyvStreamerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PolyvStreamerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		67F15FEA1C9A48DC003E7E6F /* PolyvStreamerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PolyvStreamerDemoTests.m; sourceTree = "<group>"; };
+		67F15FEC1C9A48DC003E7E6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67F15FF11C9A48DC003E7E6F /* PolyvStreamerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PolyvStreamerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		67F15FF51C9A48DC003E7E6F /* PolyvStreamerDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PolyvStreamerDemoUITests.m; sourceTree = "<group>"; };
+		67F15FF71C9A48DC003E7E6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67F160091C9A4B38003E7E6F /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		67F1600A1C9A4B38003E7E6F /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		67F1605C1C9AAF5C003E7E6F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		67F1605E1C9AAF6C003E7E6F /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		67F5F9481C9BA6C10053BD66 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
+		67F5F9491C9BA6C10053BD66 /* to_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = to_start.png; sourceTree = "<group>"; };
+		67F5F94A1C9BA6C10053BD66 /* to_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = to_stop.png; sourceTree = "<group>"; };
+		67F5F94E1C9BC9B50053BD66 /* PLVSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVSession.h; sourceTree = "<group>"; };
+		67F5F9551C9BD30B0053BD66 /* libPolyvStreamer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPolyvStreamer.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67F15FCA1C9A48DC003E7E6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67F5F9561C9BD30B0053BD66 /* libPolyvStreamer.a in Frameworks */,
+				67F1605F1C9AAF6C003E7E6F /* VideoToolbox.framework in Frameworks */,
+				67F1605D1C9AAF5C003E7E6F /* libc++.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F15FE31C9A48DC003E7E6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F15FEE1C9A48DC003E7E6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67F15FC41C9A48DC003E7E6F = {
+			isa = PBXGroup;
+			children = (
+				67F160191C9A7686003E7E6F /* PLVSession */,
+				67F160211C9A77CB003E7E6F /* Frameworks */,
+				67F15FCF1C9A48DC003E7E6F /* PolyvStreamerDemo */,
+				67F15FE91C9A48DC003E7E6F /* PolyvStreamerDemoTests */,
+				67F15FF41C9A48DC003E7E6F /* PolyvStreamerDemoUITests */,
+				67F15FCE1C9A48DC003E7E6F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67F15FCE1C9A48DC003E7E6F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67F15FCD1C9A48DC003E7E6F /* PolyvStreamerDemo.app */,
+				67F15FE61C9A48DC003E7E6F /* PolyvStreamerDemoTests.xctest */,
+				67F15FF11C9A48DC003E7E6F /* PolyvStreamerDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67F15FCF1C9A48DC003E7E6F /* PolyvStreamerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				67F15FD31C9A48DC003E7E6F /* AppDelegate.h */,
+				67F15FD41C9A48DC003E7E6F /* AppDelegate.m */,
+				67F15FD61C9A48DC003E7E6F /* ViewController.h */,
+				67F15FD71C9A48DC003E7E6F /* ViewController.m */,
+				67F160091C9A4B38003E7E6F /* CameraViewController.h */,
+				67F1600A1C9A4B38003E7E6F /* CameraViewController.m */,
+				67F15FD91C9A48DC003E7E6F /* Main.storyboard */,
+				67F15FDC1C9A48DC003E7E6F /* Assets.xcassets */,
+				67F15FDE1C9A48DC003E7E6F /* LaunchScreen.storyboard */,
+				67F15FE11C9A48DC003E7E6F /* Info.plist */,
+				67F15FD01C9A48DC003E7E6F /* Supporting Files */,
+			);
+			path = PolyvStreamerDemo;
+			sourceTree = "<group>";
+		};
+		67F15FD01C9A48DC003E7E6F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				67F5F9481C9BA6C10053BD66 /* block.png */,
+				67F5F9491C9BA6C10053BD66 /* to_start.png */,
+				67F5F94A1C9BA6C10053BD66 /* to_stop.png */,
+				67F15FD11C9A48DC003E7E6F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		67F15FE91C9A48DC003E7E6F /* PolyvStreamerDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				67F15FEA1C9A48DC003E7E6F /* PolyvStreamerDemoTests.m */,
+				67F15FEC1C9A48DC003E7E6F /* Info.plist */,
+			);
+			path = PolyvStreamerDemoTests;
+			sourceTree = "<group>";
+		};
+		67F15FF41C9A48DC003E7E6F /* PolyvStreamerDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				67F15FF51C9A48DC003E7E6F /* PolyvStreamerDemoUITests.m */,
+				67F15FF71C9A48DC003E7E6F /* Info.plist */,
+			);
+			path = PolyvStreamerDemoUITests;
+			sourceTree = "<group>";
+		};
+		67F160191C9A7686003E7E6F /* PLVSession */ = {
+			isa = PBXGroup;
+			children = (
+				67F5F94E1C9BC9B50053BD66 /* PLVSession.h */,
+				67F5F9551C9BD30B0053BD66 /* libPolyvStreamer.a */,
+			);
+			path = PLVSession;
+			sourceTree = "<group>";
+		};
+		67F160211C9A77CB003E7E6F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67F1605C1C9AAF5C003E7E6F /* libc++.tbd */,
+				67F1605E1C9AAF6C003E7E6F /* VideoToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		67F15FCC1C9A48DC003E7E6F /* PolyvStreamerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67F15FFA1C9A48DC003E7E6F /* Build configuration list for PBXNativeTarget "PolyvStreamerDemo" */;
+			buildPhases = (
+				67F15FC91C9A48DC003E7E6F /* Sources */,
+				67F15FCA1C9A48DC003E7E6F /* Frameworks */,
+				67F15FCB1C9A48DC003E7E6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PolyvStreamerDemo;
+			productName = PolyvStreamerDemo;
+			productReference = 67F15FCD1C9A48DC003E7E6F /* PolyvStreamerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		67F15FE51C9A48DC003E7E6F /* PolyvStreamerDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67F15FFD1C9A48DC003E7E6F /* Build configuration list for PBXNativeTarget "PolyvStreamerDemoTests" */;
+			buildPhases = (
+				67F15FE21C9A48DC003E7E6F /* Sources */,
+				67F15FE31C9A48DC003E7E6F /* Frameworks */,
+				67F15FE41C9A48DC003E7E6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67F15FE81C9A48DC003E7E6F /* PBXTargetDependency */,
+			);
+			name = PolyvStreamerDemoTests;
+			productName = PolyvStreamerDemoTests;
+			productReference = 67F15FE61C9A48DC003E7E6F /* PolyvStreamerDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		67F15FF01C9A48DC003E7E6F /* PolyvStreamerDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67F160001C9A48DC003E7E6F /* Build configuration list for PBXNativeTarget "PolyvStreamerDemoUITests" */;
+			buildPhases = (
+				67F15FED1C9A48DC003E7E6F /* Sources */,
+				67F15FEE1C9A48DC003E7E6F /* Frameworks */,
+				67F15FEF1C9A48DC003E7E6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				67F15FF31C9A48DC003E7E6F /* PBXTargetDependency */,
+			);
+			name = PolyvStreamerDemoUITests;
+			productName = PolyvStreamerDemoUITests;
+			productReference = 67F15FF11C9A48DC003E7E6F /* PolyvStreamerDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67F15FC51C9A48DC003E7E6F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = polyv;
+				TargetAttributes = {
+					67F15FCC1C9A48DC003E7E6F = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 6L3YLXE653;
+					};
+					67F15FE51C9A48DC003E7E6F = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 67F15FCC1C9A48DC003E7E6F;
+					};
+					67F15FF01C9A48DC003E7E6F = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 67F15FCC1C9A48DC003E7E6F;
+					};
+				};
+			};
+			buildConfigurationList = 67F15FC81C9A48DC003E7E6F /* Build configuration list for PBXProject "PolyvStreamerDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 67F15FC41C9A48DC003E7E6F;
+			productRefGroup = 67F15FCE1C9A48DC003E7E6F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67F15FCC1C9A48DC003E7E6F /* PolyvStreamerDemo */,
+				67F15FE51C9A48DC003E7E6F /* PolyvStreamerDemoTests */,
+				67F15FF01C9A48DC003E7E6F /* PolyvStreamerDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67F15FCB1C9A48DC003E7E6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67F15FE01C9A48DC003E7E6F /* LaunchScreen.storyboard in Resources */,
+				67F5F94D1C9BA6C10053BD66 /* to_stop.png in Resources */,
+				67F15FDD1C9A48DC003E7E6F /* Assets.xcassets in Resources */,
+				67F15FDB1C9A48DC003E7E6F /* Main.storyboard in Resources */,
+				67F5F94B1C9BA6C10053BD66 /* block.png in Resources */,
+				67F5F94C1C9BA6C10053BD66 /* to_start.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F15FE41C9A48DC003E7E6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F15FEF1C9A48DC003E7E6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67F15FC91C9A48DC003E7E6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67F15FD81C9A48DC003E7E6F /* ViewController.m in Sources */,
+				67F1600B1C9A4B38003E7E6F /* CameraViewController.m in Sources */,
+				67F15FD51C9A48DC003E7E6F /* AppDelegate.m in Sources */,
+				67F15FD21C9A48DC003E7E6F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F15FE21C9A48DC003E7E6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67F15FEB1C9A48DC003E7E6F /* PolyvStreamerDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		67F15FED1C9A48DC003E7E6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67F15FF61C9A48DC003E7E6F /* PolyvStreamerDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		67F15FE81C9A48DC003E7E6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67F15FCC1C9A48DC003E7E6F /* PolyvStreamerDemo */;
+			targetProxy = 67F15FE71C9A48DC003E7E6F /* PBXContainerItemProxy */;
+		};
+		67F15FF31C9A48DC003E7E6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 67F15FCC1C9A48DC003E7E6F /* PolyvStreamerDemo */;
+			targetProxy = 67F15FF21C9A48DC003E7E6F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		67F15FD91C9A48DC003E7E6F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67F15FDA1C9A48DC003E7E6F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		67F15FDE1C9A48DC003E7E6F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67F15FDF1C9A48DC003E7E6F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		67F15FF81C9A48DC003E7E6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		67F15FF91C9A48DC003E7E6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		67F15FFB1C9A48DC003E7E6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = PolyvStreamerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PLVSession",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = www.polyv.net.PolyvStreamerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		67F15FFC1C9A48DC003E7E6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = PolyvStreamerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PLVSession",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = www.polyv.net.PolyvStreamerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		67F15FFE1C9A48DC003E7E6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PolyvStreamerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.polyv.net.PolyvStreamerDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PolyvStreamerDemo.app/PolyvStreamerDemo";
+			};
+			name = Debug;
+		};
+		67F15FFF1C9A48DC003E7E6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PolyvStreamerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.polyv.net.PolyvStreamerDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PolyvStreamerDemo.app/PolyvStreamerDemo";
+			};
+			name = Release;
+		};
+		67F160011C9A48DC003E7E6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PolyvStreamerDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.polyv.net.PolyvStreamerDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = PolyvStreamerDemo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		67F160021C9A48DC003E7E6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PolyvStreamerDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = www.polyv.net.PolyvStreamerDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = PolyvStreamerDemo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67F15FC81C9A48DC003E7E6F /* Build configuration list for PBXProject "PolyvStreamerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67F15FF81C9A48DC003E7E6F /* Debug */,
+				67F15FF91C9A48DC003E7E6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67F15FFA1C9A48DC003E7E6F /* Build configuration list for PBXNativeTarget "PolyvStreamerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67F15FFB1C9A48DC003E7E6F /* Debug */,
+				67F15FFC1C9A48DC003E7E6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67F15FFD1C9A48DC003E7E6F /* Build configuration list for PBXNativeTarget "PolyvStreamerDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67F15FFE1C9A48DC003E7E6F /* Debug */,
+				67F15FFF1C9A48DC003E7E6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67F160001C9A48DC003E7E6F /* Build configuration list for PBXNativeTarget "PolyvStreamerDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67F160011C9A48DC003E7E6F /* Debug */,
+				67F160021C9A48DC003E7E6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67F15FC51C9A48DC003E7E6F /* Project object */;
+}
