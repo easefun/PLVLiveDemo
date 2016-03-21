@@ -22,17 +22,20 @@
     [super viewDidLoad];
  
 
-    //初始化session
     CGSize videoSize = CGSizeMake(1280, 720);
     
+    //1.初始化一个session
     _session = [[PLVSession alloc] initWithVideoSize:videoSize frameRate:25 bitrate:600*1024 useInterfaceOrientation:YES];
    
-    [self.previewView addSubview:_session.previewView];
+    //2.设置session的previewView，并添加到相应视图上
     _session.previewView.frame = self.previewView.bounds;
+    [self.previewView addSubview:_session.previewView];
+
+    //3.设置session的代理
     _session.delegate = self;
     
     
-    //把直播状态显示到最上端
+    //把直播状态label显示到最上端
     [self.previewView bringSubviewToFront:self.stateLabel];
 }
 
@@ -48,7 +51,11 @@
         case PLVSessionStateError:
 
             //使用channelId（直播频道）和password（密码）参数进行推流
-            [_session startRtmpSessionWithChannelId:@"99778" andPassword:@"123456"];
+            [_session startRtmpSessionWithChannelId:@"99778" andPassword:@"1234567"failure:^(NSString *msg) {
+
+                NSLog(@"--%@",msg);
+            }];
+
             break;
             
         default:
@@ -65,29 +72,38 @@
 - (void)connectionStatusChanged:(PLVSessionState)sessionState {
 
     //注意：如果使用sizeclass和aotuLayout做屏幕适配和约束，在更新UI时需要回到主线程更新
-    dispatch_async(dispatch_get_main_queue(), ^{
 
-        switch( sessionState ) {
-            case PLVSessionStateStarting:
+    switch( sessionState ) {
+        case PLVSessionStateStarting:
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
                 [self.streamButton setImage:[UIImage imageNamed:@"block.png"] forState:UIControlStateNormal];
                 self.stateLabel.text = @"正在连接";
-                break;
+            });
+        }
+            break;
+            
+        case PLVSessionStateStarted:
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
                 
-            case PLVSessionStateStarted:
                 [self.streamButton setImage:[UIImage imageNamed:@"to_stop.png"] forState:UIControlStateNormal];
                 self.stateLabel.text = @"正在直播";
-                break;
+            });
+        }
+            break;
+            
+        default:
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
                 
-                
-            default:
-
                 [self.streamButton setImage:[UIImage imageNamed:@"to_start.png"] forState:UIControlStateNormal];
                 self.stateLabel.text = @"未直播";
-                
-                break;
+            });
         }
-    
-    });
+            break;
+    }
 
 }
 
@@ -98,6 +114,7 @@
 
     [_session endRtmpSession];
     
+    //在当前控制器销毁时（dismissViewController、popViewController等）一般加上此行代码，防止页面退出后继续再次执行代理方法
     //如果在connectionStatusChanged：代理方法中使用了回到主线程更新，此处需要设置代理人为空，否则可能因为实例对象被销毁确继续在主线程调用其方法造成崩溃
     _session.delegate = nil;
 
@@ -148,7 +165,8 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    [_session endRtmpSession];
 }
 
 /*

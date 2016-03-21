@@ -18,10 +18,10 @@
 		67F1600B1C9A4B38003E7E6F /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F1600A1C9A4B38003E7E6F /* CameraViewController.m */; };
 		67F1605D1C9AAF5C003E7E6F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F1605C1C9AAF5C003E7E6F /* libc++.tbd */; };
 		67F1605F1C9AAF6C003E7E6F /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F1605E1C9AAF6C003E7E6F /* VideoToolbox.framework */; };
+		67F48BD01C9FD0F200E50388 /* libPolyvStreamer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F48BCF1C9FD0F200E50388 /* libPolyvStreamer.a */; };
 		67F5F94B1C9BA6C10053BD66 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 67F5F9481C9BA6C10053BD66 /* block.png */; };
 		67F5F94C1C9BA6C10053BD66 /* to_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 67F5F9491C9BA6C10053BD66 /* to_start.png */; };
 		67F5F94D1C9BA6C10053BD66 /* to_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 67F5F94A1C9BA6C10053BD66 /* to_stop.png */; };
-		67F5F9561C9BD30B0053BD66 /* libPolyvStreamer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F5F9551C9BD30B0053BD66 /* libPolyvStreamer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,11 +62,11 @@
 		67F1600A1C9A4B38003E7E6F /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		67F1605C1C9AAF5C003E7E6F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		67F1605E1C9AAF6C003E7E6F /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		67F48BCE1C9FCF9900E50388 /* PLVSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVSession.h; sourceTree = "<group>"; };
+		67F48BCF1C9FD0F200E50388 /* libPolyvStreamer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPolyvStreamer.a; sourceTree = "<group>"; };
 		67F5F9481C9BA6C10053BD66 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
 		67F5F9491C9BA6C10053BD66 /* to_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = to_start.png; sourceTree = "<group>"; };
 		67F5F94A1C9BA6C10053BD66 /* to_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = to_stop.png; sourceTree = "<group>"; };
-		67F5F94E1C9BC9B50053BD66 /* PLVSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVSession.h; sourceTree = "<group>"; };
-		67F5F9551C9BD30B0053BD66 /* libPolyvStreamer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPolyvStreamer.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67F5F9561C9BD30B0053BD66 /* libPolyvStreamer.a in Frameworks */,
+				67F48BD01C9FD0F200E50388 /* libPolyvStreamer.a in Frameworks */,
 				67F1605F1C9AAF6C003E7E6F /* VideoToolbox.framework in Frameworks */,
 				67F1605D1C9AAF5C003E7E6F /* libc++.tbd in Frameworks */,
 			);
@@ -169,8 +169,8 @@
 		67F160191C9A7686003E7E6F /* PLVSession */ = {
 			isa = PBXGroup;
 			children = (
-				67F5F94E1C9BC9B50053BD66 /* PLVSession.h */,
-				67F5F9551C9BD30B0053BD66 /* libPolyvStreamer.a */,
+				67F48BCE1C9FCF9900E50388 /* PLVSession.h */,
+				67F48BCF1C9FD0F200E50388 /* libPolyvStreamer.a */,
 			);
 			path = PLVSession;
 			sourceTree = "<group>";
