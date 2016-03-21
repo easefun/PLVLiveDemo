@@ -12,7 +12,7 @@ ployv视频推流sdk使用事项：
 3.iOS9之后需要在Info.plist中添加Dictionary类型的App Transport Security Settings条目
      并在该条目下添加Boolean类型的Allow Arbitrary Loads条目，值为YES（亦可使用其他方式，具体操作可参考网上关于App Transport      Security教程）参考链接：https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html
 
-# PLVSession 使用步骤（具体可参考demo工程中的代码实现）
+# PLVSession 类的使用（具体可参考demo工程中的代码实现）
 
 1.初始化一个session对象
 
