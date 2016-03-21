@@ -18,14 +18,13 @@ ployv视频推流sdk使用事项：
 
 1.初始化一个session对象
 
-_session = [[PLVSession alloc] initWithVideoSize:CGSizeMake(1280, 720) frameRate:25 bitrate:600*1024 useInterfaceOrientation:YES];
+    _session = [[PLVSession alloc] initWithVideoSize:CGSizeMake(1280, 720) frameRate:25 bitrate:600*1024 useInterfaceOrientation:YES];
 
 2.设置session属性previewView的frame值，添加到父视图上
 
      _session.previewView.frame = self.previewView.bounds;
     [self.view addSubview:_session.previewView];
     
-3.设置代理人
-     _session.delegate = self;
+3.设置代理人   _session.delegate = self;
 
 需要代理人实现connectionStatusChanged：方法
