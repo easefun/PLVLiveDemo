@@ -8,6 +8,7 @@
 
 #import "CameraViewController.h"
 #import "PLVSession.h"
+#import "SettingTableViewController.h"
 
 //遵循PVSessionDelegate的协议
 @interface CameraViewController ()<PLVSessionDelegate>
@@ -21,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
  
-
     CGSize videoSize = CGSizeMake(1280, 720);
     
     //1.初始化一个session
@@ -35,8 +35,20 @@
     _session.delegate = self;
     
     
+    //水印测试
+//    UIImage *image = [UIImage imageNamed:@"block.png"];
+//    [_session addPixelBufferSource:image withRect:CGRectMake(0, 0, 0, 0)];
+    
+    
+    
     //把直播状态label显示到最上端
     [self.previewView bringSubviewToFront:self.stateLabel];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
 }
 
 #pragma mark - 点击streamButton时调用
@@ -51,11 +63,11 @@
         case PLVSessionStateError:
 
             //使用channelId（直播频道）和password（密码）参数进行推流
-            [_session startRtmpSessionWithChannelId:@"99778" andPassword:@"1234567"failure:^(NSString *msg) {
+            [_session startRtmpSessionWithChannelId:@"99778" andPassword:@"123456"failure:^(NSString *msg) {
 
                 NSLog(@"--%@",msg);
             }];
-
+            
             break;
             
         default:
@@ -80,6 +92,7 @@
                 
                 [self.streamButton setImage:[UIImage imageNamed:@"block.png"] forState:UIControlStateNormal];
                 self.stateLabel.text = @"正在连接";
+                self.settingButton.enabled = NO;
             });
         }
             break;
@@ -90,6 +103,7 @@
                 
                 [self.streamButton setImage:[UIImage imageNamed:@"to_stop.png"] forState:UIControlStateNormal];
                 self.stateLabel.text = @"正在直播";
+                self.settingButton.enabled = NO;
             });
         }
             break;
@@ -100,6 +114,7 @@
                 
                 [self.streamButton setImage:[UIImage imageNamed:@"to_start.png"] forState:UIControlStateNormal];
                 self.stateLabel.text = @"未直播";
+                self.settingButton.enabled = YES;
             });
         }
             break;
@@ -111,14 +126,14 @@
 
 - (IBAction)cancelButtonPress:(UIButton *)sender {
     
-
-    [_session endRtmpSession];
-    
-    //在当前控制器销毁时（dismissViewController、popViewController等）一般加上此行代码，防止页面退出后继续再次执行代理方法
+    //注意1：在当前控制器销毁时（dismissViewController、popViewController等）一般加上此行代码，防止页面退出后继续再次执行代理方法
     //如果在connectionStatusChanged：代理方法中使用了回到主线程更新，此处需要设置代理人为空，否则可能因为实例对象被销毁确继续在主线程调用其方法造成崩溃
+    //注意2：此方法需要在endRtmpSession方法调用之前
     _session.delegate = nil;
+    
+    [_session endRtmpSession];
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -158,6 +173,26 @@
         [_session setCameraState:PLVCameraStateBack];
     }
 
+}
+
+
+#pragma mark - 设置按钮点击事件
+
+- (IBAction)settingButtonPress:(UIButton *)sender {
+
+    SettingTableViewController *settingVC = [SettingTableViewController new];
+    settingVC.videoSize = _session.videoSize;
+    settingVC.frameRate = _session.fps;
+    settingVC.bitrate = _session.bitrate;
+    //回调
+    settingVC.settingBlock = ^(CGSize videoSize, int frameRate, int bitrate) {
+        NSLog(@"videoSize:%@,frameRate:%d,bitRate:%d",NSStringFromCGSize(videoSize),frameRate,bitrate);
+        _session.videoSize = videoSize;
+        _session.fps = frameRate;
+        _session.bitrate = bitrate;
+    };
+    
+    [self.navigationController pushViewController:settingVC animated:YES];
 }
 
 

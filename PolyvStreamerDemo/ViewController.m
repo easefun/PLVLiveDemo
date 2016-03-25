@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 
-
 @interface ViewController ()
 
 @end
@@ -20,7 +19,6 @@
     // Do any additional setup after loading the view, typically from a nib.
 
 }
-
 
 
 

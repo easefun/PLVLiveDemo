@@ -15,7 +15,11 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *streamButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *settingButton;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
+
 
 
 @end
