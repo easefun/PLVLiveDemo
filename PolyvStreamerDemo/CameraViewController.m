@@ -35,11 +35,13 @@
     _session.delegate = self;
     
     
+    
+    
+    
     //水印测试
 //    UIImage *image = [UIImage imageNamed:@"block.png"];
 //    [_session addPixelBufferSource:image withRect:CGRectMake(0, 0, 0, 0)];
-    
-    
+
     
     //把直播状态label显示到最上端
     [self.previewView bringSubviewToFront:self.stateLabel];
@@ -75,7 +77,6 @@
             [_session endRtmpSession];
             break;
     }
- 
 }
 
 
@@ -123,6 +124,7 @@
 }
 
 
+#pragma mark - 退出按钮点击事件
 
 - (IBAction)cancelButtonPress:(UIButton *)sender {
     
@@ -132,13 +134,12 @@
     _session.delegate = nil;
     
     [_session endRtmpSession];
-
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
-#pragma mark - 视屏填充方式
-
+#pragma mark - 视屏特效按钮点击事件
 
 - (IBAction)filterButtonpress:(UIButton *)sender {
     
@@ -163,7 +164,7 @@
 }
 
 
-#pragma mark - 摄像头翻转
+#pragma mark - 摄像头翻转按钮点击事件
 
 - (IBAction)switchButtonPress:(UIButton *)sender {
     
@@ -176,7 +177,7 @@
 }
 
 
-#pragma mark - 设置按钮点击事件
+#pragma mark - 视频设置按钮点击事件
 
 - (IBAction)settingButtonPress:(UIButton *)sender {
 

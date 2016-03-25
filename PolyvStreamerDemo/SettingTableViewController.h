@@ -10,6 +10,7 @@
 
 @interface SettingTableViewController : UITableViewController
 
+
 @property(nonatomic, assign)CGSize videoSize;
 
 @property(nonatomic, assign)int frameRate;
@@ -18,5 +19,6 @@
 
 //用于改变分辨率，帧率和视频码率的回调函数
 @property(nonatomic,strong)void (^settingBlock)(CGSize,int,int);
+
 
 @end

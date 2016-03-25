@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCa-p6-FVc">
-                                <rect key="frame" x="225" y="404" width="150" height="50"/>
+                                <rect key="frame" x="225" y="429" width="150" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="dCe-du-MKm"/>
                                     <constraint firstAttribute="height" constant="50" id="eep-hX-gjh"/>
@@ -28,13 +28,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="登录"/>
                                 <connections>
-                                    <segue destination="Xfk-HS-0UA" kind="show" id="1MG-X9-2oq"/>
+                                    <segue destination="Xfk-HS-0UA" kind="presentation" id="YLL-w3-dyk"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LCa-p6-FVc" secondAttribute="bottom" constant="146" id="UAT-dT-kv9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LCa-p6-FVc" secondAttribute="bottom" constant="121" id="UAT-dT-kv9"/>
                             <constraint firstItem="LCa-p6-FVc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cCX-WD-aON"/>
                         </constraints>
                     </view>
