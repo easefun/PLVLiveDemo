@@ -36,12 +36,9 @@
     
     
     
-    
-    
     //水印测试
 //    UIImage *image = [UIImage imageNamed:@"block.png"];
 //    [_session addPixelBufferSource:image withRect:CGRectMake(0, 0, 0, 0)];
-
     
     //把直播状态label显示到最上端
     [self.previewView bringSubviewToFront:self.stateLabel];
@@ -51,32 +48,6 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBarHidden = YES;
-}
-
-#pragma mark - 点击streamButton时调用
-
-- (IBAction)streamButton:(id)sender {
-    
-    switch( _session.rtmpSessionState ) {
-        
-        case PLVSessionStateNone:
-        case PLVSessionStatePreviewStarted:
-        case PLVSessionStateEnded:
-        case PLVSessionStateError:
-
-            //使用channelId（直播频道）和password（密码）参数进行推流
-            [_session startRtmpSessionWithChannelId:@"99778" andPassword:@"123456"failure:^(NSString *msg) {
-
-                NSLog(@"--%@",msg);
-            }];
-            
-            break;
-            
-        default:
-            //结束推流
-            [_session endRtmpSession];
-            break;
-    }
 }
 
 
@@ -123,6 +94,30 @@
 
 }
 
+#pragma mark - 点击streamButton时调用
+
+- (IBAction)streamButton:(id)sender {
+    
+    switch( _session.rtmpSessionState ) {
+            
+        case PLVSessionStateNone:
+        case PLVSessionStatePreviewStarted:
+        case PLVSessionStateEnded:
+        case PLVSessionStateError:
+            
+            //使用channelId（直播频道）和password（密码）参数进行推流
+            [_session startRtmpSessionWithChannelId:@"99778" andPassword:@"123456"failure:^(NSString *msg) {
+                
+                NSLog(@"--%@",msg);
+            }];
+            break;
+            
+        default:
+            //结束推流
+            [_session endRtmpSession];
+            break;
+    }
+}
 
 #pragma mark - 退出按钮点击事件
 
@@ -185,7 +180,8 @@
     settingVC.videoSize = _session.videoSize;
     settingVC.frameRate = _session.fps;
     settingVC.bitrate = _session.bitrate;
-    //回调
+
+    //代码块回调，用于反向传值
     settingVC.settingBlock = ^(CGSize videoSize, int frameRate, int bitrate) {
         NSLog(@"videoSize:%@,frameRate:%d,bitRate:%d",NSStringFromCGSize(videoSize),frameRate,bitrate);
         _session.videoSize = videoSize;
