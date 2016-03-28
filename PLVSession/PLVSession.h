@@ -156,7 +156,7 @@ typedef NS_ENUM(NSInteger, PLVFilter) {
                           andPassword:(NSString *)password
                               failure:(void(^)(NSString*  msg))failure;
 
-// Depreciated, should use method above
+// Depreciated, use method above
 - (void) startRtmpSessionWithURL:(NSString*) rtmpUrl
                     andStreamKey:(NSString*) streamKey;
 
@@ -173,7 +173,7 @@ typedef NS_ENUM(NSInteger, PLVFilter) {
  *  basically end up with the bottom-right quadrant of the image hanging out at the top-left corner of
  *  your video)
  */
-- (void) addPixelBufferSource: (UIImage*) image
-                     withRect: (CGRect) rect;
+//- (void) addPixelBufferSource: (UIImage*) image
+  //                   withRect: (CGRect) rect;
 
 @end

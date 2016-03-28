@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		677BCE5E1CA935B800970200 /* StateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 677BCE5D1CA935B800970200 /* StateView.xib */; };
 		67F15FD21C9A48DC003E7E6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FD11C9A48DC003E7E6F /* main.m */; };
 		67F15FD51C9A48DC003E7E6F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FD41C9A48DC003E7E6F /* AppDelegate.m */; };
 		67F15FD81C9A48DC003E7E6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FD71C9A48DC003E7E6F /* ViewController.m */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		677BCE5D1CA935B800970200 /* StateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StateView.xib; sourceTree = "<group>"; };
 		67F15FCD1C9A48DC003E7E6F /* PolyvStreamerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolyvStreamerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F15FD11C9A48DC003E7E6F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		67F15FD31C9A48DC003E7E6F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				67F1600A1C9A4B38003E7E6F /* CameraViewController.m */,
 				67F2F20D1CA4E8AC007E92F8 /* SettingTableViewController.h */,
 				67F2F20E1CA4E8AC007E92F8 /* SettingTableViewController.m */,
+				677BCE5D1CA935B800970200 /* StateView.xib */,
 				67F15FD91C9A48DC003E7E6F /* Main.storyboard */,
 				67F15FDC1C9A48DC003E7E6F /* Assets.xcassets */,
 				67F15FDE1C9A48DC003E7E6F /* LaunchScreen.storyboard */,
@@ -174,8 +177,8 @@
 		67F160191C9A7686003E7E6F /* PLVSession */ = {
 			isa = PBXGroup;
 			children = (
-				67F2F2121CA51659007E92F8 /* libPolyvStreamer.a */,
 				67F48BCE1C9FCF9900E50388 /* PLVSession.h */,
+				67F2F2121CA51659007E92F8 /* libPolyvStreamer.a */,
 			);
 			path = PLVSession;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				677BCE5E1CA935B800970200 /* StateView.xib in Resources */,
 				67F15FE01C9A48DC003E7E6F /* LaunchScreen.storyboard in Resources */,
 				67F5F94D1C9BA6C10053BD66 /* to_stop.png in Resources */,
 				67F15FDD1C9A48DC003E7E6F /* Assets.xcassets in Resources */,

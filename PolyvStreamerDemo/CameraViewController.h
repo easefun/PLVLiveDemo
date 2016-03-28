@@ -19,6 +19,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
+@property (strong, nonatomic) IBOutlet UIView *stateView;
 
 
 

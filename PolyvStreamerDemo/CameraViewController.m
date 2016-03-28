@@ -13,6 +13,8 @@
 //遵循PVSessionDelegate的协议
 @interface CameraViewController ()<PLVSessionDelegate>
 
+
+
 @property (nonatomic ,strong)PLVSession *session;
 
 @end
@@ -27,6 +29,10 @@
     //1.初始化一个session
     _session = [[PLVSession alloc] initWithVideoSize:videoSize frameRate:25 bitrate:600*1024 useInterfaceOrientation:YES];
    
+    //
+    //UIImage *iamge = [UIImage imageNamed:@"to_start.png"];
+    //[_session addPixelBufferSource:iamge withRect:CGRectMake(80, 80, 80, 80)];
+    
     //2.设置session的previewView，并添加到相应视图上
     _session.previewView.frame = self.previewView.bounds;
     [self.previewView addSubview:_session.previewView];
@@ -34,14 +40,15 @@
     //3.设置session的代理
     _session.delegate = self;
     
+    //
     
     
-    //水印测试
-//    UIImage *image = [UIImage imageNamed:@"block.png"];
-//    [_session addPixelBufferSource:image withRect:CGRectMake(0, 0, 0, 0)];
     
-    //把直播状态label显示到最上端
+    
+    
+    //把直播状态、参数显示到最上端（session的preview会覆盖）
     [self.previewView bringSubviewToFront:self.stateLabel];
+    [self.previewView bringSubviewToFront:self.stateView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

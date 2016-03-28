@@ -33,9 +33,6 @@
     
     self.title = @"推流设置";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPress)];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
     //设置数据源
     NSValue *sizeVal1 = [NSValue valueWithCGSize:CGSizeMake(1280, 720)];
