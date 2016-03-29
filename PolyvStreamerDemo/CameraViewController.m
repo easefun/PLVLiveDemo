@@ -12,7 +12,21 @@
 
 //遵循PVSessionDelegate的协议
 @interface CameraViewController ()<PLVSessionDelegate>
-
+{
+    // state property
+    __weak IBOutlet UILabel *_videoSizeLB;
+    __weak IBOutlet UILabel *_bitrateLB;
+    __weak IBOutlet UILabel *_frameRateLB;
+    __weak IBOutlet UILabel *_useInterfaceOrientationLB;
+    __weak IBOutlet UILabel *_torchLB;
+    __weak IBOutlet UILabel *_videoZoomFactorLB;
+    __weak IBOutlet UILabel *_audioChannelCountLB;
+    __weak IBOutlet UILabel *_audioSampleRateLB;
+    __weak IBOutlet UILabel *_micGainLB;
+    __weak IBOutlet UILabel *_focusPointOfInterestLB;
+    __weak IBOutlet UILabel *_useAdaptiveBitrateLB;
+    __weak IBOutlet UILabel *_estimatedThoughputLB;
+}
 
 
 @property (nonatomic ,strong)PLVSession *session;
@@ -28,22 +42,19 @@
     
     //1.初始化一个session
     _session = [[PLVSession alloc] initWithVideoSize:videoSize frameRate:25 bitrate:600*1024 useInterfaceOrientation:YES];
-   
-    //
-    //UIImage *iamge = [UIImage imageNamed:@"to_start.png"];
-    //[_session addPixelBufferSource:iamge withRect:CGRectMake(80, 80, 80, 80)];
     
     //2.设置session的previewView，并添加到相应视图上
     _session.previewView.frame = self.previewView.bounds;
+    //NSLog(@"%@,%@",NSStringFromCGRect(_session.previewView.frame),NSStringFromCGRect(_previewView.bounds));
     [self.previewView addSubview:_session.previewView];
 
     //3.设置session的代理
     _session.delegate = self;
     
-    //
     
-    
-    
+    //设置属性状态
+    [self setStateProperty];
+
     
     
     //把直播状态、参数显示到最上端（session的preview会覆盖）
@@ -69,7 +80,7 @@
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                [self.streamButton setImage:[UIImage imageNamed:@"block.png"] forState:UIControlStateNormal];
+                [self.streamButton setImage:[UIImage imageNamed:@"block"] forState:UIControlStateNormal];
                 self.stateLabel.text = @"正在连接";
                 self.settingButton.enabled = NO;
             });
@@ -80,8 +91,10 @@
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                [self.streamButton setImage:[UIImage imageNamed:@"to_stop.png"] forState:UIControlStateNormal];
+                [self.streamButton setImage:[UIImage imageNamed:@"to_stop"] forState:UIControlStateNormal];
                 self.stateLabel.text = @"正在直播";
+                [self setStateProperty];
+                
                 self.settingButton.enabled = NO;
             });
         }
@@ -91,7 +104,7 @@
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                [self.streamButton setImage:[UIImage imageNamed:@"to_start.png"] forState:UIControlStateNormal];
+                [self.streamButton setImage:[UIImage imageNamed:@"to_start"] forState:UIControlStateNormal];
                 self.stateLabel.text = @"未直播";
                 self.settingButton.enabled = YES;
             });
@@ -199,7 +212,23 @@
     [self.navigationController pushViewController:settingVC animated:YES];
 }
 
+#pragma mark - 初始化状态属性
 
+- (void)setStateProperty {
+
+    _videoSizeLB.text =  NSStringFromCGSize(_session.videoSize);
+    _bitrateLB.text = [NSString stringWithFormat:@"%d",_session.bitrate];
+    _frameRateLB.text = [NSString stringWithFormat:@"%d",_session.fps];
+    _useInterfaceOrientationLB.text = [NSString stringWithFormat:@"%@",_session.useInterfaceOrientation ? @"YES" : @"NO"];
+    _torchLB.text = [NSString stringWithFormat:@"%@",_session.torch ? @"YES" : @"NO"];
+    _videoZoomFactorLB.text = [NSString stringWithFormat:@"%.0f",_session.videoZoomFactor];
+    _audioChannelCountLB.text = [NSString stringWithFormat:@"%d",_session.audioChannelCount];
+    _audioSampleRateLB.text = [NSString stringWithFormat:@"%0.f",_session.audioSampleRate];
+    _micGainLB.text = [NSString stringWithFormat:@"%.0f",_session.micGain];
+    _focusPointOfInterestLB.text = NSStringFromCGPoint(_session.focusPointOfInterest);
+    _useAdaptiveBitrateLB.text = [NSString stringWithFormat:@"%@",_session.useAdaptiveBitrate ? @"YES" : @"NO"];
+    _estimatedThoughputLB.text = [NSString stringWithFormat:@"%d",_session.estimatedThroughput];
+}
 
 
 - (void)didReceiveMemoryWarning {
