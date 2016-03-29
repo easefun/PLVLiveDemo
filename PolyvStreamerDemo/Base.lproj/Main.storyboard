@@ -1039,7 +1039,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tcg-Cn-YIl">
                                 <rect key="frame" x="41" y="521" width="32" height="32"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="5zr-Iz-qjo"/>
                                     <constraint firstAttribute="width" constant="32" id="MmX-vm-hGf"/>
@@ -1211,11 +1211,6 @@
                                 <exclude reference="a7y-Dm-c3i"/>
                                 <exclude reference="bJ0-Yv-3NN"/>
                                 <exclude reference="xBQ-u2-gsi"/>
-                                <exclude reference="LJa-Vu-m8r"/>
-                                <exclude reference="dFY-Xk-LTj"/>
-                                <exclude reference="lfe-th-Kz9"/>
-                                <exclude reference="D1W-re-CBQ"/>
-                                <exclude reference="GPO-cu-QGN"/>
                                 <exclude reference="2EY-OO-VOc"/>
                                 <exclude reference="81T-rf-dki"/>
                                 <exclude reference="8L3-jI-1pb"/>
@@ -1224,6 +1219,10 @@
                                 <exclude reference="u6F-V0-Xtf"/>
                                 <exclude reference="wnu-SM-DhO"/>
                                 <exclude reference="zVX-Q6-uMk"/>
+                                <exclude reference="LJa-Vu-m8r"/>
+                                <exclude reference="dFY-Xk-LTj"/>
+                                <exclude reference="D1W-re-CBQ"/>
+                                <exclude reference="GPO-cu-QGN"/>
                                 <exclude reference="LiX-NZ-mTY"/>
                                 <exclude reference="XE1-fb-FT8"/>
                                 <exclude reference="YP9-lq-Bf8"/>
@@ -1233,6 +1232,7 @@
                                 <exclude reference="mAJ-Ad-hGl"/>
                                 <exclude reference="pJ8-X0-meo"/>
                                 <exclude reference="xj7-jB-rY5"/>
+                                <exclude reference="lfe-th-Kz9"/>
                                 <exclude reference="1ZB-fO-rrz"/>
                             </mask>
                         </variation>
@@ -1246,14 +1246,6 @@
                                 <exclude reference="dJb-lw-Sw7"/>
                                 <exclude reference="iXb-aU-dIa"/>
                                 <include reference="xBQ-u2-gsi"/>
-                                <exclude reference="Fhh-BJ-Tl0"/>
-                                <exclude reference="JWE-6J-8eV"/>
-                                <exclude reference="LJa-Vu-m8r"/>
-                                <include reference="dFY-Xk-LTj"/>
-                                <exclude reference="Wt1-HE-Nt5"/>
-                                <include reference="lfe-th-Kz9"/>
-                                <include reference="D1W-re-CBQ"/>
-                                <include reference="GPO-cu-QGN"/>
                                 <include reference="2EY-OO-VOc"/>
                                 <include reference="81T-rf-dki"/>
                                 <exclude reference="8L3-jI-1pb"/>
@@ -1264,6 +1256,12 @@
                                 <exclude reference="u6F-V0-Xtf"/>
                                 <include reference="wnu-SM-DhO"/>
                                 <exclude reference="zVX-Q6-uMk"/>
+                                <exclude reference="Fhh-BJ-Tl0"/>
+                                <exclude reference="JWE-6J-8eV"/>
+                                <exclude reference="LJa-Vu-m8r"/>
+                                <include reference="dFY-Xk-LTj"/>
+                                <include reference="D1W-re-CBQ"/>
+                                <include reference="GPO-cu-QGN"/>
                                 <include reference="LiX-NZ-mTY"/>
                                 <include reference="XE1-fb-FT8"/>
                                 <exclude reference="YP9-lq-Bf8"/>
@@ -1275,6 +1273,8 @@
                                 <exclude reference="mAJ-Ad-hGl"/>
                                 <exclude reference="pJ8-X0-meo"/>
                                 <exclude reference="xj7-jB-rY5"/>
+                                <exclude reference="Wt1-HE-Nt5"/>
+                                <include reference="lfe-th-Kz9"/>
                                 <include reference="1ZB-fO-rrz"/>
                                 <exclude reference="1yD-S2-rra"/>
                                 <exclude reference="MZq-aX-GB6"/>
@@ -1286,6 +1286,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="Cje-c0-k8g"/>
                     <connections>
+                        <outlet property="_audioChannelCountLB" destination="IX0-ZP-Vyr" id="Jbc-5U-CWn"/>
+                        <outlet property="_audioSampleRateLB" destination="zOh-gf-m1J" id="71m-RG-bYt"/>
+                        <outlet property="_bitrateLB" destination="30O-Ln-3Gb" id="nmt-4k-wN2"/>
+                        <outlet property="_estimatedThoughputLB" destination="LKK-d3-2Fo" id="xUH-wi-14h"/>
+                        <outlet property="_focusPointOfInterestLB" destination="mBO-vi-Gq9" id="8y9-wc-Tsg"/>
+                        <outlet property="_frameRateLB" destination="W7W-Fe-Hif" id="YTc-4b-gxr"/>
+                        <outlet property="_micGainLB" destination="I4n-4D-BdZ" id="OOA-Ba-bJ1"/>
+                        <outlet property="_torchLB" destination="ati-NJ-6m2" id="45F-2I-R1P"/>
+                        <outlet property="_useAdaptiveBitrateLB" destination="A7m-P4-K92" id="kSL-6R-TZ1"/>
+                        <outlet property="_useInterfaceOrientationLB" destination="WAr-JA-Fk2" id="F1t-zC-jXw"/>
+                        <outlet property="_videoSizeLB" destination="tK6-LK-ZZN" id="rvg-1V-B7K"/>
+                        <outlet property="_videoZoomFactorLB" destination="2Gh-Mf-Hwe" id="pkd-Dk-hhG"/>
                         <outlet property="previewView" destination="YFd-gt-QbE" id="GJr-u7-Hbb"/>
                         <outlet property="settingButton" destination="9Zf-p9-0ks" id="ZbA-4A-E3Y"/>
                         <outlet property="stateLabel" destination="Si4-wH-LLc" id="wZX-39-eJo"/>
