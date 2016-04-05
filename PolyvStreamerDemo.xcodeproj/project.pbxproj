@@ -475,7 +475,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/PLVSession",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = www.polyv.net.PolyvStreamerDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.PolyvStreamerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -494,7 +494,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/PLVSession",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = www.polyv.net.PolyvStreamerDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.PolyvStreamerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
