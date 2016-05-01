@@ -38,7 +38,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
  
-    CGSize videoSize = CGSizeMake(1280, 720);
+    //CGSize videoSize = CGSizeMake(1280, 720);
+    CGSize videoSize = CGSizeMake(720, 1280);
+    //CGSize videoSize = CGSizeMake(360, 640);
     
     //1.初始化一个session
     _session = [[PLVSession alloc] initWithVideoSize:videoSize frameRate:25 bitrate:600*1024 useInterfaceOrientation:YES];
