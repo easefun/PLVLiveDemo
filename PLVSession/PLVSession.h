@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, PLVCameraState)
 typedef NS_ENUM(NSInteger, PLVAspectMode)
 {
     PLVAspectModeFit = 0,       // 画面保持比例，但是高宽自适应视频窗口
-    PLVAscpectModeFill          // 画面拉伸填满视频窗口
+    PLVAspectModeFill          // 画面拉伸填满视频窗口
 };
 
 /* 实时滤镜类型 With new filters should add an enum here
@@ -143,7 +143,14 @@ typedef NS_ENUM(NSInteger, PLVFilter) {
                         aspectMode:(PLVAspectMode) aspectMode;
 
 
+
+
 // -----------------------------------------------------------------------------
+
+
+// 验证登录频道和密码
++ (void)sessionLoginWithChannelId:(NSString *)channelId password:(NSString *)password success:(void(^)(NSString *successInfo))success failure:(void(^)(NSString *failureInfo))failure;
+
 
 /**
  *  使用channelId和password来进行视频推流
@@ -174,6 +181,6 @@ typedef NS_ENUM(NSInteger, PLVFilter) {
  *  your video)
  */
 //- (void) addPixelBufferSource: (UIImage*) image
-  //                   withRect: (CGRect) rect;
+//                     withRect: (CGRect) rect;
 
 @end

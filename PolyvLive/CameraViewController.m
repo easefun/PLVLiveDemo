@@ -37,10 +37,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // 判断当前的横竖屏，设置分辨率
  
-    //CGSize videoSize = CGSizeMake(1280, 720);
+    NSInteger interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
     CGSize videoSize = CGSizeMake(720, 1280);
-    //CGSize videoSize = CGSizeMake(360, 640);
+    // 判断横竖屏,设置初始分辨率
+    if (interfaceOrientation == UIDeviceOrientationLandscapeLeft          // 为横屏
+        || interfaceOrientation == UIDeviceOrientationLandscapeRight) {
+         videoSize = CGSizeMake(1280, 720);
+    }
     
     //1.初始化一个session
     _session = [[PLVSession alloc] initWithVideoSize:videoSize frameRate:25 bitrate:600*1024 useInterfaceOrientation:YES];
@@ -53,12 +60,9 @@
     //3.设置session的代理
     _session.delegate = self;
     
-    
     //设置属性状态
     [self setStateProperty];
 
-    
-    
     //把直播状态、参数显示到最上端（session的preview会覆盖）
     [self.previewView bringSubviewToFront:self.stateLabel];
     [self.previewView bringSubviewToFront:self.stateView];
@@ -70,6 +74,68 @@
     self.navigationController.navigationBarHidden = YES;
 }
 
+
+#pragma mark - 检测屏幕旋转
+
+// iOS2.0至8.0
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+    // 根据横竖屏改变分辨率
+    CGSize currentSize = _session.videoSize;
+    if ( (toInterfaceOrientation == UIInterfaceOrientationPortrait && currentSize.width > currentSize.height )
+        || (
+          (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) && currentSize.width < currentSize.height
+          ) ) {
+        _session.videoSize = CGSizeMake(currentSize.height, currentSize.width);
+    }
+    
+    if (_session.rtmpSessionState == PLVSessionStateNone
+        || _session.rtmpSessionState == PLVSessionStateEnded
+        || _session.rtmpSessionState == PLVSessionStateError
+        || _session.rtmpSessionState == PLVSessionStatePreviewStarted ) {
+        return;         // 未推流时不做新的配置
+    }
+
+    
+    switch (toInterfaceOrientation) {
+        case UIInterfaceOrientationPortrait:            // 竖屏
+        case UIInterfaceOrientationLandscapeLeft:       // 横屏
+        case UIInterfaceOrientationLandscapeRight: {    // 横屏
+            
+            [_session endRtmpSession];  // 结束推流
+            
+            CGSize newSize = _session.videoSize;
+            int frameRate = _session.fps;
+            int bitrate = _session.bitrate;
+            
+            // 配置session
+            _session = [[PLVSession alloc] initWithVideoSize:newSize frameRate:frameRate bitrate:bitrate useInterfaceOrientation:YES];
+            _session.previewView.frame = self.previewView.bounds;
+            [self.previewView addSubview:_session.previewView];
+            
+            _session.delegate = self;
+
+            // 重新推流
+            [self streamButton:nil];
+            
+            //把直播状态、参数显示到最上端（session的preview会覆盖）
+            [self.previewView bringSubviewToFront:self.stateLabel];
+            [self.previewView bringSubviewToFront:self.stateView];
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+// iOS8.0之后
+//- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+//}
+
+
+#pragma mark - 设置转屏时的推流方向
 
 #pragma mark - PLVSessionDelegate的代理方法
 
@@ -190,7 +256,6 @@
     }else {
         [_session setCameraState:PLVCameraStateBack];
     }
-
 }
 
 
@@ -230,6 +295,7 @@
     _focusPointOfInterestLB.text = NSStringFromCGPoint(_session.focusPointOfInterest);
     _useAdaptiveBitrateLB.text = [NSString stringWithFormat:@"%@",_session.useAdaptiveBitrate ? @"YES" : @"NO"];
     _estimatedThoughputLB.text = [NSString stringWithFormat:@"%d",_session.estimatedThroughput];
+    
 }
 
 

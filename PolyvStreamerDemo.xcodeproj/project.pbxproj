@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67E404441CE1D4BC00A63323 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E404411CE1D4BC00A63323 /* CameraViewController.m */; };
+		67E404451CE1D4BC00A63323 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E404431CE1D4BC00A63323 /* SettingTableViewController.m */; };
 		67F15FD21C9A48DC003E7E6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FD11C9A48DC003E7E6F /* main.m */; };
 		67F15FD51C9A48DC003E7E6F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FD41C9A48DC003E7E6F /* AppDelegate.m */; };
 		67F15FD81C9A48DC003E7E6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FD71C9A48DC003E7E6F /* ViewController.m */; };
@@ -15,10 +17,8 @@
 		67F15FE01C9A48DC003E7E6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F15FDE1C9A48DC003E7E6F /* LaunchScreen.storyboard */; };
 		67F15FEB1C9A48DC003E7E6F /* PolyvStreamerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FEA1C9A48DC003E7E6F /* PolyvStreamerDemoTests.m */; };
 		67F15FF61C9A48DC003E7E6F /* PolyvStreamerDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F15FF51C9A48DC003E7E6F /* PolyvStreamerDemoUITests.m */; };
-		67F1600B1C9A4B38003E7E6F /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F1600A1C9A4B38003E7E6F /* CameraViewController.m */; };
 		67F1605D1C9AAF5C003E7E6F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F1605C1C9AAF5C003E7E6F /* libc++.tbd */; };
 		67F1605F1C9AAF6C003E7E6F /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F1605E1C9AAF6C003E7E6F /* VideoToolbox.framework */; };
-		67F2F20F1CA4E8AC007E92F8 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F2F20E1CA4E8AC007E92F8 /* SettingTableViewController.m */; };
 		67F2F2131CA51659007E92F8 /* libPolyvStreamer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F2F2121CA51659007E92F8 /* libPolyvStreamer.a */; };
 		67FDA8CA1CAA53EE00C0BD8D /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 67FDA8C71CAA53EE00C0BD8D /* block.png */; };
 		67FDA8CB1CAA53EE00C0BD8D /* to_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 67FDA8C81CAA53EE00C0BD8D /* to_start.png */; };
@@ -43,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		67E404401CE1D4BC00A63323 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		67E404411CE1D4BC00A63323 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		67E404421CE1D4BC00A63323 /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
+		67E404431CE1D4BC00A63323 /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
 		67F15FCD1C9A48DC003E7E6F /* PolyvStreamerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolyvStreamerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F15FD11C9A48DC003E7E6F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		67F15FD31C9A48DC003E7E6F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,12 +63,8 @@
 		67F15FF11C9A48DC003E7E6F /* PolyvStreamerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PolyvStreamerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F15FF51C9A48DC003E7E6F /* PolyvStreamerDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PolyvStreamerDemoUITests.m; sourceTree = "<group>"; };
 		67F15FF71C9A48DC003E7E6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		67F160091C9A4B38003E7E6F /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
-		67F1600A1C9A4B38003E7E6F /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		67F1605C1C9AAF5C003E7E6F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		67F1605E1C9AAF6C003E7E6F /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
-		67F2F20D1CA4E8AC007E92F8 /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
-		67F2F20E1CA4E8AC007E92F8 /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
 		67F2F2121CA51659007E92F8 /* libPolyvStreamer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPolyvStreamer.a; sourceTree = "<group>"; };
 		67F48BCE1C9FCF9900E50388 /* PLVSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVSession.h; sourceTree = "<group>"; };
 		67FDA8C71CAA53EE00C0BD8D /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
@@ -100,11 +100,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67E4043F1CE1D48300A63323 /* PolyvLive */ = {
+			isa = PBXGroup;
+			children = (
+				67E404401CE1D4BC00A63323 /* CameraViewController.h */,
+				67E404411CE1D4BC00A63323 /* CameraViewController.m */,
+				67E404421CE1D4BC00A63323 /* SettingTableViewController.h */,
+				67E404431CE1D4BC00A63323 /* SettingTableViewController.m */,
+			);
+			path = PolyvLive;
+			sourceTree = "<group>";
+		};
 		67F15FC41C9A48DC003E7E6F = {
 			isa = PBXGroup;
 			children = (
 				67F160191C9A7686003E7E6F /* PLVSession */,
 				67F160211C9A77CB003E7E6F /* Frameworks */,
+				67E4043F1CE1D48300A63323 /* PolyvLive */,
 				67F15FCF1C9A48DC003E7E6F /* PolyvStreamerDemo */,
 				67F15FE91C9A48DC003E7E6F /* PolyvStreamerDemoTests */,
 				67F15FF41C9A48DC003E7E6F /* PolyvStreamerDemoUITests */,
@@ -129,10 +141,6 @@
 				67F15FD41C9A48DC003E7E6F /* AppDelegate.m */,
 				67F15FD61C9A48DC003E7E6F /* ViewController.h */,
 				67F15FD71C9A48DC003E7E6F /* ViewController.m */,
-				67F160091C9A4B38003E7E6F /* CameraViewController.h */,
-				67F1600A1C9A4B38003E7E6F /* CameraViewController.m */,
-				67F2F20D1CA4E8AC007E92F8 /* SettingTableViewController.h */,
-				67F2F20E1CA4E8AC007E92F8 /* SettingTableViewController.m */,
 				67F15FD91C9A48DC003E7E6F /* Main.storyboard */,
 				67F15FDC1C9A48DC003E7E6F /* Assets.xcassets */,
 				67F15FDE1C9A48DC003E7E6F /* LaunchScreen.storyboard */,
@@ -324,10 +332,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				67F15FD81C9A48DC003E7E6F /* ViewController.m in Sources */,
-				67F1600B1C9A4B38003E7E6F /* CameraViewController.m in Sources */,
+				67E404451CE1D4BC00A63323 /* SettingTableViewController.m in Sources */,
 				67F15FD51C9A48DC003E7E6F /* AppDelegate.m in Sources */,
+				67E404441CE1D4BC00A63323 /* CameraViewController.m in Sources */,
 				67F15FD21C9A48DC003E7E6F /* main.m in Sources */,
-				67F2F20F1CA4E8AC007E92F8 /* SettingTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

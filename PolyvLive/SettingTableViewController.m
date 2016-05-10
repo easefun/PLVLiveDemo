@@ -34,10 +34,19 @@
     self.title = @"推流设置";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonPress)];
     
-    //设置数据源
-    NSValue *sizeVal1 = [NSValue valueWithCGSize:CGSizeMake(1280, 720)];
-    NSValue *sizeVal2 = [NSValue valueWithCGSize:CGSizeMake(640, 360)];
-    NSValue *sizeVal3 = [NSValue valueWithCGSize:CGSizeMake(480, 270)];
+    // 设置数据源
+    
+    NSValue *sizeVal1 = [NSValue valueWithCGSize:CGSizeMake(720, 1280)];
+    NSValue *sizeVal2 = [NSValue valueWithCGSize:CGSizeMake(360, 640)];
+    NSValue *sizeVal3 = [NSValue valueWithCGSize:CGSizeMake(270, 480)];
+    
+    NSInteger interfaceOrientation=[[UIApplication sharedApplication] statusBarOrientation];
+    if (interfaceOrientation == UIDeviceOrientationLandscapeLeft          // 设置横屏分辨率
+              || interfaceOrientation == UIDeviceOrientationLandscapeRight) {
+        sizeVal1 = [NSValue valueWithCGSize:CGSizeMake(1280, 720)];
+        sizeVal2 = [NSValue valueWithCGSize:CGSizeMake(640, 360)];
+        sizeVal3 = [NSValue valueWithCGSize:CGSizeMake(480, 270)];
+    }
     
     NSNumber *fpsNum1 = [NSNumber numberWithInt:15];
     NSNumber *fpsNum2 = [NSNumber numberWithInt:20];
@@ -52,7 +61,7 @@
     _sizeArr = @[sizeVal1, sizeVal2, sizeVal3];
     
     
-    //设置初始选中值
+    // 设置初始选中值
     NSValue *sizeValue = [NSValue valueWithCGSize:self.videoSize];
     NSNumber *fpsNum = [NSNumber numberWithInt:self.frameRate];
     NSNumber *bpsNum = [NSNumber numberWithInt:self.bitrate];
@@ -62,7 +71,7 @@
     _selectedBpdRow = [_bpsArr indexOfObject:bpsNum];
     
     
-    //注册重用单元格
+    // 注册重用单元格
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"identifier"];
 }
 
@@ -184,15 +193,6 @@
     
     return headView;
 }
-
-
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 
 

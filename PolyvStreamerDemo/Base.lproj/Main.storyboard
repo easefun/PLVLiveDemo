@@ -35,10 +35,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LCa-p6-FVc" secondAttribute="bottom" constant="121" id="FPU-xE-BFT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LCa-p6-FVc" secondAttribute="bottom" constant="121" id="FPU-xE-BFT">
+                                <variation key="heightClass=compact" constant="141"/>
+                            </constraint>
                             <constraint firstItem="LCa-p6-FVc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cCX-WD-aON"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="LCa-p6-FVc" id="MaM-5a-WGd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
