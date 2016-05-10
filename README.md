@@ -14,7 +14,7 @@ ployv视频推流sdk使用事项：
      
      参考链接：https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html
      
-4. 默认使用频道号99778，网页端观看直播地址http://live.polyv.net/watch/99778.htm
+4.默认使用频道号99778，网页端观看直播地址http://live.polyv.net/watch/99778.htm
 
 # PLVSession 类的使用（具体可参考demo工程中的代码实现）
 
