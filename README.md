@@ -13,6 +13,8 @@ ployv视频推流sdk使用事项：
      并在该条目下添加Boolean类型的Allow Arbitrary Loads条目，值为YES（亦可使用其他方式，具体操作可参考网上关于App Transport      Security教程）
      
      参考链接：https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html
+     
+4. 默认使用频道号99778，网页端观看直播地址http://live.polyv.net/watch/99778.htm
 
 # PLVSession 类的使用（具体可参考demo工程中的代码实现）
 
