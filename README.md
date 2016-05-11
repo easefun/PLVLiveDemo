@@ -31,3 +31,10 @@ ployv视频推流sdk使用事项：
 
 代理人需要实现connectionStatusChanged：方法
 
+4.停止推流
+
+将session的代理置空，再结束推流
+
+       _session.delegate = nil;
+       [_session endRtmpSession];
+
