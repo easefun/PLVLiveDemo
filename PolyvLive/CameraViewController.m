@@ -28,8 +28,11 @@
     __weak IBOutlet UILabel *_estimatedThoughputLB;
 }
 
-
 @property (nonatomic ,strong)PLVSession *session;
+
+@property (nonatomic, assign)CGSize videoSize;
+@property (nonatomic, assign)int frameRate;
+@property (nonatomic, assign)int bitrate;
 
 @end
 
@@ -38,34 +41,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 判断当前的横竖屏，设置分辨率
- 
-    NSInteger interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-    
-    CGSize videoSize = CGSizeMake(720, 1280);
-    // 判断横竖屏,设置初始分辨率
-    if (interfaceOrientation == UIDeviceOrientationLandscapeLeft          // 为横屏
-        || interfaceOrientation == UIDeviceOrientationLandscapeRight) {
-         videoSize = CGSizeMake(1280, 720);
-    }
-    
-    //1.初始化一个session
-    _session = [[PLVSession alloc] initWithVideoSize:videoSize frameRate:25 bitrate:600*1024 useInterfaceOrientation:YES];
-    
-    //2.设置session的previewView，并添加到相应视图上
-    _session.previewView.frame = self.previewView.bounds;
-    //NSLog(@"%@,%@",NSStringFromCGRect(_session.previewView.frame),NSStringFromCGRect(_previewView.bounds));
-    [self.previewView addSubview:_session.previewView];
 
-    //3.设置session的代理
-    _session.delegate = self;
+    // 初始化参数
+    self.videoSize = CGSizeMake(720, 1280);
+    self.frameRate = 25;
+    self.bitrate = 600*1024;
     
-    //设置属性状态
+    // 配置session
+    [self initSessionConfiguration];
+
+    
+    // 设置属性状态
     [self setStateProperty];
-
-    //把直播状态、参数显示到最上端（session的preview会覆盖）
-    [self.previewView bringSubviewToFront:self.stateLabel];
-    [self.previewView bringSubviewToFront:self.stateView];
+    
+    
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotation:) name:UIDeviceOrientationDidChangeNotification object:nil];          // 物理旋转
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceDidRotation:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];  // status rotation
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,59 +66,108 @@
 }
 
 
+// 配置session方法
+- (void)initSessionConfiguration {
+    
+    // security
+    if (_session.delegate) {
+        _session.delegate = nil;
+        [_session endRtmpSession];
+    }
+    
+    _session = [[PLVSession alloc] initWithVideoSize:_videoSize frameRate:_frameRate bitrate:_bitrate useInterfaceOrientation:YES];
+   
+    _session.previewView.frame = self.previewView.bounds;
+    [self.previewView addSubview:_session.previewView];
+    
+    _session.delegate = self;       // set delegate
+    
+    // 把直播状态、参数显示到最上端（session的preview会覆盖）
+    [self.previewView bringSubviewToFront:self.stateLabel];
+    [self.previewView bringSubviewToFront:self.stateView];
+
+}
+
+// 重写set方法，获取一个值时判断横竖屏的size
+- (void)setVideoSize:(CGSize)videoSize {
+    
+    NSInteger interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    if (((interfaceOrientation == UIDeviceOrientationLandscapeLeft || interfaceOrientation == UIDeviceOrientationLandscapeRight ) && videoSize.height > videoSize.width )             //  横屏但高大于宽
+        || (interfaceOrientation == UIDeviceOrientationPortrait && videoSize.width > videoSize.height) )  // 竖屏但宽大于高
+    {
+        CGSize newSize = videoSize;
+        _videoSize = CGSizeMake(newSize.height, newSize.width);
+    }else {
+        
+        _videoSize = videoSize;
+    }
+
+    
+}
+
 #pragma mark - 检测屏幕旋转
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    
+    if (_session.rtmpSessionState == PLVSessionStateStarting) {
+        return NO;
+    }else {
+        return YES;
+    }
+}
+
 
 // iOS2.0至8.0
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    
+
     // 根据横竖屏改变分辨率
-    CGSize currentSize = _session.videoSize;
+    CGSize currentSize = _videoSize;
     if ( (toInterfaceOrientation == UIInterfaceOrientationPortrait && currentSize.width > currentSize.height )
         || (
-          (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) && currentSize.width < currentSize.height
-          ) ) {
-        _session.videoSize = CGSizeMake(currentSize.height, currentSize.width);
-    }
-    
-    if (_session.rtmpSessionState == PLVSessionStateNone
-        || _session.rtmpSessionState == PLVSessionStateEnded
-        || _session.rtmpSessionState == PLVSessionStateError
-        || _session.rtmpSessionState == PLVSessionStatePreviewStarted ) {
-        return;         // 未推流时不做新的配置
-    }
-
-    
-    switch (toInterfaceOrientation) {
-        case UIInterfaceOrientationPortrait:            // 竖屏
-        case UIInterfaceOrientationLandscapeLeft:       // 横屏
-        case UIInterfaceOrientationLandscapeRight: {    // 横屏
-            
-            [_session endRtmpSession];  // 结束推流
-            
-            CGSize newSize = _session.videoSize;
-            int frameRate = _session.fps;
-            int bitrate = _session.bitrate;
-            
-            // 配置session
-            _session = [[PLVSession alloc] initWithVideoSize:newSize frameRate:frameRate bitrate:bitrate useInterfaceOrientation:YES];
-            _session.previewView.frame = self.previewView.bounds;
-            [self.previewView addSubview:_session.previewView];
-            
-            _session.delegate = self;
-
-            // 重新推流
-            [self streamButton:nil];
-            
-            //把直播状态、参数显示到最上端（session的preview会覆盖）
-            [self.previewView bringSubviewToFront:self.stateLabel];
-            [self.previewView bringSubviewToFront:self.stateView];
-            
+            (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) && currentSize.width < currentSize.height
+            ) ) {
+            _videoSize = CGSizeMake(currentSize.height, currentSize.width);
         }
-            break;
-            
-        default:
-            break;
+
+    if (_session.rtmpSessionState == PLVSessionStateStarted) {      // tointerface
+      
+        switch (toInterfaceOrientation) {
+            case UIInterfaceOrientationPortrait:            // 竖屏
+            case UIInterfaceOrientationLandscapeLeft:       // 横屏
+            case UIInterfaceOrientationLandscapeRight: {    // 横屏
+                
+                // security
+                if (_session.delegate) {
+                    _session.delegate = nil;
+                    [_session endRtmpSession];
+                }
+                
+                // 旋屏自己设置_videoSize
+                _session = [[PLVSession alloc] initWithVideoSize:_videoSize frameRate:_frameRate bitrate:_bitrate useInterfaceOrientation:YES];
+                
+                _session.previewView.frame = self.previewView.bounds;
+                [self.previewView addSubview:_session.previewView];
+                
+                _session.delegate = self;       // set delegate
+                
+                // 把直播状态、参数显示到最上端（session的preview会覆盖）
+                [self.previewView bringSubviewToFront:self.stateLabel];
+                [self.previewView bringSubviewToFront:self.stateView];
+                
+                // 重新配置session,会获取到不争取的videoSize
+                //[self initSessionConfiguration];
+                
+                // 重新推流
+                [self streamButton:nil];
+            }
+                break;
+                
+            default:
+                break;
+        }
     }
+
 }
 
 // iOS8.0之后
@@ -267,17 +307,23 @@
     settingVC.videoSize = _session.videoSize;
     settingVC.frameRate = _session.fps;
     settingVC.bitrate = _session.bitrate;
-
+    
+    //__block CameraViewController *vc = self;
+    
     //代码块回调，用于反向传值
     settingVC.settingBlock = ^(CGSize videoSize, int frameRate, int bitrate) {
         NSLog(@"videoSize:%@,frameRate:%d,bitRate:%d",NSStringFromCGSize(videoSize),frameRate,bitrate);
-        _session.videoSize = videoSize;
-        _session.fps = frameRate;
-        _session.bitrate = bitrate;
+        self.videoSize = videoSize;
+        self.frameRate = frameRate;
+        self.bitrate = bitrate;
+
+        // 重新初始化session
+        [self initSessionConfiguration];
     };
     
     [self.navigationController pushViewController:settingVC animated:YES];
 }
+
 
 #pragma mark - 初始化状态属性
 
