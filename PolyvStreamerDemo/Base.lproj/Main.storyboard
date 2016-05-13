@@ -1137,7 +1137,7 @@
                                         <exclude reference="3w7-Oy-Q9h"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=compact" layoutMarginsFollowReadableWidth="NO">
+                                <variation key="heightClass=compact">
                                     <mask key="constraints">
                                         <exclude reference="3w7-Oy-Q9h"/>
                                         <exclude reference="Crp-pi-HUn"/>
