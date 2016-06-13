@@ -38,3 +38,4 @@ ployv视频推流sdk使用事项：
        _session.delegate = nil;
        [_session endRtmpSession];
 
+## note:此工程在真机上测试运行
