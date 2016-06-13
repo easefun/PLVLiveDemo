@@ -41,7 +41,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
     // 初始化参数
     self.videoSize = CGSizeMake(720, 1280);
     self.frameRate = 25;
@@ -76,16 +75,27 @@
     }
     
     _session = [[PLVSession alloc] initWithVideoSize:_videoSize frameRate:_frameRate bitrate:_bitrate useInterfaceOrientation:YES];
+    //_session = [[PLVSession alloc] initWithVideoSize:CGSizeMake(720, 1280) frameRate:30 bitrate:1000000 useInterfaceOrientation:NO];
    
     _session.previewView.frame = self.previewView.bounds;
     [self.previewView addSubview:_session.previewView];
     
     _session.delegate = self;       // set delegate
     
+    // 添加水印在测试阶段，可能不稳定，建议512*512 400x242
+  /*  [[NSOperationQueue new] addOperationWithBlock:^{
+        //sleep(0.2);
+        UIImage *image = [UIImage imageNamed:@"test.png"];
+        if (image) {
+            [_session addPixelBufferSource:image withRect:CGRectMake(100, 100, 400, 400)];
+        }else {
+            NSLog(@"image can't be nil.");
+        }
+    }];   */
+    
     // 把直播状态、参数显示到最上端（session的preview会覆盖）
     [self.previewView bringSubviewToFront:self.stateLabel];
     [self.previewView bringSubviewToFront:self.stateView];
-
 }
 
 // 重写set方法，获取一个值时判断横竖屏的size
@@ -102,9 +112,8 @@
         
         _videoSize = videoSize;
     }
-
-    
 }
+
 
 #pragma mark - 检测屏幕旋转
 
@@ -167,7 +176,6 @@
                 break;
         }
     }
-
 }
 
 // iOS8.0之后
@@ -189,7 +197,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 [self.streamButton setImage:[UIImage imageNamed:@"block"] forState:UIControlStateNormal];
-                self.stateLabel.text = @"正在连接";
+                self.stateLabel.text = @"正在连接...";
                 self.settingButton.enabled = NO;
             });
         }
@@ -200,7 +208,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 [self.streamButton setImage:[UIImage imageNamed:@"to_stop"] forState:UIControlStateNormal];
-                self.stateLabel.text = @"正在直播";
+                self.stateLabel.text = @"直播中...";
+                [self.stateLabel setTextColor:[UIColor greenColor]];
                 [self setStateProperty];
                 
                 self.settingButton.enabled = NO;
@@ -214,12 +223,12 @@
                 
                 [self.streamButton setImage:[UIImage imageNamed:@"to_start"] forState:UIControlStateNormal];
                 self.stateLabel.text = @"未直播";
+                [self.stateLabel setTextColor:[UIColor redColor]];
                 self.settingButton.enabled = YES;
             });
         }
             break;
     }
-
 }
 
 #pragma mark - 点击streamButton时调用
@@ -310,7 +319,6 @@
     
     //__block CameraViewController *vc = self;
     
-    //代码块回调，用于反向传值
     settingVC.settingBlock = ^(CGSize videoSize, int frameRate, int bitrate) {
         NSLog(@"videoSize:%@,frameRate:%d,bitRate:%d",NSStringFromCGSize(videoSize),frameRate,bitrate);
         self.videoSize = videoSize;

@@ -20,6 +20,7 @@
 		67F1605D1C9AAF5C003E7E6F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F1605C1C9AAF5C003E7E6F /* libc++.tbd */; };
 		67F1605F1C9AAF6C003E7E6F /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F1605E1C9AAF6C003E7E6F /* VideoToolbox.framework */; };
 		67F2F2131CA51659007E92F8 /* libPolyvStreamer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F2F2121CA51659007E92F8 /* libPolyvStreamer.a */; };
+		67FA981A1D07F80B00CAF891 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 67FA98191D07F80B00CAF891 /* test.png */; };
 		67FDA8CA1CAA53EE00C0BD8D /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 67FDA8C71CAA53EE00C0BD8D /* block.png */; };
 		67FDA8CB1CAA53EE00C0BD8D /* to_start.png in Resources */ = {isa = PBXBuildFile; fileRef = 67FDA8C81CAA53EE00C0BD8D /* to_start.png */; };
 		67FDA8CC1CAA53EE00C0BD8D /* to_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 67FDA8C91CAA53EE00C0BD8D /* to_stop.png */; };
@@ -67,6 +68,7 @@
 		67F1605E1C9AAF6C003E7E6F /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		67F2F2121CA51659007E92F8 /* libPolyvStreamer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPolyvStreamer.a; sourceTree = "<group>"; };
 		67F48BCE1C9FCF9900E50388 /* PLVSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVSession.h; sourceTree = "<group>"; };
+		67FA98191D07F80B00CAF891 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		67FDA8C71CAA53EE00C0BD8D /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
 		67FDA8C81CAA53EE00C0BD8D /* to_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = to_start.png; sourceTree = "<group>"; };
 		67FDA8C91CAA53EE00C0BD8D /* to_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = to_stop.png; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				67F15FDC1C9A48DC003E7E6F /* Assets.xcassets */,
 				67F15FDE1C9A48DC003E7E6F /* LaunchScreen.storyboard */,
 				67F15FE11C9A48DC003E7E6F /* Info.plist */,
+				67FA98191D07F80B00CAF891 /* test.png */,
 				67F15FD01C9A48DC003E7E6F /* Supporting Files */,
 			);
 			path = PolyvStreamerDemo;
@@ -306,6 +309,7 @@
 				67F15FDB1C9A48DC003E7E6F /* Main.storyboard in Resources */,
 				67FDA8CA1CAA53EE00C0BD8D /* block.png in Resources */,
 				67FDA8CC1CAA53EE00C0BD8D /* to_stop.png in Resources */,
+				67FA981A1D07F80B00CAF891 /* test.png in Resources */,
 				67FDA8CB1CAA53EE00C0BD8D /* to_start.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +488,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/PLVSession",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.PolyvStreamerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -504,6 +509,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/PLVSession",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.PolyvStreamerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

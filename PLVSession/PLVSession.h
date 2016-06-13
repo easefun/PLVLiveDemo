@@ -180,7 +180,7 @@ typedef NS_ENUM(NSInteger, PLVFilter) {
  *  basically end up with the bottom-right quadrant of the image hanging out at the top-left corner of
  *  your video)
  */
-//- (void) addPixelBufferSource: (UIImage*) image
-//                     withRect: (CGRect) rect;
+- (void) addPixelBufferSource: (UIImage*) image
+                     withRect: (CGRect) rect;
 
 @end
