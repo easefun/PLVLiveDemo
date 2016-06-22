@@ -19,14 +19,14 @@ ployv视频推流sdk使用事项：
 # PLVSession 类的使用（具体可参考demo工程中的代码实现）
 
 1.初始化一个session对象
-
+```objective-c
     _session = [[PLVSession alloc] initWithVideoSize:CGSizeMake(1280, 720) frameRate:25 bitrate:600*1024 useInterfaceOrientation:YES];
-
+```
 2.设置session属性previewView的frame值，添加到父视图上
-
+```objective-c
      _session.previewView.frame = self.previewView.bounds;
     [self.view addSubview:_session.previewView];
-    
+```
 3.设置代理人   _session.delegate = self;
 
 代理人需要实现connectionStatusChanged：方法
@@ -34,8 +34,8 @@ ployv视频推流sdk使用事项：
 4.停止推流
 
 将session的代理置空，再结束推流
-
+```objective-c
        _session.delegate = nil;
        [_session endRtmpSession];
-
-## note:此工程在真机上测试运行
+```
+#### 注意:此工程在真机上测试运行
