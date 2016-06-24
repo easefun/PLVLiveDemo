@@ -2,8 +2,8 @@
 //  ViewController.h
 //  PolyvStreamerDemo
 //
-//  Created by FT on 16/3/17.
-//  Copyright © 2016年 polyv. All rights reserved.
+//  Created by ftao on 16/3/17.
+//  Copyright © 2016年 easefun. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

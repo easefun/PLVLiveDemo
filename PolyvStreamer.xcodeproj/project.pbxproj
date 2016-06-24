@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6746394C1D1D2DC100A07AEF /* libPolyvStreamer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6746394B1D1D2DC100A07AEF /* libPolyvStreamer.a */; };
 		67F13B811D1B895400BE9C50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F13B781D1B895400BE9C50 /* AppDelegate.m */; };
 		67F13B821D1B895400BE9C50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67F13B791D1B895400BE9C50 /* Assets.xcassets */; };
 		67F13B831D1B895400BE9C50 /* CameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F13B7B1D1B895400BE9C50 /* CameraController.m */; };
-		67F13B841D1B895400BE9C50 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67F13B7C1D1B895400BE9C50 /* Info.plist */; };
 		67F13B851D1B895400BE9C50 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F13B7E1D1B895400BE9C50 /* SettingController.m */; };
 		67F13B861D1B895400BE9C50 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F13B801D1B895400BE9C50 /* ViewController.m */; };
 		67F13B8B1D1B89B900BE9C50 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 67F13B871D1B89B900BE9C50 /* block.png */; };
@@ -20,7 +20,6 @@
 		67F13B931D1B89D700BE9C50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F13B8F1D1B89D700BE9C50 /* LaunchScreen.storyboard */; };
 		67F13B941D1B89D700BE9C50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67F13B911D1B89D700BE9C50 /* Main.storyboard */; };
 		67F13BAA1D1B8B2A00BE9C50 /* PolyvStreamerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F13BA91D1B8B2A00BE9C50 /* PolyvStreamerTests.m */; };
-		67F13BB71D1C090A00BE9C50 /* libPolyvStreamer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F13BB61D1C090A00BE9C50 /* libPolyvStreamer.a */; };
 		67F1605D1C9AAF5C003E7E6F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F1605C1C9AAF5C003E7E6F /* libc++.tbd */; };
 		67F1605F1C9AAF6C003E7E6F /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F1605E1C9AAF6C003E7E6F /* VideoToolbox.framework */; };
 /* End PBXBuildFile section */
@@ -36,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6746394B1D1D2DC100A07AEF /* libPolyvStreamer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPolyvStreamer.a; path = PolyvStreamerSDK/lib/arm/libPolyvStreamer.a; sourceTree = SOURCE_ROOT; };
 		67F13B771D1B895400BE9C50 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PolyvStreamer/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		67F13B781D1B895400BE9C50 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = PolyvStreamer/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		67F13B791D1B895400BE9C50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PolyvStreamer/Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -56,7 +56,6 @@
 		67F13BA91D1B8B2A00BE9C50 /* PolyvStreamerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PolyvStreamerTests.m; sourceTree = "<group>"; };
 		67F13BAB1D1B8B2A00BE9C50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67F13BB11D1BF04B00BE9C50 /* PLVSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLVSession.h; path = PolyvStreamerSDK/PLVSession.h; sourceTree = SOURCE_ROOT; };
-		67F13BB61D1C090A00BE9C50 /* libPolyvStreamer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPolyvStreamer.a; path = PolyvStreamerSDK/lib/arm/libPolyvStreamer.a; sourceTree = SOURCE_ROOT; };
 		67F15FCD1C9A48DC003E7E6F /* PolyvStreamer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolyvStreamer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67F1605C1C9AAF5C003E7E6F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		67F1605E1C9AAF6C003E7E6F /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
@@ -74,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67F13BB71D1C090A00BE9C50 /* libPolyvStreamer.a in Frameworks */,
+				6746394C1D1D2DC100A07AEF /* libPolyvStreamer.a in Frameworks */,
 				67F1605F1C9AAF6C003E7E6F /* VideoToolbox.framework in Frameworks */,
 				67F1605D1C9AAF5C003E7E6F /* libc++.tbd in Frameworks */,
 			);
@@ -147,7 +146,7 @@
 		67F160191C9A7686003E7E6F /* PolyvStreamerSDK */ = {
 			isa = PBXGroup;
 			children = (
-				67F13BB61D1C090A00BE9C50 /* libPolyvStreamer.a */,
+				6746394B1D1D2DC100A07AEF /* libPolyvStreamer.a */,
 				67F13BB11D1BF04B00BE9C50 /* PLVSession.h */,
 			);
 			name = PolyvStreamerSDK;
@@ -216,7 +215,7 @@
 					};
 					67F15FCC1C9A48DC003E7E6F = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 6L3YLXE653;
+						DevelopmentTeam = 8BMZBNN3Q5;
 					};
 				};
 			};
@@ -251,7 +250,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67F13B841D1B895400BE9C50 /* Info.plist in Resources */,
 				67F13B8E1D1B89B900BE9C50 /* to_stop.png in Resources */,
 				67F13B8B1D1B89B900BE9C50 /* block.png in Resources */,
 				67F13B941D1B89D700BE9C50 /* Main.storyboard in Resources */,
@@ -320,6 +318,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PolyvStreamerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PolyvStreamerSDK/lib/arm",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.PolyvStreamerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PolyvStreamer.app/PolyvStreamer";
@@ -332,6 +334,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = PolyvStreamerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PolyvStreamerSDK/lib/arm",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.PolyvStreamerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PolyvStreamer.app/PolyvStreamer";
@@ -430,12 +436,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/PLVSession",
 					"$(PROJECT_DIR)/PolyvStreamerSDK/lib/arm",
 					"$(PROJECT_DIR)/PolyvStreamerSDK/lib/x86_64",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.PolyvStreamerDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.polyvStreamer;
 				PRODUCT_NAME = PolyvStreamer;
 				PROVISIONING_PROFILE = "";
 			};
@@ -453,12 +458,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/PLVSession",
 					"$(PROJECT_DIR)/PolyvStreamerSDK/lib/arm",
 					"$(PROJECT_DIR)/PolyvStreamerSDK/lib/x86_64",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.PolyvStreamerDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.polyvStreamer;
 				PRODUCT_NAME = PolyvStreamer;
 				PROVISIONING_PROFILE = "";
 			};

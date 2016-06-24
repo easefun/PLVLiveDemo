@@ -2,8 +2,8 @@
 //  SettingTableViewController.m
 //  PolyvStreamerDemo
 //
-//  Created by FT on 16/3/25.
-//  Copyright © 2016年 polyv. All rights reserved.
+//  Created by ftao on 16/3/25.
+//  Copyright © 2016年 easefun. All rights reserved.
 //
 
 #import "SettingController.h"
@@ -36,12 +36,12 @@
     
     // 设置数据源
     
-    NSValue *sizeVal1 = [NSValue valueWithCGSize:CGSizeMake(720, 1280)];
-    NSValue *sizeVal2 = [NSValue valueWithCGSize:CGSizeMake(360, 640)];
-    NSValue *sizeVal3 = [NSValue valueWithCGSize:CGSizeMake(270, 480)];
+    NSValue *sizeVal1 = [NSValue valueWithCGSize:CGSizeMake(1920, 1080)];
+    NSValue *sizeVal2 = [NSValue valueWithCGSize:CGSizeMake(1280, 720)];
+    NSValue *sizeVal3 = [NSValue valueWithCGSize:CGSizeMake(640, 360)];
     
     NSInteger interfaceOrientation=[[UIApplication sharedApplication] statusBarOrientation];
-    if (interfaceOrientation == UIDeviceOrientationLandscapeLeft          // 设置横屏分辨率
+    if (interfaceOrientation == UIDeviceOrientationLandscapeLeft            // 设置横屏分辨率
               || interfaceOrientation == UIDeviceOrientationLandscapeRight) {
         sizeVal1 = [NSValue valueWithCGSize:CGSizeMake(1280, 720)];
         sizeVal2 = [NSValue valueWithCGSize:CGSizeMake(640, 360)];

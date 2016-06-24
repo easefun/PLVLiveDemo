@@ -3,7 +3,7 @@
 //  PolyvStreamerTests
 //
 //  Created by ftao on 16/6/23.
-//  Copyright © 2016年 polyv. All rights reserved.
+//  Copyright © 2016年 easefun. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
