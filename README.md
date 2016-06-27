@@ -1,11 +1,13 @@
 # PolyvStreamerDemo
 
-> PolyvStreamerDemo使用的PolyvStreamerSDK基于videoCore，进行了二次封装，提供了丰富的接口可供设置。直播推流服务器为稳定、一流的网宿服务。网页端观看直播地址http://live.polyv.net/watch/'频道号'.htm 
+> 本工程使用的PolyvStreamerSDK是基于videoCore，并且进行了二次封装，提供了丰富的接口可供设置。直播推流服务器为稳定、一流的网宿服务。网页端观看直播地址http://live.polyv.net/watch/'频道号'.htm 
+
 
 推流SDK完整下载包中包含 PolyvStreamerSDK 和 PolyvStreamer 两部分。PolyvStreamerSDK中存放推流 SDK 的 API 头文件 PLVSession.h 和静态库（arm/x86），库文件详情如下：
 
 - arm文件夹下的静态库适用于真机, 支持armv7 arm64(工程默认添加此文件夹下的静态库)
 - x86_64文件夹下的静态库适用于模拟器, 支持 i386 x86_64
+
 ![](https://github.com/easefun/PolyvStreamerDemo/blob/master/images/01%402x.png)
 
 ## 准备开发环境
@@ -27,7 +29,7 @@
 
 	iOS9.0后要求App访问的网络必须使用HTTPS协议，为了解决这个问题。我们可以在Info.plist文件中添加NSAppTransportSecurity条目，此条目下再添加NSAllowsArbitraryLoads，并设值为YES 
 			
-		参考链接：https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html
+            参考链接：https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html
 
 
 ## PLVSession.h 接口说明
@@ -45,7 +47,7 @@
 ```
 3. 设置代理人`_session.delegate = self;`
 
-	代理人需要实`connectionStatusChanged：`方法
+	代理人需要实现`connectionStatusChanged：`方法
 
 4.	停止推流
 
@@ -59,20 +61,20 @@
 
 - 在切换使用模拟器和真机静态库时编译错误，提示x86_64或者 armv7 arm64库文件未找到，需要注意可能工程依旧引用之前的库文件
 
-  解决方案：将之前静态库放到其他目录下或将模拟器下和真机下的两个版本的静态库合并为一个版本。在终端下使用lipo -create - output命令，”lipo -create ’真机版本路径‘ ’模拟器版本路径‘ -output ’合并后的文件路径‘“
+  解决方案：将之前静态库放到其他目录下或将模拟器下和真机下的两个版本的静态库合并为一个版本。在终端下使用lipo -create - output命令，“lipo -create ’真机版本路径‘ ’模拟器版本路径‘ -output ’合并后的文件路径‘”
+  
 	![](https://github.com/easefun/PolyvStreamerDemo/blob/master/images/03%402x.png)
 	
-- 如果在iOS8中遇到崩溃问题 `Terminating app due to uncaught exception 'NSUnknownKeyException', reason: '[ setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key layoutMarginsFollowReadableWidth.'` 
-  
-   为demo工程中使用size class的屏幕适配问题，可参考http://stackoverflow.com/questions/34906745/layoutmarginsfollowreadablewidth-error-in-ios-8/37205228#37205228 说明
-
-> 如有其他问题、意见或者建议，欢迎随时通过github、邮箱(fanfengtao@polyv.net)、qq等方式交流。
+- 如果在iOS8中遇到崩溃问题 `Terminating app due to uncaught exception 'NSUnknownKeyException', reason: '[ setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key layoutMarginsFollowReadableWidth.'`  为demo工程中使用size class的屏幕适配问题，可参考  http://stackoverflow.com/questions/34906745/layoutmarginsfollowreadablewidth-error-in-ios-8/37205228#37205228
 
 ### 版本更新
 
 2016.6.24
 
 - 添加登录界面
-- 推流服务器地址改为从接口中获取
+- 优化旋屏推流设置
 - 重新打包生成静态库,添加支持armv7
 - 重构工程，优化代码逻辑，删除冗余的代码，降低代码耦合度
+- 从获取接口中推流服务器地址进行推流。解决网页客户端无法观看到直播画面的问题
+
+> 如有其他疑问、意见或者建议，欢迎随时通过github、邮箱(fanfengtao@polyv.net)、qq等方式交流。
