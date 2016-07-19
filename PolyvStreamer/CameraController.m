@@ -76,15 +76,20 @@
     [self.previewView bringSubviewToFront:self.stateView];
     
     // 添加水印在测试阶段，可能不稳定，建议512*512 400x242
-    /*  [[NSOperationQueue new] addOperationWithBlock:^{
-     //sleep(0.2);
-     UIImage *image = [UIImage imageNamed:@"logo.png"];
-     if (image) {
-     [_session addPixelBufferSource:image withRect:CGRectMake(100, 100, 400, 400)];
-     }else {
-        NSLog(@"image can't be nil.");
-     }
-     }];   */
+    //    UIImage *image = [UIImage imageNamed:@"logo.png"];
+    //    @try {
+    //        [[NSOperationQueue new] addOperationWithBlock:^{
+    //            sleep(0.2);
+    //            if (image) {
+    //                //[_session addPixelBufferSource:image withRect:CGRectMake(100, 100, 400, 400)];
+    //            }else {
+    //                NSLog(@"image can't be nil.");
+    //            }
+    //        }];
+    //    }
+    //    @catch (NSException *exception) {
+    //        NSLog(@"%@,%@",exception.name,exception.reason);
+    //    }
 }
 
 - (void)setStateProperty {
