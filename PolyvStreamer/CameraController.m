@@ -295,14 +295,14 @@
 
 - (int)frameRate {
     if (!_frameRate) {
-        _frameRate = 25;
+        _frameRate = 15;
     }
     return _frameRate;
 }
 
 - (int)bitrate {
     if (!_bitrate) {
-        _bitrate = 600*1024;
+        _bitrate = 800*1000;
     }
     return _bitrate;
 }

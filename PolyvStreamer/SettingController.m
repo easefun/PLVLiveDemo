@@ -36,25 +36,26 @@
     
     // 设置数据源
     
-    NSValue *sizeVal1 = [NSValue valueWithCGSize:CGSizeMake(1920, 1080)];
-    NSValue *sizeVal2 = [NSValue valueWithCGSize:CGSizeMake(1280, 720)];
-    NSValue *sizeVal3 = [NSValue valueWithCGSize:CGSizeMake(640, 360)];
+    // 分辨率均为9:16
+    NSValue *sizeVal1 = [NSValue valueWithCGSize:CGSizeMake(1280, 720)];
+    NSValue *sizeVal2 = [NSValue valueWithCGSize:CGSizeMake(960, 540)];
+    NSValue *sizeVal3 = [NSValue valueWithCGSize:CGSizeMake(480, 360)];
     
     NSInteger interfaceOrientation=[[UIApplication sharedApplication] statusBarOrientation];
     if (interfaceOrientation == UIDeviceOrientationLandscapeLeft            // 设置横屏分辨率
               || interfaceOrientation == UIDeviceOrientationLandscapeRight) {
-        sizeVal1 = [NSValue valueWithCGSize:CGSizeMake(1280, 720)];
-        sizeVal2 = [NSValue valueWithCGSize:CGSizeMake(640, 360)];
-        sizeVal3 = [NSValue valueWithCGSize:CGSizeMake(480, 270)];
+        sizeVal1 = [NSValue valueWithCGSize:CGSizeMake(720, 1280)];     // 720p
+        sizeVal2 = [NSValue valueWithCGSize:CGSizeMake(540, 960)];      // 540p
+        sizeVal3 = [NSValue valueWithCGSize:CGSizeMake(360, 480)];      // 360p
     }
     
     NSNumber *fpsNum1 = [NSNumber numberWithInt:15];
     NSNumber *fpsNum2 = [NSNumber numberWithInt:20];
     NSNumber *fpsNum3 = [NSNumber numberWithInt:25];
     
-    NSNumber *bpsNum1 = [NSNumber numberWithInt:256*1024];
-    NSNumber *bpsNum2 = [NSNumber numberWithInt:512*1024];
-    NSNumber *bpsNum3 = [NSNumber numberWithInt:600*1024];
+    NSNumber *bpsNum1 = [NSNumber numberWithInt:500*1000];      // 500kbps
+    NSNumber *bpsNum2 = [NSNumber numberWithInt:800*1000];      // 800kbps
+    NSNumber *bpsNum3 = [NSNumber numberWithInt:1500*1000];     // 1Mkbps
     
     _fpsArr = @[fpsNum1, fpsNum2, fpsNum3];
     _bpsArr = @[bpsNum1, bpsNum2, bpsNum3];
