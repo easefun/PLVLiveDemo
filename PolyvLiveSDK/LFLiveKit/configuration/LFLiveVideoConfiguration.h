@@ -72,10 +72,10 @@ typedef NS_ENUM (NSUInteger, LFLiveVideoQuality){
 /// 视频的帧率，即 fps
 @property (nonatomic, assign) NSUInteger videoFrameRate;
 
-/// 视频的最大帧率，即 fps
+/// 视频的最大帧率，即 Maxfps
 @property (nonatomic, assign) NSUInteger videoMaxFrameRate;
 
-/// 视频的最小帧率，即 fps
+/// 视频的最小帧率，即 Minfps
 @property (nonatomic, assign) NSUInteger videoMinFrameRate;
 
 /// 最大关键帧间隔，可设定为 fps 的2倍，影响一个 gop 的大小
@@ -84,10 +84,10 @@ typedef NS_ENUM (NSUInteger, LFLiveVideoQuality){
 /// 视频的码率，单位是 bps
 @property (nonatomic, assign) NSUInteger videoBitRate;
 
-/// 视频的最大码率，单位是 bps
+/// 视频的最大码率，单位是 Maxbps
 @property (nonatomic, assign) NSUInteger videoMaxBitRate;
 
-/// 视频的最小码率，单位是 bps
+/// 视频的最小码率，单位是 Minbps
 @property (nonatomic, assign) NSUInteger videoMinBitRate;
 
 ///< 分辨率

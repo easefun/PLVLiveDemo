@@ -62,7 +62,7 @@
 }
 
 -(void)dealloc {
-    NSLog(@"");
+    DLog()
 }
 
 

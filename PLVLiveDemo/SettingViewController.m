@@ -15,11 +15,9 @@
 @property (nonatomic, copy) NSArray *audioQualityArr;
 @property (nonatomic, copy) NSArray *videoQualityArr;
 
-@property (nonatomic, copy) NSArray *audioQualityDetailArr;
 @property (nonatomic, copy) NSArray *videoQualityDetailArr;
 
 @property (nonatomic, assign) NSInteger selectedRtmpModeRow;
-@property (nonatomic, assign) NSInteger selectedAudioQualityRow;
 @property (nonatomic, assign) NSInteger selectedVideoQualityRow;
 
 @end
@@ -34,19 +32,16 @@
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"注销" style:UIBarButtonItemStyleDone target:self action:@selector(logOutButtonClick)];
 
+    // 删除 preview中的接口   设置非detail的宽度
     
     // 配置数据源
     self.rtmpModeArr = @[@"竖屏模式",@"横屏模式"];
-    self.audioQualityArr = @[@"低音频质量",@"中音频质量",@"高音频质量",@"超高音频质量"];
-    self.videoQualityArr = @[@"低视频质量1",@"低视频质量2",@"中视频质量1",@"中视频质量2",@"高视频质量1",@"高视频质量2"];
-    
-    self.audioQualityDetailArr = @[@"16KHz 32Kbps(单)/64Kbps",@"44.1KHz 96Kbps",@"44.1KHz 128Kbps(默认)",@"48KHz 128Kbps"];
-    self.videoQualityDetailArr = @[@"360*640 15 500Kps",@"360*640 20 650Kps",@"540*960 15 800Kps",@"540*960 20 800Kps(默认)",@"720*1280 15 1000Kps",@"720*1280 20 1200Kps"];
+    self.videoQualityArr = @[@"240p(弱网)",@"360p(流畅)",@"540p(普通)",@"540p(普通)",@"720p(高清)",@"720p(高清)"];
+    self.videoQualityDetailArr = @[@"15 240Kbps 64Kbps",@"15 400Kbps 96Kbps",@"15 600Kbps 96Kbps(默认)",@"20 800Kbps 96Kbps",@"15 900Kbps 96Kbps",@"20 1200Kbps 128Kbps"];    // 这里视频码率实际稍大一些，设置中为*1024非*1000
     
     // 设置默认值
-    self.selectedRtmpModeRow = 0;
-    self.selectedAudioQualityRow = 2;
-    self.selectedVideoQualityRow = 3;
+    self.selectedRtmpModeRow = 1;
+    self.selectedVideoQualityRow = 2;
 
     // 添加底部按钮
     [self addTableFooterButton];
@@ -71,7 +66,6 @@
     PLVLiveViewController *liveViewController = [PLVLiveViewController new];
     liveViewController.rtmpUrl = self.rtmpUrl;
     liveViewController.supportedInterfaceOrientation = _selectedRtmpModeRow ? UIInterfaceOrientationLandscapeLeft : UIInterfaceOrientationPortrait;
-    liveViewController.audioQuality = _selectedAudioQualityRow;
     liveViewController.videoQuality = _selectedVideoQualityRow;
     
     [self presentViewController:liveViewController animated:YES completion:nil];
@@ -86,14 +80,12 @@
 #pragma mark - TableView Data Source Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section==0) {
         return _rtmpModeArr.count;
-    }else if (section==1) {
-        return _audioQualityArr.count;
     }else {
         return _videoQualityArr.count;
     }
@@ -108,15 +100,12 @@
     
     if (indexPath.section==0) {
         cell.textLabel.text = _rtmpModeArr[indexPath.row];
-        cell.detailTextLabel.text = indexPath.row ? @"" : @"(默认)";
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.detailTextLabel.text = indexPath.row ? @"(默认)" : @"";
         cell.accessoryType = (indexPath.row == _selectedRtmpModeRow) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-    }else if (indexPath.section==1) {
-        cell.textLabel.text = _audioQualityArr[indexPath.row];
-        cell.detailTextLabel.text = _audioQualityDetailArr[indexPath.row];
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
-        cell.accessoryType = (indexPath.row == _selectedAudioQualityRow) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     }else {
         cell.textLabel.text = _videoQualityArr[indexPath.row];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
         cell.detailTextLabel.text = _videoQualityDetailArr[indexPath.row];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12.0];
         cell.accessoryType = (indexPath.row == _selectedVideoQualityRow) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
@@ -138,18 +127,11 @@
         NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:_selectedRtmpModeRow inSection:0];
         _selectedRtmpModeRow = indexPath.row;
         [[tableView cellForRowAtIndexPath:lastIndexPath] setAccessoryType:UITableViewCellAccessoryNone];    // 取消上次选中的cell
-    }else if (indexPath.section==1  && indexPath.row!=_selectedAudioQualityRow) {
+    }else if (indexPath.section==1  && indexPath.row!=_selectedVideoQualityRow){
         
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
         
-        NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:_selectedAudioQualityRow inSection:1];
-        _selectedAudioQualityRow = indexPath.row;
-        [[tableView cellForRowAtIndexPath:lastIndexPath] setAccessoryType:UITableViewCellAccessoryNone];
-    }else if (indexPath.section==2  && indexPath.row!=_selectedVideoQualityRow){
-        
-        [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
-        
-        NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:_selectedVideoQualityRow inSection:2];
+        NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:_selectedVideoQualityRow inSection:1];
         _selectedVideoQualityRow = indexPath.row;
         [[tableView cellForRowAtIndexPath:lastIndexPath] setAccessoryType:UITableViewCellAccessoryNone];
     }
@@ -164,10 +146,8 @@
     UITableViewHeaderFooterView *headView = [UITableViewHeaderFooterView new];
     if (section==0) {
         headView.textLabel.text = @"推流模式";
-    }else if (section==1) {
-        headView.textLabel.text = @"音频质量(参数:采样率 码率)";
     }else {
-        headView.textLabel.text = @"视频质量(参数:分辨率 帧数 码率)";
+        headView.textLabel.text = @"推流参数(帧数 视频码率 音频码率)";
     }
     return headView;
 }

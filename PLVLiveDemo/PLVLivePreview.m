@@ -155,7 +155,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 - (void)liveSession:(nullable LFLiveSession *)session debugInfo:(nullable LFLiveDebug *)debugInfo {
     NSString *speed  = formatedSpeed(debugInfo.currentBandwidth, debugInfo.elapsedMilli);
     self.rateLabel.text = speed;
-    NSLog(@"debugInfo: %@ %@", speed,debugInfo);
+    DLog("debugInfo: %@ %@", speed,debugInfo)
 }
 
 /** callback socket errorcode */
@@ -166,110 +166,108 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 #pragma mark -- Getter Setter
 - (LFLiveSession *)session {
     if (!_session) {
-        LFLiveVideoConfiguration *videoConfiguration = [LFLiveVideoConfiguration new];
+        LFLiveVideoConfiguration *videoConfig = [LFLiveVideoConfiguration new];
+        LFLiveAudioConfiguration *audioConfig = [LFLiveAudioConfiguration new];
+        audioConfig.numberOfChannels = 2;   // 声道数
+        
         switch (self.videoQuality) {
-            case 0: {
-                videoConfiguration.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(360, 640):CGSizeMake(640, 360);
-                videoConfiguration.videoFrameRate = 15;
-                //videoConfiguration.videoBitRate = 500*1024;
-                videoConfiguration.videoBitRate = 400*1024;
-                videoConfiguration.videoMaxBitRate = 800*1024;
-                videoConfiguration.videoMinBitRate = 400*1024;
-                videoConfiguration.videoMaxKeyframeInterval = 48;
-                videoConfiguration.sessionPreset = LFCaptureSessionPreset360x640;
+            case 0: {       // 240p 上行带宽速率38KB/s左右
+                
+                // 视频配置
+                videoConfig.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(240, 426):CGSizeMake(426, 240);
+                videoConfig.videoFrameRate = 15;
+                videoConfig.videoBitRate = 240*1024;
+                videoConfig.videoMaxKeyframeInterval = 30;
+                videoConfig.sessionPreset = LFCaptureSessionPreset360x640;
+                
+                // 音频配置
+                audioConfig.audioSampleRate = LFLiveAudioSampleRate_16000Hz;
+                audioConfig.audioBitrate = LFLiveAudioBitRate_64Kbps;
             }
                 break;
-            case 1: {
-                videoConfiguration.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(360, 640):CGSizeMake(640, 360);
-                videoConfiguration.videoFrameRate = 20;
-                videoConfiguration.videoBitRate = 650*1024;
-                videoConfiguration.videoMaxBitRate = 8500*1024;
-                videoConfiguration.videoMinBitRate = 450*1024;
-                videoConfiguration.videoMaxKeyframeInterval = 48;
-                videoConfiguration.sessionPreset = LFCaptureSessionPreset360x640;
+            case 1: {       // 360p 上行带宽速率61KB/s左右
+                
+                videoConfig.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(360, 640):CGSizeMake(640, 360);
+                videoConfig.videoFrameRate = 15;
+                videoConfig.videoBitRate = 400*1024;
+                videoConfig.videoMaxKeyframeInterval = 30;
+                videoConfig.sessionPreset = LFCaptureSessionPreset360x640;
+                
+                audioConfig.audioSampleRate = LFLiveAudioSampleRate_44100Hz;
+                audioConfig.audioBitrate = LFLiveAudioBitRate_96Kbps;
             }
                 break;
-            case 2: {
-                videoConfiguration.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(540, 960):CGSizeMake(960, 540);
-                videoConfiguration.videoFrameRate = 15;
-                //videoConfiguration.videoBitRate = 800*1024;
-                videoConfiguration.videoBitRate = 600*1024;
-                videoConfiguration.videoMaxBitRate = 1000*1024;
-                videoConfiguration.videoMinBitRate = 500*1024;
-                videoConfiguration.videoMaxKeyframeInterval = 48;
-                videoConfiguration.sessionPreset = LFCaptureSessionPreset540x960;
+            case 2: {       // 540p 上行带宽速率86KB/s左右
+                
+                videoConfig.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(540, 960):CGSizeMake(960, 540);
+                videoConfig.videoFrameRate = 15;
+                videoConfig.videoBitRate = 600*1024;
+                videoConfig.videoMaxBitRate = 800*1024;
+                videoConfig.videoMinBitRate = 400*1024;
+                videoConfig.videoMaxKeyframeInterval = 30;
+                videoConfig.sessionPreset = LFCaptureSessionPreset540x960;
+                
+                audioConfig.audioSampleRate = LFLiveAudioSampleRate_44100Hz;
+                audioConfig.audioBitrate = LFLiveAudioBitRate_96Kbps;
             }
                 break;
-            case 3: {
-                videoConfiguration.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(540, 960):CGSizeMake(960, 540);
-                videoConfiguration.videoFrameRate = 20;
-                videoConfiguration.videoBitRate = 800*1024;
-                videoConfiguration.videoMaxBitRate = 1100*1024;
-                videoConfiguration.videoMinBitRate = 500*1024;
-                videoConfiguration.videoMaxKeyframeInterval = 48;
-                videoConfiguration.sessionPreset = LFCaptureSessionPreset540x960;
+            case 3: {       // 540p 上行带宽速率111KB/s左右
+                
+                videoConfig.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(540, 960):CGSizeMake(960, 540);
+                videoConfig.videoFrameRate = 20;
+                videoConfig.videoBitRate = 800*1024;
+                videoConfig.videoMaxBitRate = 1100*1024;
+                videoConfig.videoMinBitRate = 500*1024;
+                videoConfig.videoMaxKeyframeInterval = 40;
+                videoConfig.sessionPreset = LFCaptureSessionPreset540x960;
+                
+                audioConfig.audioSampleRate = LFLiveAudioSampleRate_44100Hz;
+                audioConfig.audioBitrate = LFLiveAudioBitRate_96Kbps;
             }
                 break;
-            case 4: {
-                videoConfiguration.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(720, 1280):CGSizeMake(1280, 720);
-                videoConfiguration.videoFrameRate = 15;
-//                videoConfiguration.videoBitRate = 1000*1024;
-                videoConfiguration.videoBitRate = 900*1024;
-                videoConfiguration.videoMaxBitRate = 1200*1024;
-                videoConfiguration.videoMinBitRate = 700*1024;
-                videoConfiguration.videoMaxKeyframeInterval = 48;
-                videoConfiguration.sessionPreset = LFCaptureSessionPreset720x1280;
+            case 4: {       // 720p 上行带宽速率124KB/s左右
+                
+                videoConfig.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(720, 1280):CGSizeMake(1280, 720);
+                videoConfig.videoFrameRate = 15;
+                videoConfig.videoBitRate = 900*1024;
+                videoConfig.videoMaxBitRate = 1200*1024;
+                videoConfig.videoMinBitRate = 700*1024;
+                videoConfig.videoMaxKeyframeInterval = 30;
+                videoConfig.sessionPreset = LFCaptureSessionPreset720x1280;
+                
+                audioConfig.audioSampleRate = LFLiveAudioSampleRate_44100Hz;
+                audioConfig.audioBitrate = LFLiveAudioBitRate_96Kbps;
             }
                 break;
-            case 5: {
-                videoConfiguration.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(720, 1280):CGSizeMake(1280, 720);
-                videoConfiguration.videoFrameRate = 20;
-                videoConfiguration.videoBitRate = 1200*1024;
-                videoConfiguration.videoMaxBitRate = 1500*1024;
-                videoConfiguration.videoMinBitRate = 900*1024;
-                videoConfiguration.videoMaxKeyframeInterval = 48;
-                videoConfiguration.sessionPreset = LFCaptureSessionPreset720x1280;
+            case 5: {       // 720p 上行带宽速率165KB/s左右
+                
+                videoConfig.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(720, 1280):CGSizeMake(1280, 720);
+                videoConfig.videoFrameRate = 20;
+                videoConfig.videoBitRate = 1200*1024;
+                videoConfig.videoMaxBitRate = 1500*1024;
+                videoConfig.videoMinBitRate = 900*1024;
+                videoConfig.videoMaxKeyframeInterval = 40;
+                videoConfig.sessionPreset = LFCaptureSessionPreset720x1280;
+                
+                audioConfig.audioSampleRate = LFLiveAudioSampleRate_48000Hz;
+                audioConfig.audioBitrate = LFLiveAudioBitRate_128Kbps;
             }
                 break;
                 
-            default: {  // 默认：同3
-                videoConfiguration.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(540, 960):CGSizeMake(960, 540);
-                videoConfiguration.videoFrameRate = 20;
-                videoConfiguration.videoBitRate = 800*1024;
-                videoConfiguration.videoMaxBitRate = 1100*1024;
-                videoConfiguration.videoMinBitRate = 500*1024;
-                videoConfiguration.videoMaxKeyframeInterval = 48;
-                videoConfiguration.sessionPreset = LFCaptureSessionPreset540x960;
-            }
+            default:
+                // 可设置为配置2
                 break;
         }
-        videoConfiguration.autorotate = YES;
-        videoConfiguration.outputImageOrientation = [UIApplication sharedApplication].statusBarOrientation;
+        videoConfig.autorotate = YES;
+        videoConfig.outputImageOrientation = [UIApplication sharedApplication].statusBarOrientation;
     
-        _session = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:videoConfiguration captureType:LFLiveCaptureDefaultMask];
+        _session = [[LFLiveSession alloc] initWithAudioConfiguration:audioConfig videoConfiguration:videoConfig captureType:LFLiveCaptureDefaultMask];
         _session.captureDevicePosition = AVCaptureDevicePositionBack;   // 开启后置摄像头(默认前置)
+   
         
-       
-        /**    自己定制单声道  */
-        /*
-         LFLiveAudioConfiguration *audioConfiguration = [LFLiveAudioConfiguration new];
-         audioConfiguration.numberOfChannels = 1;
-         audioConfiguration.audioBitrate = LFLiveAudioBitRate_64Kbps;
-         audioConfiguration.audioSampleRate = LFLiveAudioSampleRate_44100Hz;
-         _session = [[LFLiveSession alloc] initWithAudioConfiguration:audioConfiguration videoConfiguration:[LFLiveVideoConfiguration defaultConfiguration]];
+        /**     定制高质量音频96K 分辨率设置为540*960 方向竖屏
+         *      竖屏需要改变的参数：videoSize和outputImageOrientation
          */
-        
-        /**    自己定制高质量音频96K */
-        /*
-         LFLiveAudioConfiguration *audioConfiguration = [LFLiveAudioConfiguration new];
-         audioConfiguration.numberOfChannels = 2;
-         audioConfiguration.audioBitrate = LFLiveAudioBitRate_96Kbps;
-         audioConfiguration.audioSampleRate = LFLiveAudioSampleRate_44100Hz;
-         _session = [[LFLiveSession alloc] initWithAudioConfiguration:audioConfiguration videoConfiguration:[LFLiveVideoConfiguration defaultConfiguration]];
-         */
-        
-        /**    自己定制高质量音频96K 分辨率设置为540*960 方向竖屏 */
-        
         /*
          LFLiveAudioConfiguration *audioConfiguration = [LFLiveAudioConfiguration new];
          audioConfiguration.numberOfChannels = 2;
@@ -283,36 +281,14 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
          videoConfiguration.videoMinBitRate = 500*1024;
          videoConfiguration.videoFrameRate = 24;
          videoConfiguration.videoMaxKeyframeInterval = 48;
-         videoConfiguration.orientation = UIInterfaceOrientationPortrait;
+         videoConfiguration.outputImageOrientation = UIInterfaceOrientationPortrait;
          videoConfiguration.sessionPreset = LFCaptureSessionPreset540x960;
          
          _session = [[LFLiveSession alloc] initWithAudioConfiguration:audioConfiguration videoConfiguration:videoConfiguration];
          */
         
         
-        /**    自己定制高质量音频128K 分辨率设置为720*1280 方向竖屏 */
-        
-        /*
-         LFLiveAudioConfiguration *audioConfiguration = [LFLiveAudioConfiguration new];
-         audioConfiguration.numberOfChannels = 2;
-         audioConfiguration.audioBitrate = LFLiveAudioBitRate_128Kbps;
-         audioConfiguration.audioSampleRate = LFLiveAudioSampleRate_44100Hz;
-         
-         LFLiveVideoConfiguration *videoConfiguration = [LFLiveVideoConfiguration new];
-         videoConfiguration.videoSize = CGSizeMake(720, 1280);
-         videoConfiguration.videoBitRate = 800*1024;
-         videoConfiguration.videoMaxBitRate = 1000*1024;
-         videoConfiguration.videoMinBitRate = 500*1024;
-         videoConfiguration.videoFrameRate = 15;
-         videoConfiguration.videoMaxKeyframeInterval = 30;
-         videoConfiguration.landscape = NO;
-         videoConfiguration.sessionPreset = LFCaptureSessionPreset360x640;
-         
-         _session = [[LFLiveSession alloc] initWithAudioConfiguration:audioConfiguration videoConfiguration:videoConfiguration];
-         */
-        
-        
-        /**    自己定制高质量音频128K 分辨率设置为720*1280 方向横屏  */
+        /**  定制高质量音频128K 分辨率设置为720*1280 方向横屏 */
         
         /*
          LFLiveAudioConfiguration *audioConfiguration = [LFLiveAudioConfiguration new];
@@ -327,7 +303,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
          videoConfiguration.videoMinBitRate = 500*1024;
          videoConfiguration.videoFrameRate = 15;
          videoConfiguration.videoMaxKeyframeInterval = 30;
-         videoConfiguration.landscape = YES;
+         videoConfiguration.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
          videoConfiguration.sessionPreset = LFCaptureSessionPreset720x1280;
          
          _session = [[LFLiveSession alloc] initWithAudioConfiguration:audioConfiguration videoConfiguration:videoConfiguration];
@@ -485,7 +461,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 }
 
 - (void)dealloc {
-    NSLog(@"");
+    DLog()
 }
 
 @end
