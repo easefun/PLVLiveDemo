@@ -8,14 +8,14 @@
 - arm文件夹下的静态库适用于真机, 支持armv7 arm64(工程默认添加此文件夹下的静态库)
 - x86_64文件夹下的静态库适用于模拟器, 支持 i386 x86_64
 
-![](https://github.com/easefun/PolyvStreamerDemo/blob/master/images/01%402x.png)
+![](https://github.com/easefun/PolyvStreamerDemo/blob/develop_videocore/images/01%402x.png)
 
 ## 准备开发环境
 1.	导入SDK中的libPolyvStreamer.a静态库
 
 	根据不同的开发环境选择使用arm目录下或x86_64目录下的库文件，首先需要将静态库存储在项目工程中，可以直接将此库文件拖入工程。注意要选择"copy items if needed"，工程的"Library Search Paths"设置中自动添加库的搜索路径
 	
-	![](https://github.com/easefun/PolyvStreamerDemo/blob/master/images/02%402x.png)
+	![](https://github.com/easefun/PolyvStreamerDemo/blob/develop_videocore/images/02%402x.png)
 
 2. 导入libc++.tbd 和 VideoToolbox.framework依赖库
  	
@@ -63,7 +63,7 @@
 
   解决方案：将之前静态库放到其他目录下或将模拟器下和真机下的两个版本的静态库合并为一个版本。在终端下使用lipo -create - output命令，“lipo -create ’真机版本路径‘ ’模拟器版本路径‘ -output ’合并后的文件路径‘”
   
-	![](https://github.com/easefun/PolyvStreamerDemo/blob/master/images/03%402x.png)
+	![](https://github.com/easefun/PolyvStreamerDemo/blob/develop_videocore/images/03%402x.png)
 	
 - 如果在iOS8中遇到崩溃问题 `Terminating app due to uncaught exception 'NSUnknownKeyException', reason: '[ setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key layoutMarginsFollowReadableWidth.'`  为demo工程中使用size class的屏幕适配问题，可参考  http://stackoverflow.com/questions/34906745/layoutmarginsfollowreadablewidth-error-in-ios-8/37205228#37205228
 
