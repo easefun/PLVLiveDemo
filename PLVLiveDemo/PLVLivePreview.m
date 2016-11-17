@@ -321,12 +321,12 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
         //        _session.saveLocalVideoPath = movieURL;
         
         
-        // 开启此可选择注释掉GPUImageFramebuffer->unlock中NSAssert
-         //UIImageView *imageView = [[UIImageView alloc] init];
-         //imageView.alpha = 0.8;
-         //imageView.frame = CGRectMake(100, 100, 40, 40);
-         //imageView.image = [UIImage imageNamed:@"sheep"];
-         //_session.warterMarkView = imageView;
+        // 水印功能
+         UIImageView *imageView = [[UIImageView alloc] init];
+         imageView.alpha = 0.8;
+         imageView.frame = CGRectMake(100, 100, 40, 40);
+         imageView.image = [UIImage imageNamed:@"sheep.jpg"];
+         _session.warterMarkView = imageView;
         
     }
     return _session;
