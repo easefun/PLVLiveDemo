@@ -35,7 +35,7 @@
     PLVLivePreview *livePreview = [[PLVLivePreview alloc] initWithFrame:viewFrame];
     livePreview.rtmpUrl = self.rtmpUrl;
     livePreview.supportedInterfaceOrientation = self.supportedInterfaceOrientation;
-    livePreview.audioQuality = self.audioQuality;
+    //livePreview.audioQuality = self.audioQuality;
     livePreview.videoQuality = self.videoQuality;
     
     [self.view addSubview:livePreview];

@@ -37,7 +37,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.navigationController pushViewController:settingVC animated:YES];
-            //[self presentViewController:settingVCanimated:YES completion:nil];
+            //[self presentViewController:settingVC animated:YES completion:nil];
         });
     } failure:^(NSString *errName, NSString *errReason) {
         NSLog(@"login: errTitle:%@,errReason:%@",errName,errReason);

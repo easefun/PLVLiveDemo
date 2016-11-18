@@ -24,11 +24,14 @@
 // 推流模式：横屏或竖屏(默认横屏模式UIInterfaceOrientationMaskLandscape)
 @property (nonatomic, assign) UIInterfaceOrientation supportedInterfaceOrientation;
 
+@property (nonatomic, assign) NSInteger videoQuality;
+
 // 音频配置（默认配置为LFLiveAudioQuality_High, sample rate: 44.1MHz audio bitrate: 128Kbps）
-@property (nonatomic, assign) LFLiveAudioQuality audioQuality;
+//@property (nonatomic, assign) LFLiveAudioQuality audioQuality;
 
 // 视频配置（默认配置为LFLiveVideoQuality_Low2, 分辨率： 360 *640 帧数：24 码率：800Kps）
-@property (nonatomic, assign) LFLiveVideoQuality videoQuality;
+//@property (nonatomic, assign) LFLiveVideoQuality videoQuality;
+
 
 
 @end
