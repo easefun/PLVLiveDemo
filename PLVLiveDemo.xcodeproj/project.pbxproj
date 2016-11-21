@@ -203,7 +203,7 @@
 		670B71361DDDAA7B00E97347 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670B71351DDDAA7B00E97347 /* VideoToolbox.framework */; };
 		670B71381DDDAA8600E97347 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670B71371DDDAA8600E97347 /* AudioToolbox.framework */; };
 		670B713A1DDDAA9500E97347 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 670B71391DDDAA9500E97347 /* libz.tbd */; };
-		672927AD1DD566A90014F667 /* sheep.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 672927AC1DD566A90014F667 /* sheep.jpg */; };
+		672533F61DE28DE100ED38BB /* pet.png in Resources */ = {isa = PBXBuildFile; fileRef = 672533F51DE28DE100ED38BB /* pet.png */; };
 		67656B071DD9B999005E4E19 /* LFAudioCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569621DD9B998005E4E19 /* LFAudioCapture.m */; };
 		67656B081DD9B999005E4E19 /* LFVideoCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569641DD9B998005E4E19 /* LFVideoCapture.m */; };
 		67656B091DD9B999005E4E19 /* LFAVEncoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 676569681DD9B998005E4E19 /* LFAVEncoder.mm */; };
@@ -650,7 +650,7 @@
 		670B71351DDDAA7B00E97347 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		670B71371DDDAA8600E97347 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		670B71391DDDAA9500E97347 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		672927AC1DD566A90014F667 /* sheep.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sheep.jpg; sourceTree = "<group>"; };
+		672533F51DE28DE100ED38BB /* pet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pet.png; sourceTree = "<group>"; };
 		676569611DD9B998005E4E19 /* LFAudioCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFAudioCapture.h; sourceTree = "<group>"; };
 		676569621DD9B998005E4E19 /* LFAudioCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFAudioCapture.m; sourceTree = "<group>"; };
 		676569631DD9B998005E4E19 /* LFVideoCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFVideoCapture.h; sourceTree = "<group>"; };
@@ -1283,7 +1283,7 @@
 		67F142481DC8360C00C02A00 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				672927AC1DD566A90014F667 /* sheep.jpg */,
+				672533F51DE28DE100ED38BB /* pet.png */,
 				67039DFA1DCC1C8C006EAA24 /* plv_camera.png */,
 				67039DFB1DCC1C8C006EAA24 /* plv_camera@2x.png */,
 				67039DFC1DCC1C8C006EAA24 /* plv_camera@3x.png */,
@@ -1460,12 +1460,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				672533F61DE28DE100ED38BB /* pet.png in Resources */,
 				67039DF71DCC19E6006EAA24 /* plv_close.png in Resources */,
 				67F142541DC8360C00C02A00 /* camra_beauty_close@2x.png in Resources */,
 				67FF73C51DC1E36B00B1CDDB /* LaunchScreen.storyboard in Resources */,
 				67F142521DC8360C00C02A00 /* camra_beauty@2x.png in Resources */,
 				67FF73C21DC1E36B00B1CDDB /* Assets.xcassets in Resources */,
-				672927AD1DD566A90014F667 /* sheep.jpg in Resources */,
 				67039DFF1DCC1C8C006EAA24 /* plv_camera@3x.png in Resources */,
 				67F142551DC8360C00C02A00 /* camra_beauty_close@3x.png in Resources */,
 				67039DF81DCC19E6006EAA24 /* plv_close@2x.png in Resources */,
@@ -1833,7 +1833,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8BMZBNN3Q5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PolyvLiveSDK",

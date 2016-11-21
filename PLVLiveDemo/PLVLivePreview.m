@@ -328,8 +328,20 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
          imageView.image = [UIImage imageNamed:@"sheep.jpg"];
          _session.warterMarkView = imageView;
         
+        // add watermark
+        //[self addWaterMark];
     }
     return _session;
+}
+
+/// 水印功能
+- (void)addWaterMark {
+    
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.alpha = 0.8;
+    imageView.frame = CGRectMake(50, 110, 80, 80);
+    imageView.image = [UIImage imageNamed:@"pet"];
+    _session.warterMarkView = imageView;
 }
 
 - (UIView *)containerView {

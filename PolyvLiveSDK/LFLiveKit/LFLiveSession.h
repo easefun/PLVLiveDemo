@@ -19,10 +19,10 @@
 
 
 typedef NS_ENUM(NSInteger,LFLiveCaptureType) {
-    LFLiveCaptureAudio,         //< capture only audio
-    LFLiveCaptureVideo,         //< capture onlt video
-    LFLiveInputAudio,           //< only audio (External input audio)
-    LFLiveInputVideo,           //< only video (External input video)
+    LFLiveCaptureAudio,         ///< capture only audio
+    LFLiveCaptureVideo,         ///< capture onlt video
+    LFLiveInputAudio,           ///< only audio (External input audio)
+    LFLiveInputVideo,           ///< only video (External input video)
 };
 
 
