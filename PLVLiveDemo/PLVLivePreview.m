@@ -34,6 +34,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 @property (nonatomic, strong) UIButton *beautyButton;
 @property (nonatomic, strong) UIButton *cameraButton;
 @property (nonatomic, strong) UIButton *closeButton;
+@property (nonatomic, strong) UIButton *waterMarkButton;
 @property (nonatomic, strong) UIButton *startLiveButton;
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) LFLiveDebug *debugInfo;
@@ -41,6 +42,8 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 @property (nonatomic, strong) UILabel *stateLabel;
 
 @property (nonatomic, strong) UILabel *rateLabel;
+@property (nonatomic, strong) UILabel *videoBitRate;
+@property (nonatomic, strong) UILabel *audioBitRate;
 
 @end
 
@@ -56,6 +59,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
         [self.containerView addSubview:self.closeButton];
         [self.containerView addSubview:self.cameraButton];
         [self.containerView addSubview:self.beautyButton];
+        [self.containerView addSubview:self.waterMarkButton];
         [self.containerView addSubview:self.rateLabel];
         [self.containerView addSubview:self.startLiveButton];
     }
@@ -154,7 +158,8 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 /** live debug info callback */
 - (void)liveSession:(nullable LFLiveSession *)session debugInfo:(nullable LFLiveDebug *)debugInfo {
     NSString *speed  = formatedSpeed(debugInfo.currentBandwidth, debugInfo.elapsedMilli);
-    self.rateLabel.text = speed;
+    self.rateLabel.text = [NSString stringWithFormat:@"↑%@",speed];
+    //self.videoBitRate.text = [NSString stringWithFormat:@"v bit:%u",session.streamInfo.videoConfiguration.videoBitRate];
     DLog("debugInfo: %@ %@", speed,debugInfo)
 }
 
@@ -320,14 +325,6 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
         //        NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
         //        _session.saveLocalVideoPath = movieURL;
         
-        
-        // 水印功能
-         UIImageView *imageView = [[UIImageView alloc] init];
-         imageView.alpha = 0.8;
-         imageView.frame = CGRectMake(100, 100, 40, 40);
-         imageView.image = [UIImage imageNamed:@"sheep.jpg"];
-         _session.warterMarkView = imageView;
-        
         // add watermark
         //[self addWaterMark];
     }
@@ -416,14 +413,43 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
     return _beautyButton;
 }
 
+- (UIButton *)waterMarkButton {
+    if (!_waterMarkButton) {
+        _waterMarkButton = [UIButton new];
+        _waterMarkButton.size = CGSizeMake(44, 44);
+        _waterMarkButton.origin = CGPointMake(_beautyButton.left - 10 - _waterMarkButton.width , 20);
+        [_waterMarkButton setImage:[UIImage imageNamed:@"plv_watermark_close"] forState:UIControlStateNormal];
+        [_waterMarkButton setImage:[UIImage imageNamed:@"plv_watermark"] forState:UIControlStateSelected];
+        
+        __weak typeof(self)weakSelf = self;
+        [_waterMarkButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id sender) {
+            UIButton *button = (UIButton *)sender;
+            button.selected = !button.isSelected;
+            
+            if (button.isSelected) {
+                [weakSelf addWaterMark];
+            }else {
+                weakSelf.session.warterMarkView = nil;
+            }
+        }];
+    }
+    return _waterMarkButton;
+}
+
 - (UILabel *)rateLabel {
     if (!_rateLabel) {
         _rateLabel = [UILabel new];
-        _rateLabel.size = CGSizeMake(60, 40);
-        _rateLabel.origin = CGPointMake(_beautyButton.left-10-_rateLabel.width, 20);
+        _rateLabel.size = CGSizeMake(70, 25);
+        _rateLabel.top = _closeButton.bottom + 10;
+        _rateLabel.right = _closeButton.right - 5;
         _rateLabel.text = @"0KB/s";
         _rateLabel.textColor = [UIColor whiteColor];
         _rateLabel.font = [UIFont boldSystemFontOfSize:12.f];
+        _rateLabel.textAlignment = NSTextAlignmentRight;
+        _rateLabel.adjustsFontSizeToFitWidth = YES;
+        _rateLabel.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.8];
+        _rateLabel.layer.cornerRadius = 8.0;
+        _rateLabel.layer.masksToBounds = YES;
     }
     return _rateLabel;
 }
