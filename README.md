@@ -2,20 +2,20 @@
 
 > 本工程为POLYV直播推流v2版本，v1版本基于videocore开发，若使用videocore版本的SDK可移步本项目的[develop_videocore](https://github.com/easefun/PLVLiveDemo/tree/develop_videocore)分支。
 
-本工程为完整的DEMO，下载之后可以直接编译运行，文档后面已有添加至自己工程的说明事项。文档末附带已打包的app，可供下载使用。 
+本工程为完整的DEMO，下载后可以直接编译运行，若将SDK文件添加至自工程中可参考下文的说明。文档末附带已打包的app可供下载使用。 
 
-建议系统支持最低为iOS8.0，此系统版本之后苹果才开始支持硬编解码。
+建议支持最低系统版本iOS 8.0，且苹果在iOS 8.0后才开始支持硬编码。
 
 ## 推流特性
 
-- 后台记录
-- 支持横竖屏记录
+- 后台录制
+- 支持横竖屏录制
 - 支持基于GPUImage的美颜
-- 支持H264 AAC硬编码记录
-- 弱网环境的丢帧
-- 动态切换速率
-- 音频配置
-- 视频配置
+- 支持H264 AAC硬编码
+- 弱网环境丢帧
+- 动态码率切换
+- 配置音频
+- 配置视频
 - RTMP传输
 - 切换摄像头位置
 - 音频静音
@@ -28,23 +28,23 @@
 
 ## 组件资源
 
-POLYV推流SDK 下载内容包括 PolyvLiveSDK 和 LiveDemo 两部分：
+PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两部分：
 
 - PolyvLiveSDK  目录（存放推流库及POLYV的接口）
  - LMGPUImage ---- 基于著名开源项目GPUImage的二次开发，具有丰富的滤镜可供使用
  - pili-librtmp ---- 开源的iOS客户端RTMP库
- - LFLiveKit ---- 开源直播推流库，完成主要的推流任务（使用到以上的两个库）
+ - LFLiveKit ---- 开源直播推流库，完成主要的推流任务（LMGPUImage、pili-librtmp在这个库中使用）
  - PolyvLiveAPI.framework ---- 提供POLYV的登录接口等
 
-- LiveDemo 目录（提供在iOS上如何使用PolyvLiveSDK进行推流的演示）
+- LiveDemo 目录（提供在iOS上使用PolyvLiveSDK进行推流的演示）
  - LoginViewController ---- POLYV登录控制器
  - SettingViewController ---- 配置推流参数的控制器
  - PLVLiveViewController ---- 推流控制器
- - PLVLivePreview ---- 推流预览及业务逻辑处理
+ - PLVLivePreview ---- 推流预览及推流逻辑处理
 
 ## 工程配置
 
-1. 将PolyvLiveSDK文件拷贝至项目文件中并添加至工程
+1. 先将PolyvLiveSDK文件拷贝至自己的项目文件中并添加至工程项目中
 2. 使用到的库文件
    - AudioToolbox.framework
    - VideoToolbox.framework
@@ -53,7 +53,9 @@ POLYV推流SDK 下载内容包括 PolyvLiveSDK 和 LiveDemo 两部分：
    - UIKit.framework
    - libz.tbd
    - libstdc++.tbd
-3. ATP(App Transport Security)
+   
+   选择项目target->Build Phases->Link Binary With Libraries，点击下方+号，添加以上的库文件
+3. ATS(App Transport Security)
 
     *苹果要求从2017年1月1日起App Store中的所有应用都必须启用 App Transport Security（ATS）安全功能。ATS是苹果在iOS 9中引入的一项隐私保护功能，屏蔽明文HTTP资源加载，连接必须经过更安全的HTTPS。*
     
@@ -66,7 +68,7 @@ POLYV推流SDK 下载内容包括 PolyvLiveSDK 和 LiveDemo 两部分：
       <true/>
   </dict>
 ```
-在要求必须启用ATS功能后如使用非https的链接则需要在info.plist配置白名单，需要添加以下内容：
+在要求必须启用ATS功能后如使用非https的链接则可在info.plist中配置白名单域名，添加以下内容：
 
 ```<key>NSAppTransportSecurity</key>
 	<dict>
@@ -84,7 +86,7 @@ POLYV推流SDK 下载内容包括 PolyvLiveSDK 和 LiveDemo 两部分：
 		</dict>
 	</dict>
 ```
-其他http连接可参考以上方式添加。
+其他使用到的http链接可参考以上方式添加。
 
 ## PolyvLiveSDK使用说明
 
@@ -153,7 +155,7 @@ POLYV推流SDK 下载内容包括 PolyvLiveSDK 和 LiveDemo 两部分：
 3. 初始化session，配置音视频参数
    导入`LFLiveKit.h`头文件
  
- 即可使用默认的音视频配置也可以自定义配置，示例配置一个视频分辨率540*960、帧率20、视频码率800*1024、音频采样率44.1KHz、音频码率96Kbps的直播session，如下：
+ 即可使用默认的音视频配置也可以自定义配置，示例配置一个视频分辨率540x960、帧率20、视频码率800x1024、音频采样率44.1KHz、音频码率96Kbps的直播session，如下：
  
     ```objective-c
     LFLiveVideoConfiguration *videoConfig = [LFLiveVideoConfiguration new];
@@ -198,8 +200,8 @@ POLYV推流SDK 下载内容包括 PolyvLiveSDK 和 LiveDemo 两部分：
 ```objective-c
 UIImageView *imageView = [[UIImageView alloc] init];
 imageView.alpha = 0.8;
-imageView.frame = CGRectMake(100, 100, 40, 40);
-imageView.image = [UIImage imageNamed:@"sheep.jpg"];
+imageView.frame = CGRectMake(50, 110, 80, 80);
+imageView.image = [UIImage imageNamed:@"pet"];
 _session.warterMarkView = imageView;
 ```
 
@@ -207,10 +209,12 @@ _session.warterMarkView = imageView;
 
 
 
-附：
+附：扫码下载APP
 
 -------
 
-DEMO下载地址，iPhone手机直接安装（需要POLYV的直播账号登录使用）
+DEMO[下载地址](https://www.pgyer.com/VN0u)，iPhone手机直接安装（需要POLYV的直播账号登录使用）
 
 ![GitHub set up-w140](https://static.pgyer.com/app/qrcode/VN0u)
+
+
