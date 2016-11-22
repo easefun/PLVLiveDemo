@@ -219,7 +219,7 @@
 		67656B1A1DD9B999005E4E19 /* LFStreamingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569911DD9B998005E4E19 /* LFStreamingBuffer.m */; };
 		67656B1B1DD9B999005E4E19 /* LFStreamRtmpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569931DD9B998005E4E19 /* LFStreamRtmpSocket.m */; };
 		67656B1C1DD9B999005E4E19 /* NSMutableArray+LFAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569961DD9B998005E4E19 /* NSMutableArray+LFAdd.m */; };
-		67656BCF1DD9B999005E4E19 /* PolyvLiveAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67656B061DD9B999005E4E19 /* PolyvLiveAPI.framework */; };
+		67656BCF1DD9B999005E4E19 /* PolyvLiveAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67656B061DD9B999005E4E19 /* PolyvLiveAPI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		67F1423F1DC82F4300C02A00 /* PLVNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F1423E1DC82F4300C02A00 /* PLVNavigationController.m */; };
 		67FF73B71DC1E36B00B1CDDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FF73B61DC1E36B00B1CDDB /* main.m */; };
 		67FF73BA1DC1E36B00B1CDDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FF73B91DC1E36B00B1CDDB /* AppDelegate.m */; };
@@ -1789,13 +1789,7 @@
 				INFOPLIST_FILE = PLVLiveDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/LFLiveKit\"",
-				);
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.polyvStreamer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1814,13 +1808,7 @@
 				INFOPLIST_FILE = PLVLiveDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_CFLAGS = (
-					"$(inherited)",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"-isystem",
-					"\"${PODS_ROOT}/Headers/Public/LFLiveKit\"",
-				);
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = net.polyv.polyvStreamer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
