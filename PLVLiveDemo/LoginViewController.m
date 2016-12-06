@@ -30,10 +30,10 @@
 - (IBAction)loginButtonClick:(id)sender {
     
     __weak typeof(self)weakSelf = self;
-    [PolyvLiveLogin loginWithChannelId:self.channelIdTF.text password:self.passwordTF.text success:^(NSString *rtmpUrl, NSString *streamName) {
+    [PolyvLiveLogin getRtmpUrlWithChannelId:self.channelIdTF.text password:self.passwordTF.text success:^(NSString *rtmpUrl) {
 
         SettingViewController *settingVC = [SettingViewController new];
-        settingVC.rtmpUrl = [NSString stringWithFormat:@"%@%@",rtmpUrl,streamName];
+        settingVC.rtmpUrl = rtmpUrl;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.navigationController pushViewController:settingVC animated:YES];
