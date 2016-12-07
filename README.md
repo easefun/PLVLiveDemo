@@ -74,7 +74,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>api.live.polyv.net</key>
+			<key>sdkoptedge.chinanetcenter.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>
@@ -182,7 +182,18 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
  是否输出调试信息`_session.showDebugInfo = YES;` 
  设置视频的预览视图`_session.preView = self;`
 
-4. 代理方法
+4. 通知服务器推流模式为单流模式
+
+   如该频道之前推流过PPt和视频双流，此时需要主动通知服务器切回单视频流模式
+    ```objective-c
+    [PolyvLiveLogin configAloneStreamModeWithChannelId:[PLVChannel sharedPLVChannel].channelId stream:[PLVChannel sharedPLVChannel].streamName success:^(NSString *responseBody) {
+            self.aloneMode = YES;
+        } failure:^(NSString *failure) {
+            NSLog(@"config alone steam mode failed:%@",failure);
+    }];
+    ```
+
+5. 代理方法
 
     ```objective-c
     // 推流状态改变的回调
@@ -193,7 +204,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
 - (void)liveSession:(nullable LFLiveSession *)session errorCode:(LFLiveSocketErrorCode)errorCode;
     ```
 
-5. 其他功能
+6. 其他功能
  
  **设置水印功能**
  
