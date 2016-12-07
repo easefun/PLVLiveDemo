@@ -11,8 +11,6 @@
 
 @interface PLVLiveViewController : UIViewController
 
-@property (nonatomic, copy) NSString *rtmpUrl;
-
 // 支持横屏或竖屏模式(默认横屏模式UIInterfaceOrientationMaskLandscape)
 @property (nonatomic, assign) UIInterfaceOrientation supportedInterfaceOrientation;
 

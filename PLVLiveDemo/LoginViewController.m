@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "SettingViewController.h"
 #import <PolyvLiveAPI/PolyvLiveAPI.h>
+#import "PLVChannel.h"
 
 @interface LoginViewController ()
 
@@ -30,14 +31,16 @@
 - (IBAction)loginButtonClick:(id)sender {
     
     __weak typeof(self)weakSelf = self;
-    [PolyvLiveLogin getRtmpUrlWithChannelId:self.channelIdTF.text password:self.passwordTF.text success:^(NSString *rtmpUrl) {
+    [PolyvLiveLogin getRtmpUrlWithChannelId:self.channelIdTF.text password:self.passwordTF.text success:^(NSString *rtmpUrl, NSString *streamName) {
 
-        SettingViewController *settingVC = [SettingViewController new];
-        settingVC.rtmpUrl = rtmpUrl;
+        // 将频道号和推流等值保存到单例中
+        [PLVChannel sharedPLVChannel].channelId = self.channelIdTF.text;
+        [PLVChannel sharedPLVChannel].rtmpUrl = rtmpUrl;
+        [PLVChannel sharedPLVChannel].streamName = streamName;
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.navigationController pushViewController:settingVC animated:YES];
-            //[self presentViewController:settingVC animated:YES completion:nil];
+            [weakSelf.navigationController pushViewController:[SettingViewController new] animated:YES];
+            //[self presentViewController:[SettingViewController new] animated:YES completion:nil];
         });
     } failure:^(NSString *errName, NSString *errReason) {
         NSLog(@"login: errTitle:%@,errReason:%@",errName,errReason);

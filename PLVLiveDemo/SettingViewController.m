@@ -64,7 +64,6 @@
 - (void)enterLiveController {
 
     PLVLiveViewController *liveViewController = [PLVLiveViewController new];
-    liveViewController.rtmpUrl = self.rtmpUrl;
     liveViewController.supportedInterfaceOrientation = _selectedRtmpModeRow ? UIInterfaceOrientationLandscapeLeft : UIInterfaceOrientationPortrait;
     liveViewController.videoQuality = _selectedVideoQualityRow;
     

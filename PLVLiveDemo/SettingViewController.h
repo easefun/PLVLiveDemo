@@ -10,6 +10,4 @@
 
 @interface SettingViewController : UITableViewController
 
-@property (nonatomic, copy) NSString *rtmpUrl;
-
 @end

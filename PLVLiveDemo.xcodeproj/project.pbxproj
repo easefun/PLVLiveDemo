@@ -220,6 +220,7 @@
 		67656B1B1DD9B999005E4E19 /* LFStreamRtmpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569931DD9B998005E4E19 /* LFStreamRtmpSocket.m */; };
 		67656B1C1DD9B999005E4E19 /* NSMutableArray+LFAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569961DD9B998005E4E19 /* NSMutableArray+LFAdd.m */; };
 		67656BCF1DD9B999005E4E19 /* PolyvLiveAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67656B061DD9B999005E4E19 /* PolyvLiveAPI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		67E7018A1DF7BD8B00E1F90D /* PLVChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E701891DF7BD8B00E1F90D /* PLVChannel.m */; };
 		67F1423F1DC82F4300C02A00 /* PLVNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F1423E1DC82F4300C02A00 /* PLVNavigationController.m */; };
 		67FF73B71DC1E36B00B1CDDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FF73B61DC1E36B00B1CDDB /* main.m */; };
 		67FF73BA1DC1E36B00B1CDDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FF73B91DC1E36B00B1CDDB /* AppDelegate.m */; };
@@ -682,6 +683,8 @@
 		676569951DD9B998005E4E19 /* NSMutableArray+LFAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+LFAdd.h"; sourceTree = "<group>"; };
 		676569961DD9B998005E4E19 /* NSMutableArray+LFAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+LFAdd.m"; sourceTree = "<group>"; };
 		67656B061DD9B999005E4E19 /* PolyvLiveAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PolyvLiveAPI.framework; sourceTree = "<group>"; };
+		67E701881DF7BD8B00E1F90D /* PLVChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVChannel.h; sourceTree = "<group>"; };
+		67E701891DF7BD8B00E1F90D /* PLVChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLVChannel.m; sourceTree = "<group>"; };
 		67F1423D1DC82F4300C02A00 /* PLVNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVNavigationController.h; sourceTree = "<group>"; };
 		67F1423E1DC82F4300C02A00 /* PLVNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLVNavigationController.m; sourceTree = "<group>"; };
 		67FF73B21DC1E36B00B1CDDB /* PLVLiveDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PLVLiveDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1291,6 +1294,8 @@
 				6705F25A1DC7335200EA4BA9 /* PLVLiveViewController.m */,
 				6705F24F1DC731FD00EA4BA9 /* PLVLivePreview.h */,
 				6705F2501DC731FD00EA4BA9 /* PLVLivePreview.m */,
+				67E701881DF7BD8B00E1F90D /* PLVChannel.h */,
+				67E701891DF7BD8B00E1F90D /* PLVChannel.m */,
 				6705F2521DC7324300EA4BA9 /* category */,
 				67FF73B81DC1E36B00B1CDDB /* AppDelegate.h */,
 				67FF73B91DC1E36B00B1CDDB /* AppDelegate.m */,
@@ -1384,7 +1389,6 @@
 				TargetAttributes = {
 					67FF73B11DC1E36B00B1CDDB = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 8BMZBNN3Q5;
 						ProvisioningStyle = Automatic;
 					};
 					67FF73CA1DC1E36B00B1CDDB = {
@@ -1491,6 +1495,7 @@
 				670B70921DDDA19D00E97347 /* GPUImageCGAColorspaceFilter.m in Sources */,
 				670B70941DDDA19D00E97347 /* GPUImageChromaKeyFilter.m in Sources */,
 				670B70D81DDDA19D00E97347 /* GPUImageLuminanceRangeFilter.m in Sources */,
+				67E7018A1DF7BD8B00E1F90D /* PLVChannel.m in Sources */,
 				670B70971DDDA19D00E97347 /* GPUImageColorBurnBlendFilter.m in Sources */,
 				670B70F41DDDA19D00E97347 /* GPUImagePolkaDotFilter.m in Sources */,
 				67656B1C1DD9B999005E4E19 /* NSMutableArray+LFAdd.m in Sources */,
@@ -1781,7 +1786,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8BMZBNN3Q5;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PolyvLiveSDK",
@@ -1800,7 +1805,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8BMZBNN3Q5;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PolyvLiveSDK",

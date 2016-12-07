@@ -19,8 +19,6 @@
 
 @interface PLVLivePreview : UIView
 
-@property (nonatomic, copy) NSString *rtmpUrl;
-
 // 推流模式：横屏或竖屏(默认横屏模式UIInterfaceOrientationMaskLandscape)
 @property (nonatomic, assign) UIInterfaceOrientation supportedInterfaceOrientation;
 

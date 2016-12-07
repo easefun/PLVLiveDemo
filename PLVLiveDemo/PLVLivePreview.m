@@ -9,6 +9,8 @@
 #import "PLVLivePreview.h"
 #import "UIControl+YYAdd.h"
 #import "UIView+YYAdd.h"
+#import <PolyvLiveAPI/PolyvLiveAPI.h>
+#import "PLVChannel.h"
 
 inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
     if (elapsed_milli <= 0) {
@@ -30,6 +32,9 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 }
 
 @interface PLVLivePreview ()<LFLiveSessionDelegate>
+
+// 单流模式
+@property (nonatomic, getter=isAloneMode) NSInteger aloneMode;
 
 @property (nonatomic, strong) UIButton *beautyButton;
 @property (nonatomic, strong) UIButton *cameraButton;
@@ -478,13 +483,15 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
             [self.session stopLive];
         case LFLiveReady:
         case LFLiveStop: {
-            LFLiveStreamInfo *stream = [LFLiveStreamInfo new];
-            stream.url = self.rtmpUrl;
-            //stream.url = @"rtmp://urlive.videocc.net/recordf/8754c4f11620160821175835488";
-            [self.session startLive:stream];
-            // 先改变颜色，降低感官的延迟度
             [self.startLiveButton setTitle:@"结束直播" forState:UIControlStateNormal];
             [self.startLiveButton setBackgroundColor:[UIColor redColor]];
+            
+            // 配置推流Info
+            LFLiveStreamInfo *stream = [LFLiveStreamInfo new];
+            stream.url = [PLVChannel sharedPLVChannel].rtmpUrl;
+            [self.session startLive:stream];
+            // 设置为单流模式
+            [self configAloneSteamMode];
         }
             break;
     
@@ -495,6 +502,19 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
             
         default:
             break;
+    }
+}
+
+// 设置单流模式
+- (void)configAloneSteamMode {
+    
+    if (!self.isAloneMode) {
+        [PolyvLiveLogin configAloneStreamModeWithChannelId:[PLVChannel sharedPLVChannel].channelId stream:[PLVChannel sharedPLVChannel].streamName success:^(NSString *responseBody) {
+            self.aloneMode = YES;
+        } failure:^(NSString *failure) {
+            // 设置失败，重新请求或重新推流
+            NSLog(@"config alone steam mode failed:%@",failure);
+        }];
     }
 }
 
