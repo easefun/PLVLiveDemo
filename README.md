@@ -70,14 +70,15 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
 ```
 在要求必须启用ATS功能后如使用非https的链接则可在info.plist中配置白名单域名，添加以下内容：
 
-```<key>NSAppTransportSecurity</key>
+```
+	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>sdkoptedge.chinanetcenter.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
-				<true/>
+				<false/>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 				<key>NSExceptionRequiresForwardSecrecy</key>
