@@ -59,17 +59,11 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
 
     *苹果要求从2017年1月1日起App Store中的所有应用都必须启用 App Transport Security（ATS）安全功能。ATS是苹果在iOS 9中引入的一项隐私保护功能，屏蔽明文HTTP资源加载，连接必须经过更安全的HTTPS。*
     
-    在没有这项规定之前（或暂未考虑上架App Store）在iOS 9.0版本后通用的做法可以是屏蔽ATS功能，具体操作如下：
-    右键点击项目的plist文件->Open As Source Code 添加以下内容：
+    即今后项目中避免通过禁用ATS方式来让程序中所有非HTTPS网络访问，POLYV推流SDK中接口大部分已经支持HTTPS，没有支持HTTPS的接口现在通过配置域名白名单方式进行网络访问。
     
-```  <key>NSAppTransportSecurity</key>
-  <dict>
-      <key>NSAllowsArbitraryLoads</key>
-      <true/>
-  </dict>
-```
-在要求必须启用ATS功能后如使用非https的链接则可在info.plist中配置白名单域名，添加以下内容：
+    以前版本在9.0之后一种通用做法是在工程info.plist中设置`NSAppTransportSecurity`属性，并添加`<key>NSAllowsArbitraryLoads</key><true/>`键值。需要注意**现在导入POLYV SDK需要配置一个域名，即按照以下操作将代码部分拷贝至自己工程中即可。**
 
+    右键点击项目的plist文件->Open As Source Code 
 ```
 	<key>NSAppTransportSecurity</key>
 	<dict>
@@ -78,7 +72,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
 			<key>sdkoptedge.chinanetcenter.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
-				<false/>
+				<true/>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 				<key>NSExceptionRequiresForwardSecrecy</key>
@@ -87,7 +81,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
 		</dict>
 	</dict>
 ```
-其他使用到的http链接可参考以上方式添加。
+工程中其他使用到的http链接也可参考以上方式添加。
 
 ## PolyvLiveSDK使用说明
 
@@ -219,6 +213,11 @@ _session.warterMarkView = imageView;
 
 **本DEMO中用到第三方开源推流库在源代码上有修改，不建议直接使用源库，且同样保持开源。**
 
+## FAQ
+
+1. 程序调试中控制台输出："App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file." 
+   
+   需要将工程中使用非HTTPS的网络域名在info.plist中进行配置，可参考工程配置3的说明。
 
 
 附：扫码下载APP
