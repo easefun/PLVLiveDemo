@@ -31,7 +31,7 @@
 - (IBAction)loginButtonClick:(id)sender {
     
     __weak typeof(self)weakSelf = self;
-    [PolyvLiveLogin getRtmpUrlWithChannelId:self.channelIdTF.text password:self.passwordTF.text success:^(NSString *rtmpUrl, NSString *streamName) {
+    [PolyvLiveLogin loginWithChannelId:self.channelIdTF.text password:self.passwordTF.text success:^(NSString *rtmpUrl, NSString *streamName) {
 
         // 将频道号和推流等值保存到单例中
         [PLVChannel sharedPLVChannel].channelId = self.channelIdTF.text;
