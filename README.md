@@ -58,8 +58,11 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
 3. ATS(App Transport Security)
 
     *苹果之前要求从2017年1月1日起App Store中的所有应用都必须启用 App Transport Security（ATS）安全功能。ATS是苹果在iOS 9中引入的一项隐私保护功能，屏蔽明文HTTP资源加载，连接必须经过更安全的HTTPS。*
+    
     **POLYV推流SDK中的API接口已全面支持ATS**，无需再配置白名单域名。
+    
     如因HTTP网络访问问题可尝试按以下步骤测试：
+    
     在工程info.plist中设置`NSAppTransportSecurity`属性，并添加`<key>NSAllowsArbitraryLoads</key><true/>`键值。
 
 ## PolyvLiveSDK使用说明
