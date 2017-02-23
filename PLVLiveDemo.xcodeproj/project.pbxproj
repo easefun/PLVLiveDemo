@@ -197,6 +197,11 @@
 		670B71361DDDAA7B00E97347 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670B71351DDDAA7B00E97347 /* VideoToolbox.framework */; };
 		670B71381DDDAA8600E97347 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670B71371DDDAA8600E97347 /* AudioToolbox.framework */; };
 		670B713A1DDDAA9500E97347 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 670B71391DDDAA9500E97347 /* libz.tbd */; };
+		670FBFE61E5C17440018AF07 /* ZJZDanMu.m in Sources */ = {isa = PBXBuildFile; fileRef = 670FBFE21E5C17440018AF07 /* ZJZDanMu.m */; };
+		670FBFE71E5C17440018AF07 /* ZJZDanMuLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 670FBFE51E5C17440018AF07 /* ZJZDanMuLabel.m */; };
+		6715FB771E5E8C2F006F8DDA /* PLVChatManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6715FB761E5E8C2F006F8DDA /* PLVChatManager.framework */; };
+		6715FB781E5EB642006F8DDA /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670FBFDE1E5C17210018AF07 /* SocketIO.framework */; };
+		6715FB791E5EB642006F8DDA /* SocketIO.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 670FBFDE1E5C17210018AF07 /* SocketIO.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		67656B071DD9B999005E4E19 /* LFAudioCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569621DD9B998005E4E19 /* LFAudioCapture.m */; };
 		67656B081DD9B999005E4E19 /* LFVideoCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569641DD9B998005E4E19 /* LFVideoCapture.m */; };
 		67656B091DD9B999005E4E19 /* LFAVEncoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 676569681DD9B998005E4E19 /* LFAVEncoder.mm */; };
@@ -248,6 +253,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				6715FB791E5EB642006F8DDA /* SocketIO.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -634,6 +640,13 @@
 		670B71351DDDAA7B00E97347 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		670B71371DDDAA8600E97347 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		670B71391DDDAA9500E97347 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		670FBFDE1E5C17210018AF07 /* SocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SocketIO.framework; sourceTree = "<group>"; };
+		670FBFE11E5C17440018AF07 /* ZJZDanMu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJZDanMu.h; sourceTree = "<group>"; };
+		670FBFE21E5C17440018AF07 /* ZJZDanMu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJZDanMu.m; sourceTree = "<group>"; };
+		670FBFE31E5C17440018AF07 /* ZJZDanMuDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJZDanMuDefine.h; sourceTree = "<group>"; };
+		670FBFE41E5C17440018AF07 /* ZJZDanMuLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJZDanMuLabel.h; sourceTree = "<group>"; };
+		670FBFE51E5C17440018AF07 /* ZJZDanMuLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJZDanMuLabel.m; sourceTree = "<group>"; };
+		6715FB761E5E8C2F006F8DDA /* PLVChatManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PLVChatManager.framework; sourceTree = "<group>"; };
 		676569611DD9B998005E4E19 /* LFAudioCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFAudioCapture.h; sourceTree = "<group>"; };
 		676569621DD9B998005E4E19 /* LFAudioCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFAudioCapture.m; sourceTree = "<group>"; };
 		676569631DD9B998005E4E19 /* LFVideoCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFVideoCapture.h; sourceTree = "<group>"; };
@@ -710,6 +723,8 @@
 				670B71381DDDAA8600E97347 /* AudioToolbox.framework in Frameworks */,
 				670B71361DDDAA7B00E97347 /* VideoToolbox.framework in Frameworks */,
 				670B71341DDDAA6C00E97347 /* AVFoundation.framework in Frameworks */,
+				6715FB781E5EB642006F8DDA /* SocketIO.framework in Frameworks */,
+				6715FB771E5E8C2F006F8DDA /* PLVChatManager.framework in Frameworks */,
 				670B71321DDDAA5C00E97347 /* Foundation.framework in Frameworks */,
 				670B71301DDDAA5500E97347 /* UIKit.framework in Frameworks */,
 				67656BCF1DD9B999005E4E19 /* PolyvLiveAPI.framework in Frameworks */,
@@ -1139,12 +1154,44 @@
 			path = Framework;
 			sourceTree = "<group>";
 		};
+		670FBFDD1E5C161C0018AF07 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				67F1423D1DC82F4300C02A00 /* PLVNavigationController.h */,
+				67FF73C31DC1E36B00B1CDDB /* LaunchScreen.storyboard */,
+				67F1423E1DC82F4300C02A00 /* PLVNavigationController.m */,
+				67FF73BE1DC1E36B00B1CDDB /* Main.storyboard */,
+				67FF73BB1DC1E36B00B1CDDB /* LoginViewController.h */,
+				67FF73BC1DC1E36B00B1CDDB /* LoginViewController.m */,
+				6705F24C1DC7289D00EA4BA9 /* SettingViewController.h */,
+				6705F24D1DC7289D00EA4BA9 /* SettingViewController.m */,
+				6705F2591DC7335200EA4BA9 /* PLVLiveViewController.h */,
+				6705F25A1DC7335200EA4BA9 /* PLVLiveViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		670FBFE01E5C17440018AF07 /* ZJZDanMu */ = {
+			isa = PBXGroup;
+			children = (
+				670FBFE11E5C17440018AF07 /* ZJZDanMu.h */,
+				670FBFE21E5C17440018AF07 /* ZJZDanMu.m */,
+				670FBFE31E5C17440018AF07 /* ZJZDanMuDefine.h */,
+				670FBFE41E5C17440018AF07 /* ZJZDanMuLabel.h */,
+				670FBFE51E5C17440018AF07 /* ZJZDanMuLabel.m */,
+			);
+			path = ZJZDanMu;
+			sourceTree = "<group>";
+		};
 		6765695E1DD9B998005E4E19 /* PolyvLiveSDK */ = {
 			isa = PBXGroup;
 			children = (
 				670B6F251DDDA19C00E97347 /* LMGPUImage */,
 				670B6D041DDD9F9100E97347 /* pili-librtmp */,
 				6765695F1DD9B998005E4E19 /* LFLiveKit */,
+				670FBFE01E5C17440018AF07 /* ZJZDanMu */,
+				670FBFDE1E5C17210018AF07 /* SocketIO.framework */,
+				6715FB761E5E8C2F006F8DDA /* PLVChatManager.framework */,
 				67656B061DD9B999005E4E19 /* PolyvLiveAPI.framework */,
 			);
 			path = PolyvLiveSDK;
@@ -1284,25 +1331,14 @@
 		67FF73B41DC1E36B00B1CDDB /* PLVLiveDemo */ = {
 			isa = PBXGroup;
 			children = (
-				67F1423D1DC82F4300C02A00 /* PLVNavigationController.h */,
-				67F1423E1DC82F4300C02A00 /* PLVNavigationController.m */,
-				67FF73BB1DC1E36B00B1CDDB /* LoginViewController.h */,
-				67FF73BC1DC1E36B00B1CDDB /* LoginViewController.m */,
-				6705F24C1DC7289D00EA4BA9 /* SettingViewController.h */,
-				6705F24D1DC7289D00EA4BA9 /* SettingViewController.m */,
-				6705F2591DC7335200EA4BA9 /* PLVLiveViewController.h */,
-				6705F25A1DC7335200EA4BA9 /* PLVLiveViewController.m */,
+				67FF73B81DC1E36B00B1CDDB /* AppDelegate.h */,
+				67FF73B91DC1E36B00B1CDDB /* AppDelegate.m */,
+				6705F2521DC7324300EA4BA9 /* category */,
+				670FBFDD1E5C161C0018AF07 /* View Controllers */,
 				6705F24F1DC731FD00EA4BA9 /* PLVLivePreview.h */,
 				6705F2501DC731FD00EA4BA9 /* PLVLivePreview.m */,
 				67E701881DF7BD8B00E1F90D /* PLVChannel.h */,
 				67E701891DF7BD8B00E1F90D /* PLVChannel.m */,
-				6705F2521DC7324300EA4BA9 /* category */,
-				67FF73B81DC1E36B00B1CDDB /* AppDelegate.h */,
-				67FF73B91DC1E36B00B1CDDB /* AppDelegate.m */,
-				67FF73BE1DC1E36B00B1CDDB /* Main.storyboard */,
-				67FF73C31DC1E36B00B1CDDB /* LaunchScreen.storyboard */,
-				67FF73C11DC1E36B00B1CDDB /* Assets.xcassets */,
-				67FF73C61DC1E36B00B1CDDB /* Info.plist */,
 				67FF73B51DC1E36B00B1CDDB /* Supporting Files */,
 			);
 			path = PLVLiveDemo;
@@ -1312,6 +1348,8 @@
 			isa = PBXGroup;
 			children = (
 				67FF73B61DC1E36B00B1CDDB /* main.m */,
+				67FF73C11DC1E36B00B1CDDB /* Assets.xcassets */,
+				67FF73C61DC1E36B00B1CDDB /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1570,6 +1608,7 @@
 				67656B0D1DD9B999005E4E19 /* LFH264VideoEncoder.mm in Sources */,
 				670B709D1DDDA19D00E97347 /* GPUImageColorPackingFilter.m in Sources */,
 				670B70BD1DDDA19D00E97347 /* GPUImageHalftoneFilter.m in Sources */,
+				670FBFE61E5C17440018AF07 /* ZJZDanMu.m in Sources */,
 				670B70C71DDDA19D00E97347 /* GPUImageHoughTransformLineDetector.m in Sources */,
 				670B70B31DDDA19D00E97347 /* GPUImageFilterPipeline.m in Sources */,
 				670B71261DDDA19D00E97347 /* GPUImageWeakPixelInclusionFilter.m in Sources */,
@@ -1591,6 +1630,7 @@
 				670B71061DDDA19D00E97347 /* GPUImageSkinToneFilter.m in Sources */,
 				670B70CD1DDDA19D00E97347 /* GPUImageKuwaharaFilter.m in Sources */,
 				670B71041DDDA19D00E97347 /* GPUImageSingleComponentGaussianBlurFilter.m in Sources */,
+				670FBFE71E5C17440018AF07 /* ZJZDanMuLabel.m in Sources */,
 				6705F2571DC7324300EA4BA9 /* UIControl+YYAdd.m in Sources */,
 				670B70C51DDDA19D00E97347 /* GPUImageHistogramFilter.m in Sources */,
 				670B70EB1DDDA19D00E97347 /* GPUImageOutput.m in Sources */,
@@ -1785,6 +1825,7 @@
 		67FF73D51DC1E36B00B1CDDB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1805,6 +1846,7 @@
 		67FF73D61DC1E36B00B1CDDB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (

@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "SettingViewController.h"
-#import <PolyvLiveAPI/PolyvLiveAPI.h>
+#import <PolyvLiveAPI/PLVLiveAPI.h>
 #import "PLVChannel.h"
 
 @interface LoginViewController ()
@@ -31,12 +31,13 @@
 - (IBAction)loginButtonClick:(id)sender {
     
     __weak typeof(self)weakSelf = self;
-    [PolyvLiveLogin loginWithChannelId:self.channelIdTF.text password:self.passwordTF.text success:^(NSString *rtmpUrl, NSString *streamName) {
+    [PLVLiveLogin loginWithChannelId:self.channelIdTF.text password:self.passwordTF.text success:^(NSString *rtmpUrl, NSString *streamName, NSDictionary *userInfo) {
 
         // 将频道号和推流等值保存到单例中
         [PLVChannel sharedPLVChannel].channelId = self.channelIdTF.text;
         [PLVChannel sharedPLVChannel].rtmpUrl = rtmpUrl;
         [PLVChannel sharedPLVChannel].streamName = streamName;
+        [PLVChannel sharedPLVChannel].userInfo = userInfo;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.navigationController pushViewController:[SettingViewController new] animated:YES];

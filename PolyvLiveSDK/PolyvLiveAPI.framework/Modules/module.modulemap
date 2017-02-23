@@ -1,6 +1,0 @@
-framework module PolyvLiveAPI {
-  umbrella header "PolyvLiveAPI.h"
-
-  export *
-  module * { export * }
-}

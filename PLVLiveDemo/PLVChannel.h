@@ -16,6 +16,8 @@
 
 @property (nonatomic, copy) NSString *streamName;   // 推流名
 
+@property (nonatomic, copy) NSDictionary *userInfo; // 用户信息
+
 // 获取PLVChannel单例
 + (instancetype)sharedPLVChannel;
 

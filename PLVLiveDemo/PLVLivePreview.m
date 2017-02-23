@@ -9,7 +9,7 @@
 #import "PLVLivePreview.h"
 #import "UIControl+YYAdd.h"
 #import "UIView+YYAdd.h"
-#import <PolyvLiveAPI/PolyvLiveAPI.h>
+#import <PolyvLiveAPI/PLVLiveAPI.h>
 #import "PLVChannel.h"
 
 inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
@@ -509,7 +509,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 - (void)configAloneSteamMode {
     
     if (!self.isAloneMode) {
-        [PolyvLiveLogin configAloneStreamModeWithChannelId:[PLVChannel sharedPLVChannel].channelId stream:[PLVChannel sharedPLVChannel].streamName success:^(NSString *responseBody) {
+        [PLVLiveLogin configAloneStreamModeWithChannelId:[PLVChannel sharedPLVChannel].channelId stream:[PLVChannel sharedPLVChannel].streamName success:^(NSString *responseBody) {
             self.aloneMode = YES;
         } failure:^(NSString *failure) {
             // 设置失败，重新请求或重新推流
