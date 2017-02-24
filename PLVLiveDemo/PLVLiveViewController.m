@@ -23,7 +23,10 @@
 
 @end
 
-@implementation PLVLiveViewController
+@implementation PLVLiveViewController {
+    NSString *socketid;
+    NSTimer *timer;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -81,6 +84,8 @@
 /** socket成功连接上聊天室*/
 - (void)socketIODidConnect:(PLVChatSocket *)chatSocket {
     NSLog(@"socket connected");
+    socketid = chatSocket.scoketId;
+    timer = [NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(onTime_tick) userInfo:nil repeats:YES];
     
     NSDictionary *userInfo = [PLVChannel sharedPLVChannel].userInfo;
     // 使用时间戳生成一个userId
@@ -167,11 +172,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)onTime_tick {
+    // 每分钟刷新次聊天室后台，防止被kill掉连接
+    [PLVChatRequest requestWithSocketId:socketid failure:^(NSInteger responseCode, NSString *errorReason) {
+        NSLog(@"responseCode:%ld",responseCode);
+    }];
+}
+
+- (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
+    if (timer) {
+        [timer invalidate];                 // 清除定时器
+        timer = nil;
+    }
+    [self.chatSocket disconnect];           // 断开聊天室
+    [self.chatSocket removeAllHandlers];    // 移除所有监听事件
+    
+    [super dismissViewControllerAnimated:flag completion:completion];
+}
+
 -(void)dealloc {
     DLog()
-    
-    [self.chatSocket disconnect];        // 断开聊天室
-    [self.chatSocket removeAllHandlers]; // 移除所有监听事件
 }
 
 

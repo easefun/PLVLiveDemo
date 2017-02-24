@@ -10,8 +10,8 @@
 #import "LFLiveKit.h"
 
 #ifdef DEBUG
-//#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#   define DLog(fmt, ...) NSLog((@"" fmt), ##__VA_ARGS__);
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+//#   define DLog(fmt, ...) NSLog((@"" fmt), ##__VA_ARGS__);
 //#   define NSLog(format, ...) printf("[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String])    // 可用于iOS10的调试打印输出
 #else
 #   define DLog(...)
