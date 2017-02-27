@@ -8,8 +8,7 @@
 
 ## 推流特性
 
-- 后台录制
-- 支持横竖屏录制
+- 支持横屏、竖屏录制
 - 支持基于GPUImage的美颜
 - 支持H264 AAC硬编码
 - 弱网环境丢帧
@@ -17,7 +16,7 @@
 - 配置音频
 - 配置视频
 - RTMP传输
-- 切换摄像头位置
+- 切换前后摄像头
 - 音频静音
 - 支持发送buffer
 - 支持水印
@@ -34,6 +33,9 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
  - LMGPUImage ---- 基于著名开源项目GPUImage的二次开发，具有丰富的滤镜可供使用
  - pili-librtmp ---- 开源的iOS客户端RTMP库
  - LFLiveKit ---- 开源直播推流库，完成主要的推流任务（LMGPUImage、pili-librtmp在这个库中使用）
+ - ZJZDanMu ---- 开源第三方的弹幕库
+ - SocketIO.framework ---- SocketIO Swift版本库，用于连接POLYV聊天室进行通讯
+ - PLVChatManager.framework ---- POLYV 聊天室相关接口的封装，包括聊天室的连接、接受、发送信息等
  - PolyvLiveAPI.framework ---- 提供POLYV的登录接口等
 
 - LiveDemo 目录（提供在iOS上使用PolyvLiveSDK进行推流的演示）
@@ -44,8 +46,20 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
 
 ## 工程配置
 
-1. 先将PolyvLiveSDK文件拷贝至自己的项目文件中并添加至工程项目中
-2. 使用到的库文件
+1. PolyvLiveSDK文件拷贝至自己的项目文件中并添加至工程项目中
+  
+  将PolyvLiveSDK中的`PLVChatManager.framework`、`PolyvLiveAPI.framework`库文件
+  添加至工程的"Linked Frameworks and Libraries"中
+  
+  需要注意的是，**`SocketIO.framework`库文件添加到工程的`Embedded Binaries`中**，同时需要在工程中打开使用Swift的标准库（默认关闭），具体操作如下
+  
+   ![](https://github.com/easefun/polyv-ios-liveplayer/blob/master/images/plv_1.png)
+   
+   Target -> Build Settings -> Aways Embed Swift Standard Libraries 设置`YES` 
+   ![](https://github.com/easefun/polyv-ios-liveplayer/blob/master/images/plv_2.png)
+  
+2. 使用到的系统库文件
+
    - AudioToolbox.framework
    - VideoToolbox.framework
    - AVFoundation.framework
@@ -55,6 +69,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
    - libstdc++.tbd
    
    选择项目target->Build Phases->Link Binary With Libraries，点击下方+号，添加以上的库文件
+   
 3. ATS(App Transport Security)
 
     *苹果之前要求从2017年1月1日起App Store中的所有应用都必须启用 App Transport Security（ATS）安全功能。ATS是苹果在iOS 9中引入的一项隐私保护功能，屏蔽明文HTTP资源加载，连接必须经过更安全的HTTPS。*
@@ -67,7 +82,58 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
 
 ## PolyvLiveSDK使用说明
 
-1. 获取RTMP推流地址
+1. 初始化直播推流、聊天室、弹幕
+
+ ```objective-c
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self initLivePreview];     // 初始化直播界面及推流器
+    [self initChatRoom];        // 添加聊天室
+    [self configDanmu];         // 初始化弹幕
+}
+
+- (void)initLivePreview {
+    CGRect viewFrame;
+    if (self.supportedInterfaceOrientation==UIInterfaceOrientationPortrait) {
+        viewFrame = self.view.bounds;
+    }else {
+        viewFrame = CGRectMake(0, 0, HEIGHT, WIDTH);
+    }
+    
+    self.livePreview = [[PLVLivePreview alloc] initWithFrame:viewFrame];
+    self.livePreview.supportedInterfaceOrientation = self.supportedInterfaceOrientation;
+    //livePreview.audioQuality = self.audioQuality;
+    self.livePreview.videoQuality = self.videoQuality;
+    
+    [self.view addSubview:self.livePreview];
+}
+
+-(void)initChatRoom {
+    [PLVChatRequest getChatTokenSuccess:^(NSString *chatToken) {
+        NSLog(@"chat token is %@", chatToken);
+        @try {
+            _chatSocket = [[PLVChatSocket alloc] initChatSocketWithConnectParams:@{@"token":chatToken} enableLog:NO];
+            _chatSocket.delegate = self;
+            [_chatSocket connect];
+        } @catch (NSException *exception) {
+            NSLog(@"chat connect failed, reason:%@",exception.reason);
+        }
+    } failure:^(NSString *errorName, NSString *errorDescription) {
+        NSLog(@"errorName: %@, errorDescription: %@",errorName,errorDescription);
+    }];
+}
+
+- (void)configDanmu {
+    CGRect bounds = self.livePreview.bounds;
+    self.danmuLayer = [[ZJZDanMu alloc] initWithFrame:CGRectMake(0, 20, bounds.size.width, bounds.size.height-20)];
+    [self.livePreview insertSubview:self.danmuLayer atIndex:0];
+}
+
+ ```
+
+2. 获取RTMP推流地址
     
  导入头文件`#import <PolyvLiveAPI/PolyvLiveAPI.h>` 使用以下接口
  
@@ -110,7 +176,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
     
     ```
 
-2. 设置推流预览视图
+3. 设置推流预览视图
 此时需要特别注意的是横竖屏的不同frame，示例如下：
 
     ```objective-c
@@ -129,7 +195,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
     
     [self.view addSubview:livePreview];
     ```
-3. 初始化session，配置音视频参数
+4. 初始化session，配置音视频参数
    导入`LFLiveKit.h`头文件
  
  即可使用默认的音视频配置也可以自定义配置，示例配置一个视频分辨率540x960、帧率20、视频码率800x1024、音频采样率44.1KHz、音频码率96Kbps的直播session，如下：
@@ -159,7 +225,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
  是否输出调试信息`_session.showDebugInfo = YES;` 
  设置视频的预览视图`_session.preView = self;`
 
-4. 通知服务器推流模式为单流模式
+5. 通知服务器推流模式为单流模式
 
    如该频道之前推流过PPt和视频双流，此时需要主动通知服务器切回单视频流模式
     ```objective-c
@@ -170,7 +236,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
     }];
     ```
 
-5. 代理方法
+6. 代理方法
 
     ```objective-c
     // 推流状态改变的回调
@@ -181,7 +247,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
 - (void)liveSession:(nullable LFLiveSession *)session errorCode:(LFLiveSocketErrorCode)errorCode;
     ```
 
-6. 其他功能
+7. 其他功能
  
  **设置水印功能**
  
@@ -193,15 +259,13 @@ imageView.image = [UIImage imageNamed:@"pet"];
 _session.warterMarkView = imageView;
 ```
 
-**本DEMO中用到第三方开源推流库在源代码上有修改，不建议直接使用源库，且同样保持开源。**
+**SDK中使用到第三方库可能有修改，不建议直接使用源库。SDK具体使用方法可参考DEMO代码示例或接口文件说明**
 
 
-附：扫码下载APP
+附：扫码下载APP（不一定和本工程源代码同步）
 
 -------
 
 DEMO[下载地址](https://www.pgyer.com/VN0u)，iPhone手机直接安装（需要POLYV的直播账号登录使用）
 
 ![GitHub set up-w140](https://static.pgyer.com/app/qrcode/VN0u)
-
-
