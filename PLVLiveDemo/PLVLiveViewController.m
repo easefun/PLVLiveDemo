@@ -179,6 +179,8 @@
     }];
 }
 
+#pragma mark - 重写本控制类dismissViewControllerAnimated：方法
+
 - (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
     if (timer) {
         [timer invalidate];                 // 清除定时器
