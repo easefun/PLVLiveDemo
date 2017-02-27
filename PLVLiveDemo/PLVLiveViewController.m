@@ -84,7 +84,7 @@
 /** socket成功连接上聊天室*/
 - (void)socketIODidConnect:(PLVChatSocket *)chatSocket {
     NSLog(@"socket connected");
-    socketid = chatSocket.scoketId;
+    socketid = chatSocket.socketId;
     timer = [NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(onTime_tick) userInfo:nil repeats:YES];
     
     NSDictionary *userInfo = [PLVChannel sharedPLVChannel].userInfo;

@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, PLVChatRoomState) {
 
 @property (nonatomic, weak) id <SocketIODelegate> delegate;                 // 代理人
 
-@property (nonatomic, strong, readonly) NSString *scoketId;                 // scoket id
+@property (nonatomic, strong, readonly) NSString *socketId;                 // socket id
 @property (nonatomic, strong, readonly) NSString *channelId;                // 房间号
 @property (nonatomic, assign, readonly) PLVChatRoomState chatRoomState;     // 聊天室状态
 @property (nonatomic, strong, readonly) PLVChatObject *chatObject;          // 聊天室内容
