@@ -259,6 +259,20 @@ imageView.image = [UIImage imageNamed:@"pet"];
 _session.warterMarkView = imageView;
 ```
 
+## FAQ
+
+1. 使用`SocketIO.framework`库连接聊天室或打包程序出错
+    
+    可在自己工程的cocopod中添加`Socket.IO-Client-Swift`源库，去掉工程中导入的`SocketIO.framework`，使用cocopod生成的`SocketIO.framework`库文件。添加`pod 'Socket.IO-Client-Swift', '~> 8.2.0'`
+    
+    ```
+    use_frameworks!
+
+    target 'YourApp' do
+        pod 'Socket.IO-Client-Swift', '~> 8.2.0'
+    end
+    ```
+
 **SDK中使用到第三方库可能有修改，不建议直接使用源库。SDK具体使用方法可参考DEMO代码示例或接口文件说明**
 
 

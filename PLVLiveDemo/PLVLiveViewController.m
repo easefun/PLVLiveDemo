@@ -59,13 +59,13 @@
   
     [PLVChatRequest getChatTokenSuccess:^(NSString *chatToken) {
         NSLog(@"chat token is %@", chatToken);
-        @try {
-            _chatSocket = [[PLVChatSocket alloc] initChatSocketWithConnectParams:@{@"token":chatToken} enableLog:NO];
-            _chatSocket.delegate = self;
-            [_chatSocket connect];
-        } @catch (NSException *exception) {
-            NSLog(@"chat connect failed, reason:%@",exception.reason);
-        }
+        
+        // 初始化聊天室
+        _chatSocket = [[PLVChatSocket alloc] initChatSocketWithConnectToken:chatToken enableLog:NO];
+        
+        _chatSocket.delegate = self;    // 设置代理
+        [_chatSocket connect];          // 连接聊天室
+        
     } failure:^(NSString *errorName, NSString *errorDescription) {
         NSLog(@"errorName: %@, errorDescription: %@",errorName,errorDescription);
     }];
@@ -88,17 +88,13 @@
     timer = [NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(onTime_tick) userInfo:nil repeats:YES];
     
     NSDictionary *userInfo = [PLVChannel sharedPLVChannel].userInfo;
-    // 使用时间戳生成一个userId
-    long long ts =(long long)([[NSDate date] timeIntervalSince1970] * 1000.0);
-    NSString *userId = [NSString stringWithFormat:@"%lld",ts];
     // 登录聊天室
-    [chatSocket loginStreamerChatRoomWithChannelId:userInfo[@"channelId"] userId:userId nickName:@"主持人" avatar:userInfo[@"avatar"]];
+    [chatSocket loginStreamerChatRoomWithChannelId:userInfo[@"channelId"] nickName:@"主持人" avatar:userInfo[@"avatar"]];
 }
 
 /** socket收到聊天室信息*/
-- (void)socketIODidReceiveMessage:(PLVChatSocket *)chatSocket {
+- (void)socketIODidReceiveMessage:(PLVChatSocket *)chatSocket withChatObject:(PLVChatObject *)chatObject {
     
-    PLVChatObject *chatObject = chatSocket.chatObject;
     NSLog(@"messageType: %ld",chatObject.messageType);
     
     switch (chatObject.messageType) {
