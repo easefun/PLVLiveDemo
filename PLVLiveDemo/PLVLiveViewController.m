@@ -128,12 +128,12 @@
 
 /** socket和聊天室失去连接*/
 - (void)socketIODidDisconnect:(PLVChatSocket *)chatSocket {
-    NSLog(@"socket error");
+    NSLog(@"socket disconnect");
 }
 
 /** socket连接聊天室出错*/
 - (void)socketIOConnectOnError:(PLVChatSocket *)chatSocket {
-    NSLog(@"socket disconnect");
+    NSLog(@"socket error");
 }
 
 /** socket尝试重新连接聊天室时*/

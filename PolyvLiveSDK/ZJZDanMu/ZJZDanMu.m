@@ -12,15 +12,16 @@
 
 @interface ZJZDanMu ()
 
-@property (nonatomic, assign) NSUInteger            rollChannel;
-@property (nonatomic, strong) NSMutableDictionary   *rollChannelDict;
-@property (nonatomic, strong) NSMutableDictionary   *fadeChannelDict;
-@property (nonatomic, assign) CGRect                currentFrame;
+@property (nonatomic, assign) NSUInteger            rollChannel;        // 弹幕航道数
+@property (nonatomic, strong) NSMutableDictionary   *rollChannelDict;   // 滚动弹幕样式队列
+@property (nonatomic, strong) NSMutableDictionary   *fadeChannelDict;   // 渐变弹幕样式队列
+@property (nonatomic, assign) CGRect                currentFrame;       // 当前弹幕图层Frame
 
 @end
 
 @implementation ZJZDanMu
 
+/* 初始化弹幕层*/
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -58,7 +59,7 @@
     
     // 计算最佳航道
     NSUInteger bestChannel;
-    if (arc4random_uniform(10)) {
+    if (arc4random_uniform(3)) {
         dmlStyle = ZJZDMLRoll;
         bestChannel = [self dmBestRollChannel];
     } else {
