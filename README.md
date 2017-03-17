@@ -30,19 +30,21 @@
 PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两部分：
 
 - PolyvLiveSDK  目录（存放推流库及POLYV的接口）
- - LMGPUImage ---- 基于著名开源项目GPUImage的二次开发，具有丰富的滤镜可供使用
- - pili-librtmp ---- 开源的iOS客户端RTMP库
- - LFLiveKit ---- 开源直播推流库，完成主要的推流任务（LMGPUImage、pili-librtmp在这个库中使用）
- - ZJZDanMu ---- 开源第三方的弹幕库
- - SocketIO.framework ---- SocketIO Swift版本库，用于连接POLYV聊天室进行通讯
- - PLVChatManager.framework ---- POLYV 聊天室相关接口的封装，包括聊天室的连接、接受、发送信息等
- - PolyvLiveAPI.framework ---- 提供POLYV的登录接口等
+
+  - LMGPUImage ---- 基于著名开源项目GPUImage的二次开发，具有丰富的滤镜可供使用
+  - pili-librtmp ---- 开源的iOS客户端RTMP库
+  - LFLiveKit ---- 开源直播推流库，完成主要的推流任务（LMGPUImage、pili-librtmp在这个库中使用）
+  - ZJZDanMu ---- 开源第三方的弹幕库
+  - SocketIO.framework ---- SocketIO Swift版本库，用于连接POLYV聊天室进行通讯
+  - PLVChatManager.framework ---- POLYV 聊天室相关接口的封装，包括聊天室的连接、接受、发送信息等
+  - PolyvLiveAPI.framework ---- 提供POLYV的登录接口等
 
 - LiveDemo 目录（提供在iOS上使用PolyvLiveSDK进行推流的演示）
- - LoginViewController ---- POLYV登录控制器
- - SettingViewController ---- 配置推流参数的控制器
- - PLVLiveViewController ---- 推流控制器
- - PLVLivePreview ---- 推流预览及推流逻辑处理
+
+  - LoginViewController ---- POLYV登录控制器
+  - SettingViewController ---- 配置推流参数的控制器
+  - PLVLiveViewController ---- 推流控制器
+  - PLVLivePreview ---- 推流预览及推流逻辑处理
 
 ## 工程配置
 
