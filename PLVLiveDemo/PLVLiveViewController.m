@@ -184,6 +184,7 @@
     }
     [self.chatSocket disconnect];           // 断开聊天室
     [self.chatSocket removeAllHandlers];    // 移除所有监听事件
+    self.chatSocket = nil;                  // 将chatSocket置空
     
     [super dismissViewControllerAnimated:flag completion:completion];
 }
