@@ -2,9 +2,12 @@
 
 > 本工程为POLYV直播推流v2版本，v1版本基于videocore开发，若使用videocore版本的SDK可移步本项目的[develop_videocore](https://github.com/easefun/PLVLiveDemo/tree/develop_videocore)分支。
 
-本工程为完整的DEMO，下载后可以直接编译运行，若将SDK文件添加至自工程中可参考下文的说明。文档末附带已打包的app可供下载使用。 
+## 注意事项
 
-建议支持最低系统版本iOS 8.0，且苹果在iOS 8.0后才开始支持硬编码。
+- 本工程为完整的DEMO，下载后可以直接编译运行，若将SDK文件添加至自工程中可参考下文的说明。文档末附带已打包的app可供下载使用
+- SDK中`PLVChatManager.frame` 聊天室依赖`SocketIO`库，目前比较建议使用[cocopod](https://cocoapods.org)方式添加[SocketIO](socket.io-client-swift)(使用cocopod方式后需要将工程中`SocketIO.framework`移除)
+- 更新Xcode版本后编译或运行出错可查看`SocketIO` 是否有新版本，查询链接：https://cocoapods.org/?q=Socket.IO-Client-Swift
+- 建议支持最低系统版本iOS 8.0，苹果在iOS 8.0后才开始支持硬编码
 
 ## 推流特性
 
