@@ -200,8 +200,6 @@
 		670FBFE61E5C17440018AF07 /* ZJZDanMu.m in Sources */ = {isa = PBXBuildFile; fileRef = 670FBFE21E5C17440018AF07 /* ZJZDanMu.m */; };
 		670FBFE71E5C17440018AF07 /* ZJZDanMuLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 670FBFE51E5C17440018AF07 /* ZJZDanMuLabel.m */; };
 		6715FB771E5E8C2F006F8DDA /* PLVChatManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6715FB761E5E8C2F006F8DDA /* PLVChatManager.framework */; };
-		6715FB781E5EB642006F8DDA /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 670FBFDE1E5C17210018AF07 /* SocketIO.framework */; };
-		6715FB791E5EB642006F8DDA /* SocketIO.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 670FBFDE1E5C17210018AF07 /* SocketIO.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		67656B071DD9B999005E4E19 /* LFAudioCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569621DD9B998005E4E19 /* LFAudioCapture.m */; };
 		67656B081DD9B999005E4E19 /* LFVideoCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569641DD9B998005E4E19 /* LFVideoCapture.m */; };
 		67656B091DD9B999005E4E19 /* LFAVEncoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 676569681DD9B998005E4E19 /* LFAVEncoder.mm */; };
@@ -234,6 +232,7 @@
 		67FF73C21DC1E36B00B1CDDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67FF73C11DC1E36B00B1CDDB /* Assets.xcassets */; };
 		67FF73C51DC1E36B00B1CDDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67FF73C31DC1E36B00B1CDDB /* LaunchScreen.storyboard */; };
 		67FF73D01DC1E36B00B1CDDB /* PLVLiveDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FF73CF1DC1E36B00B1CDDB /* PLVLiveDemoTests.m */; };
+		EC67703818FC4C137A2F86D8 /* Pods_PLVLiveDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3980CADD1C296E86F0FDEBDE /* Pods_PLVLiveDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,7 +252,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6715FB791E5EB642006F8DDA /* SocketIO.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +259,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3980CADD1C296E86F0FDEBDE /* Pods_PLVLiveDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PLVLiveDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59E0843622EE1E5D4F455A56 /* Pods-PLVLiveDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PLVLiveDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PLVLiveDemo/Pods-PLVLiveDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		6705F24C1DC7289D00EA4BA9 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		6705F24D1DC7289D00EA4BA9 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		6705F24F1DC731FD00EA4BA9 /* PLVLivePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVLivePreview.h; sourceTree = "<group>"; };
@@ -640,7 +640,6 @@
 		670B71351DDDAA7B00E97347 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		670B71371DDDAA8600E97347 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		670B71391DDDAA9500E97347 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		670FBFDE1E5C17210018AF07 /* SocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SocketIO.framework; sourceTree = "<group>"; };
 		670FBFE11E5C17440018AF07 /* ZJZDanMu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJZDanMu.h; sourceTree = "<group>"; };
 		670FBFE21E5C17440018AF07 /* ZJZDanMu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJZDanMu.m; sourceTree = "<group>"; };
 		670FBFE31E5C17440018AF07 /* ZJZDanMuDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJZDanMuDefine.h; sourceTree = "<group>"; };
@@ -713,6 +712,7 @@
 		67FF73CB1DC1E36B00B1CDDB /* PLVLiveDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PLVLiveDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67FF73CF1DC1E36B00B1CDDB /* PLVLiveDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PLVLiveDemoTests.m; sourceTree = "<group>"; };
 		67FF73D11DC1E36B00B1CDDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D99BBC41F28940CC035E90FC /* Pods-PLVLiveDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PLVLiveDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PLVLiveDemo/Pods-PLVLiveDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -723,13 +723,13 @@
 				670B71381DDDAA8600E97347 /* AudioToolbox.framework in Frameworks */,
 				670B71361DDDAA7B00E97347 /* VideoToolbox.framework in Frameworks */,
 				670B71341DDDAA6C00E97347 /* AVFoundation.framework in Frameworks */,
-				6715FB781E5EB642006F8DDA /* SocketIO.framework in Frameworks */,
 				6715FB771E5E8C2F006F8DDA /* PLVChatManager.framework in Frameworks */,
 				670B71321DDDAA5C00E97347 /* Foundation.framework in Frameworks */,
 				670B71301DDDAA5500E97347 /* UIKit.framework in Frameworks */,
 				67DA8AFA1EA638EE002EA7DB /* PLVStreamerAPI.framework in Frameworks */,
 				670B713A1DDDAA9500E97347 /* libz.tbd in Frameworks */,
 				6705F25D1DC7347200EA4BA9 /* libstdc++.tbd in Frameworks */,
+				EC67703818FC4C137A2F86D8 /* Pods_PLVLiveDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +743,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0973DAE26971178945F06DE6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59E0843622EE1E5D4F455A56 /* Pods-PLVLiveDemo.debug.xcconfig */,
+				D99BBC41F28940CC035E90FC /* Pods-PLVLiveDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6705F2521DC7324300EA4BA9 /* category */ = {
 			isa = PBXGroup;
 			children = (
@@ -1190,7 +1199,6 @@
 				670B6D041DDD9F9100E97347 /* pili-librtmp */,
 				6765695F1DD9B998005E4E19 /* LFLiveKit */,
 				670FBFE01E5C17440018AF07 /* ZJZDanMu */,
-				670FBFDE1E5C17210018AF07 /* SocketIO.framework */,
 				6715FB761E5E8C2F006F8DDA /* PLVChatManager.framework */,
 				67DA8AF91EA638EE002EA7DB /* PLVStreamerAPI.framework */,
 			);
@@ -1316,6 +1324,7 @@
 				67FF73CE1DC1E36B00B1CDDB /* PLVLiveDemoTests */,
 				67FF73B31DC1E36B00B1CDDB /* Products */,
 				AC4D3814EDDD9CCE843B03BC /* Frameworks */,
+				0973DAE26971178945F06DE6 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1373,6 +1382,7 @@
 				670B712F1DDDAA5500E97347 /* UIKit.framework */,
 				6705F25C1DC7347200EA4BA9 /* libstdc++.tbd */,
 				670B71391DDDAA9500E97347 /* libz.tbd */,
+				3980CADD1C296E86F0FDEBDE /* Pods_PLVLiveDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1384,10 +1394,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 67FF73D41DC1E36B00B1CDDB /* Build configuration list for PBXNativeTarget "PLVLiveDemo" */;
 			buildPhases = (
+				A61C14D52FBB55F7FF93E49E /* [CP] Check Pods Manifest.lock */,
 				67FF73AE1DC1E36B00B1CDDB /* Sources */,
 				67FF73AF1DC1E36B00B1CDDB /* Frameworks */,
 				67FF73B01DC1E36B00B1CDDB /* Resources */,
 				67655ED01DD95458005E4E19 /* Embed Frameworks */,
+				AF8C1D2AB87C329D92AD07D5 /* [CP] Embed Pods Frameworks */,
+				83992601027151A3B2555AD1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1475,6 +1488,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		83992601027151A3B2555AD1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PLVLiveDemo/Pods-PLVLiveDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A61C14D52FBB55F7FF93E49E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AF8C1D2AB87C329D92AD07D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PLVLiveDemo/Pods-PLVLiveDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		67FF73AE1DC1E36B00B1CDDB /* Sources */ = {
@@ -1824,6 +1885,7 @@
 		};
 		67FF73D51DC1E36B00B1CDDB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59E0843622EE1E5D4F455A56 /* Pods-PLVLiveDemo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1845,6 +1907,7 @@
 		};
 		67FF73D61DC1E36B00B1CDDB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D99BBC41F28940CC035E90FC /* Pods-PLVLiveDemo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
