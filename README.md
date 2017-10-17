@@ -2,9 +2,12 @@
 
 > 本工程为POLYV直播推流v2版本，v1版本基于videocore开发，若使用videocore版本的SDK可移步本项目的[develop_videocore](https://github.com/easefun/PLVLiveDemo/tree/develop_videocore)分支。
 
-本工程为完整的DEMO，下载后可以直接编译运行，若将SDK文件添加至自工程中可参考下文的说明。文档末附带已打包的app可供下载使用。 
+## 注意事项
 
-建议支持最低系统版本iOS 8.0，且苹果在iOS 8.0后才开始支持硬编码。
+- 本工程为完整的DEMO，下载后可以直接编译运行，若将SDK文件添加至自工程中可参考下文的说明。文档末附带已打包的app可供下载使用
+- SDK中`PLVChatManager.frame` 聊天室依赖`SocketIO`库，目前比较建议使用[cocopod](https://cocoapods.org)方式添加[SocketIO](socket.io-client-swift)(使用cocopod方式后需要将工程中`SocketIO.framework`移除)
+- 更新Xcode版本后编译或运行出错可查看`SocketIO` 是否有新版本，查询链接：https://cocoapods.org/?q=Socket.IO-Client-Swift
+- 建议支持最低系统版本iOS 8.0，苹果在iOS 8.0后才开始支持硬编码
 
 ## 推流特性
 
@@ -30,19 +33,21 @@
 PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两部分：
 
 - PolyvLiveSDK  目录（存放推流库及POLYV的接口）
- - LMGPUImage ---- 基于著名开源项目GPUImage的二次开发，具有丰富的滤镜可供使用
- - pili-librtmp ---- 开源的iOS客户端RTMP库
- - LFLiveKit ---- 开源直播推流库，完成主要的推流任务（LMGPUImage、pili-librtmp在这个库中使用）
- - ZJZDanMu ---- 开源第三方的弹幕库
- - SocketIO.framework ---- SocketIO Swift版本库，用于连接POLYV聊天室进行通讯
- - PLVChatManager.framework ---- POLYV 聊天室相关接口的封装，包括聊天室的连接、接受、发送信息等
- - PolyvLiveAPI.framework ---- 提供POLYV的登录接口等
+
+  - LMGPUImage ---- 基于著名开源项目GPUImage的二次开发，具有丰富的滤镜可供使用
+  - pili-librtmp ---- 开源的iOS客户端RTMP库
+  - LFLiveKit ---- 开源直播推流库，完成主要的推流任务（LMGPUImage、pili-librtmp在这个库中使用）
+  - ZJZDanMu ---- 开源第三方的弹幕库
+  - SocketIO.framework ---- SocketIO Swift版本库，用于连接POLYV聊天室进行通讯
+  - PLVChatManager.framework ---- POLYV 聊天室相关接口的封装，包括聊天室的连接、接受、发送信息等
+  - PolyvLiveAPI.framework ---- 提供POLYV的登录接口等
 
 - LiveDemo 目录（提供在iOS上使用PolyvLiveSDK进行推流的演示）
- - LoginViewController ---- POLYV登录控制器
- - SettingViewController ---- 配置推流参数的控制器
- - PLVLiveViewController ---- 推流控制器
- - PLVLivePreview ---- 推流预览及推流逻辑处理
+
+  - LoginViewController ---- POLYV登录控制器
+  - SettingViewController ---- 配置推流参数的控制器
+  - PLVLiveViewController ---- 推流控制器
+  - PLVLivePreview ---- 推流预览及推流逻辑处理
 
 ## 工程配置
 
