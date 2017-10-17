@@ -1,15 +1,18 @@
 # PLVLiveDemo
 
-> 本工程为POLYV直播推流v2版本，v1版本基于videocore开发，若使用videocore版本的SDK可移步本项目的[develop_videocore](https://github.com/easefun/PLVLiveDemo/tree/develop_videocore)分支。
+> 本项目为 POLYV 直播推流 SDK v2 版本。v1版基于 videocore 开发，若使用 videocore 版本 SDK 可移步本项目的 [develop_videocore](https://github.com/easefun/PLVLiveDemo/tree/develop_videocore) 分支。
 
-## 注意事项
+## 最近更新
 
-- 本工程为完整的DEMO，下载后可以直接编译运行，若将SDK文件添加至自工程中可参考下文的说明。文档末附带已打包的app可供下载使用
-- SDK中`PLVChatManager.frame` 聊天室依赖`SocketIO`库，目前比较建议使用[cocopod](https://cocoapods.org)方式添加[SocketIO](socket.io-client-swift)(使用cocopod方式后需要将工程中`SocketIO.framework`移除)
-- 更新Xcode版本后编译或运行出错可查看`SocketIO` 是否有新版本，查询链接：https://cocoapods.org/?q=Socket.IO-Client-Swift
-- 建议支持最低系统版本iOS 8.0，苹果在iOS 8.0后才开始支持硬编码
+- `SocketIO.framework` 库默认使用 cocopod 添加。`SocketIO` 当前版本为 `12.0` ，支持Xcode 9.0 编译环境。
 
-## 推流特性
+## （一）下载须知
+
+- 建议支持最低系统版本：iOS 8.0
+- 本项目下载后可以直接编译运行；添加 SDK 文件至其他项目可参考以下文档说明
+- `SocketIO` 库的更新较为频繁，升级 Xcode 后编译或运行出错可查询是否存在新版本或可用版本。链接：https://cocoapods.org/?q=Socket.IO-Client-Swift
+
+## （二）推流 SDK 特性
 
 - 支持横屏、竖屏录制
 - 支持基于GPUImage的美颜
@@ -28,40 +31,30 @@
 
 *参考说明[LFLiveKit](https://github.com/LaiFengiOS/LFLiveKit/blob/master/README.md)*
 
-## 组件资源
+## （三）文件结构和功能介绍
 
-PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两部分：
+PLVLiveDemo 包括 PolyvLiveSDK （POLYV 推流 SDK ）和 LiveDemo 两部分：
 
 - PolyvLiveSDK  目录（存放推流库及POLYV的接口）
 
-  - LMGPUImage ---- 基于著名开源项目GPUImage的二次开发，具有丰富的滤镜可供使用
-  - pili-librtmp ---- 开源的iOS客户端RTMP库
+  - LMGPUImage ---- 基于开源项目 GPUImage 的二次开发，具有丰富的滤镜可供使用
+  - pili-librtmp ---- 开源的 iOS 客户端 RTMP 库
   - LFLiveKit ---- 开源直播推流库，完成主要的推流任务（LMGPUImage、pili-librtmp在这个库中使用）
-  - ZJZDanMu ---- 开源第三方的弹幕库
-  - SocketIO.framework ---- SocketIO Swift版本库，用于连接POLYV聊天室进行通讯
-  - PLVChatManager.framework ---- POLYV 聊天室相关接口的封装，包括聊天室的连接、接受、发送信息等
-  - PolyvLiveAPI.framework ---- 提供POLYV的登录接口等
+  - ZJZDanMu ---- 弹幕库
+  - PLVChatManager.framework ---- POLYV 聊天室相关接口的封装
+  - PLVStreamerAPI.framework ---- 提供 POLYV 登录推流相关接口
+  - ~~PolyvLiveAPI.framework~~(废弃) ---- 更新使用 `PLVChatManager.framework`
+  - ~~SocketIO.framework~~(废弃) ---- SocketIO Swift版本库，用于连接POLYV聊天室进行通讯
 
-- LiveDemo 目录（提供在iOS上使用PolyvLiveSDK进行推流的演示）
+- LiveDemo 目录（demo 部分）
 
-  - LoginViewController ---- POLYV登录控制器
-  - SettingViewController ---- 配置推流参数的控制器
-  - PLVLiveViewController ---- 推流控制器
-  - PLVLivePreview ---- 推流预览及推流逻辑处理
+  - LoginViewController ---- 登录页
+  - SettingViewController ---- 参数配置页
+  - PLVLiveViewController ---- 推流页
 
-## 工程配置
+## （四）使用配置
 
-1. PolyvLiveSDK文件拷贝至自己的项目文件中并添加至工程项目中
-  
-  将PolyvLiveSDK中的`PLVChatManager.framework`、`PolyvLiveAPI.framework`库文件
-  添加至工程的"Linked Frameworks and Libraries"中
-  
-  需要注意的是，**`SocketIO.framework`库文件添加到工程的`Embedded Binaries`中**，同时需要在工程中打开使用Swift的标准库（默认关闭），具体操作如下
-  
-   ![](https://github.com/easefun/polyv-ios-liveplayer/blob/master/images/plv_1.png)
-   
-   Target -> Build Settings -> Aways Embed Swift Standard Libraries 设置`YES` 
-   ![](https://github.com/easefun/polyv-ios-liveplayer/blob/master/images/plv_2.png)
+1. PolyvLiveSDK 文件拷贝至自己的项目中，添加 `PLVChatManager.framework`、`PLVStreamerAPI.framework` 库文件至工程的"Linked Frameworks and Libraries"中
   
 2. 使用到的系统库文件
 
@@ -74,20 +67,10 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
    - libstdc++.tbd
    
    选择项目target->Build Phases->Link Binary With Libraries，点击下方+号，添加以上的库文件
-   
-3. ATS(App Transport Security)
 
-    *苹果之前要求从2017年1月1日起App Store中的所有应用都必须启用 App Transport Security（ATS）安全功能。ATS是苹果在iOS 9中引入的一项隐私保护功能，屏蔽明文HTTP资源加载，连接必须经过更安全的HTTPS。*
-    
-    **POLYV推流SDK中的API接口已全面支持ATS**，无需再配置白名单域名。
-    
-    如因HTTP网络访问问题可尝试按以下步骤测试：
-    
-    在工程info.plist中设置`NSAppTransportSecurity`属性，并添加`<key>NSAllowsArbitraryLoads</key><true/>`键值。
+## （五）PolyvLiveSDK 代码示例
 
-## PolyvLiveSDK使用说明
-
-1. 初始化直播推流、聊天室、弹幕
+5.1 初始化直播推流、聊天室、弹幕
 
  ```objective-c
 - (void)viewDidLoad {
@@ -138,7 +121,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
 
  ```
 
-2. 获取RTMP推流地址
+5.2 获取RTMP推流地址
     
  导入头文件`#import <PolyvLiveAPI/PolyvLiveAPI.h>` 使用以下接口
  
@@ -181,7 +164,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
     
     ```
 
-3. 设置推流预览视图
+5.3 设置推流预览视图
 此时需要特别注意的是横竖屏的不同frame，示例如下：
 
     ```objective-c
@@ -200,7 +183,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
     
     [self.view addSubview:livePreview];
     ```
-4. 初始化session，配置音视频参数
+5.4 初始化session，配置音视频参数
    导入`LFLiveKit.h`头文件
  
  即可使用默认的音视频配置也可以自定义配置，示例配置一个视频分辨率540x960、帧率20、视频码率800x1024、音频采样率44.1KHz、音频码率96Kbps的直播session，如下：
@@ -230,7 +213,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
  是否输出调试信息`_session.showDebugInfo = YES;` 
  设置视频的预览视图`_session.preView = self;`
 
-5. 通知服务器推流模式为单流模式
+5.5 通知服务器推流模式为单流模式
 
    如该频道之前推流过PPt和视频双流，此时需要主动通知服务器切回单视频流模式
     ```objective-c
@@ -241,7 +224,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
     }];
     ```
 
-6. 代理方法
+5.6 代理方法
 
     ```objective-c
     // 推流状态改变的回调
@@ -252,7 +235,7 @@ PLVLiveDemo 下载内容包括 PolyvLiveSDK（POLYV推流SDK） 和 LiveDemo 两
 - (void)liveSession:(nullable LFLiveSession *)session errorCode:(LFLiveSocketErrorCode)errorCode;
     ```
 
-7. 其他功能
+5.7 其他功能
  
  **设置水印功能**
  
@@ -264,27 +247,37 @@ imageView.image = [UIImage imageNamed:@"pet"];
 _session.warterMarkView = imageView;
 ```
 
-## FAQ
+**SDK 中部分第三方库有修改优化，不建议直接使用源库。**
 
-1. 使用`SocketIO.framework`库连接聊天室或打包程序出错
-    
-    可在自己工程的cocopod中添加`Socket.IO-Client-Swift`源库，去掉工程中导入的`SocketIO.framework`，使用cocopod生成的`SocketIO.framework`库文件。添加`pod 'Socket.IO-Client-Swift', '~> 8.2.0'`
-    
+## （六）FAQ
+
+1. `SocketIO.framework` 库库问题
+    查看 `SocketIO` 库是否存在更新或可用版本，[Socket.IO-Client-Swift](https://cocoapods.org/?q=Socket.IO-Client-Swift)
+
+Podfile 中添加形式如下：
+
     ```
     use_frameworks!
 
     target 'YourApp' do
-        pod 'Socket.IO-Client-Swift', '~> 8.2.0'
+        pod 'Socket.IO-Client-Swift', 12.0
+        # pod 'Socket.IO-Client-Swift', '~> 8.2.0'
     end
     ```
 
-**SDK中使用到第三方库可能有修改，不建议直接使用源库。SDK具体使用方法可参考DEMO代码示例或接口文件说明**
+2. 网络访问问题
+    
+    因 HTTP 网络访问问题可尝试以下解决方案：
+    
+    在工程 info.plist 中添加 `NSAppTransportSecurity` 属性，并设置 `<key>NSAllowsArbitraryLoads</key><true/>` 键值。
 
 
-附：扫码下载APP（不一定和本工程源代码同步）
+附：扫码下载（和本工程源代码不同步）
 
 -------
 
-DEMO[下载地址](https://www.pgyer.com/VN0u)，iPhone手机直接安装（需要POLYV的直播账号登录使用）
+DEMO [下载地址](https://www.pgyer.com/VN0u)，iPhone 手机直接安装（需要 POLYV 直播账号登录使用）
 
 ![GitHub set up-w140](https://static.pgyer.com/app/qrcode/VN0u)
+
+
