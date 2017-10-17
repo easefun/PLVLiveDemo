@@ -9,7 +9,7 @@
 #import "PLVLivePreview.h"
 #import "UIControl+YYAdd.h"
 #import "UIView+YYAdd.h"
-#import <PolyvLiveAPI/PLVLiveAPI.h>
+#import <PLVStreamerAPI/PLVStreamerAPI.h>
 #import "PLVChannel.h"
 
 inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
@@ -181,7 +181,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
         audioConfig.numberOfChannels = 2;   // 声道数
         
         switch (self.videoQuality) {
-            case 0: {       // 240p 上行带宽速率38KB/s左右
+            case 0: {       // 240p 上行带宽速率30KB/s左右
                 
                 // 视频配置
                 videoConfig.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(240, 426):CGSizeMake(426, 240);
@@ -195,7 +195,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
                 audioConfig.audioBitrate = LFLiveAudioBitRate_64Kbps;
             }
                 break;
-            case 1: {       // 360p 上行带宽速率61KB/s左右
+            case 1: {       // 360p 上行带宽速率50KB/s左右
                 
                 videoConfig.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(360, 640):CGSizeMake(640, 360);
                 videoConfig.videoFrameRate = 15;
@@ -207,7 +207,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
                 audioConfig.audioBitrate = LFLiveAudioBitRate_96Kbps;
             }
                 break;
-            case 2: {       // 540p 上行带宽速率86KB/s左右
+            case 2: {       // 540p 上行带宽速率75KB/s左右
                 
                 videoConfig.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(540, 960):CGSizeMake(960, 540);
                 videoConfig.videoFrameRate = 15;
@@ -221,7 +221,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
                 audioConfig.audioBitrate = LFLiveAudioBitRate_96Kbps;
             }
                 break;
-            case 3: {       // 540p 上行带宽速率111KB/s左右
+            case 3: {       // 540p 上行带宽速率100KB/s左右
                 
                 videoConfig.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(540, 960):CGSizeMake(960, 540);
                 videoConfig.videoFrameRate = 20;
@@ -235,7 +235,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
                 audioConfig.audioBitrate = LFLiveAudioBitRate_96Kbps;
             }
                 break;
-            case 4: {       // 720p 上行带宽速率124KB/s左右
+            case 4: {       // 720p 上行带宽速率112.5KB/s左右
                 
                 videoConfig.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(720, 1280):CGSizeMake(1280, 720);
                 videoConfig.videoFrameRate = 15;
@@ -249,7 +249,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
                 audioConfig.audioBitrate = LFLiveAudioBitRate_96Kbps;
             }
                 break;
-            case 5: {       // 720p 上行带宽速率165KB/s左右
+            case 5: {       // 720p 上行带宽速率150KB/s左右
                 
                 videoConfig.videoSize = (_supportedInterfaceOrientation==UIInterfaceOrientationPortrait)?CGSizeMake(720, 1280):CGSizeMake(1280, 720);
                 videoConfig.videoFrameRate = 20;
@@ -509,7 +509,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 - (void)configAloneSteamMode {
     
     if (!self.isAloneMode) {
-        [PLVLiveLogin configAloneStreamModeWithChannelId:[PLVChannel sharedPLVChannel].channelId stream:[PLVChannel sharedPLVChannel].streamName success:^(NSString *responseBody) {
+        [PLVStreamerLogin configAloneStreamModeWithChannelId:[PLVChannel sharedPLVChannel].channelId stream:[PLVChannel sharedPLVChannel].streamName success:^(NSString *responseBody) {
             self.aloneMode = YES;
         } failure:^(NSString *failure) {
             // 设置失败，重新请求或重新推流

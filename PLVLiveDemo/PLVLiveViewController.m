@@ -7,7 +7,6 @@
 //
 
 #import "PLVLiveViewController.h"
-#import <PolyvLiveAPI/PLVLiveAPI.h>
 #import <PLVChatManager/PLVChatManager.h>
 #import "ZJZDanMu.h"
 #import "PLVChannel.h"
@@ -26,6 +25,10 @@
 @implementation PLVLiveViewController {
     NSString *socketid;
     NSTimer *timer;
+}
+
+-(void)dealloc {
+    DLog()
 }
 
 - (void)viewDidLoad {
@@ -57,17 +60,23 @@
 
 -(void)initChatRoom {
   
+    __weak typeof(self)weakSelf = self;
     [PLVChatRequest getChatTokenSuccess:^(NSString *chatToken) {
         NSLog(@"chat token is %@", chatToken);
-        
-        // 初始化聊天室
-        _chatSocket = [[PLVChatSocket alloc] initChatSocketWithConnectToken:chatToken enableLog:NO];
-        
-        _chatSocket.delegate = self;    // 设置代理
-        [_chatSocket connect];          // 连接聊天室
-        
+        @try {
+            // 初始化聊天室
+            _chatSocket = [[PLVChatSocket alloc] initChatSocketWithConnectToken:chatToken enableLog:NO];
+            _chatSocket.delegate = self;    // 设置代理
+            [_chatSocket connect];          // 连接聊天室
+        } @catch (NSException *exception) {
+            NSLog(@"exceptin:%@, reason:%@",exception.name,exception.reason);
+            NSString *message = [NSString stringWithFormat:@"exception name:%@, reason:%@, chatToken:%@",exception.name,exception.reason,chatToken];
+            [weakSelf showAlertWithTitle:@"聊天室连接出错" message:message];
+        }
     } failure:^(NSString *errorName, NSString *errorDescription) {
         NSLog(@"errorName: %@, errorDescription: %@",errorName,errorDescription);
+        NSString *message = [NSString stringWithFormat:@"name:%@, reason:%@",errorName,errorDescription];
+        [weakSelf showAlertWithTitle:@"聊天室未连接" message:message];
     }];
 }
 
@@ -189,8 +198,14 @@
     [super dismissViewControllerAnimated:flag completion:completion];
 }
 
--(void)dealloc {
-    DLog()
+#pragma mark - 私有方法
+
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alertController animated:YES completion:nil];
+    });
 }
 
 

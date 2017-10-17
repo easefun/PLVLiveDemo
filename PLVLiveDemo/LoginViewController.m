@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "SettingViewController.h"
-#import <PolyvLiveAPI/PLVLiveAPI.h>
+#import <PLVStreamerAPI/PLVStreamerAPI.h>
 #import "PLVChannel.h"
 
 @interface LoginViewController ()
@@ -25,13 +25,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    NSLog(@"version:%f, version string:%s",PolyvLiveAPIVersionNumber, PolyvLiveAPIVersionString);
+    NSLog(@"version:%f, version string:%s",PLVStreamerAPIVersionNumber, PLVStreamerAPIVersionString);
 }
 
 - (IBAction)loginButtonClick:(id)sender {
     
     __weak typeof(self)weakSelf = self;
-    [PLVLiveLogin loginWithChannelId:self.channelIdTF.text password:self.passwordTF.text success:^(NSString *rtmpUrl, NSString *streamName, NSDictionary *userInfo) {
+    [PLVStreamerLogin loginWithChannelId:self.channelIdTF.text password:self.passwordTF.text success:^(NSString *rtmpUrl, NSString *streamName, NSDictionary *userInfo) {
 
         // 将频道号和推流等值保存到单例中
         [PLVChannel sharedPLVChannel].channelId = self.channelIdTF.text;

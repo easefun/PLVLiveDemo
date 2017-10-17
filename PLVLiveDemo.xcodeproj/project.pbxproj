@@ -224,7 +224,7 @@
 		67656B1A1DD9B999005E4E19 /* LFStreamingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569911DD9B998005E4E19 /* LFStreamingBuffer.m */; };
 		67656B1B1DD9B999005E4E19 /* LFStreamRtmpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569931DD9B998005E4E19 /* LFStreamRtmpSocket.m */; };
 		67656B1C1DD9B999005E4E19 /* NSMutableArray+LFAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 676569961DD9B998005E4E19 /* NSMutableArray+LFAdd.m */; };
-		67656BCF1DD9B999005E4E19 /* PolyvLiveAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67656B061DD9B999005E4E19 /* PolyvLiveAPI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		67DA8AFA1EA638EE002EA7DB /* PLVStreamerAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67DA8AF91EA638EE002EA7DB /* PLVStreamerAPI.framework */; };
 		67E7018A1DF7BD8B00E1F90D /* PLVChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E701891DF7BD8B00E1F90D /* PLVChannel.m */; };
 		67F1423F1DC82F4300C02A00 /* PLVNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F1423E1DC82F4300C02A00 /* PLVNavigationController.m */; };
 		67FF73B71DC1E36B00B1CDDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67FF73B61DC1E36B00B1CDDB /* main.m */; };
@@ -695,7 +695,7 @@
 		676569941DD9B998005E4E19 /* LFStreamSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFStreamSocket.h; sourceTree = "<group>"; };
 		676569951DD9B998005E4E19 /* NSMutableArray+LFAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+LFAdd.h"; sourceTree = "<group>"; };
 		676569961DD9B998005E4E19 /* NSMutableArray+LFAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+LFAdd.m"; sourceTree = "<group>"; };
-		67656B061DD9B999005E4E19 /* PolyvLiveAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PolyvLiveAPI.framework; sourceTree = "<group>"; };
+		67DA8AF91EA638EE002EA7DB /* PLVStreamerAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PLVStreamerAPI.framework; sourceTree = "<group>"; };
 		67E701881DF7BD8B00E1F90D /* PLVChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVChannel.h; sourceTree = "<group>"; };
 		67E701891DF7BD8B00E1F90D /* PLVChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLVChannel.m; sourceTree = "<group>"; };
 		67F1423D1DC82F4300C02A00 /* PLVNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVNavigationController.h; sourceTree = "<group>"; };
@@ -727,7 +727,7 @@
 				6715FB771E5E8C2F006F8DDA /* PLVChatManager.framework in Frameworks */,
 				670B71321DDDAA5C00E97347 /* Foundation.framework in Frameworks */,
 				670B71301DDDAA5500E97347 /* UIKit.framework in Frameworks */,
-				67656BCF1DD9B999005E4E19 /* PolyvLiveAPI.framework in Frameworks */,
+				67DA8AFA1EA638EE002EA7DB /* PLVStreamerAPI.framework in Frameworks */,
 				670B713A1DDDAA9500E97347 /* libz.tbd in Frameworks */,
 				6705F25D1DC7347200EA4BA9 /* libstdc++.tbd in Frameworks */,
 			);
@@ -1192,7 +1192,7 @@
 				670FBFE01E5C17440018AF07 /* ZJZDanMu */,
 				670FBFDE1E5C17210018AF07 /* SocketIO.framework */,
 				6715FB761E5E8C2F006F8DDA /* PLVChatManager.framework */,
-				67656B061DD9B999005E4E19 /* PolyvLiveAPI.framework */,
+				67DA8AF91EA638EE002EA7DB /* PLVStreamerAPI.framework */,
 			);
 			path = PolyvLiveSDK;
 			sourceTree = "<group>";
