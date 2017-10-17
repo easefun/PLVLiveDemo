@@ -752,7 +752,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		6705F2521DC7324300EA4BA9 /* category */ = {
+		6705F2521DC7324300EA4BA9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
 				6705F2531DC7324300EA4BA9 /* UIControl+YYAdd.h */,
@@ -760,7 +760,7 @@
 				6705F2551DC7324300EA4BA9 /* UIView+YYAdd.h */,
 				6705F2561DC7324300EA4BA9 /* UIView+YYAdd.m */,
 			);
-			path = category;
+			path = Category;
 			sourceTree = "<group>";
 		};
 		670B6D041DDD9F9100E97347 /* pili-librtmp */ = {
@@ -1167,8 +1167,8 @@
 			isa = PBXGroup;
 			children = (
 				67F1423D1DC82F4300C02A00 /* PLVNavigationController.h */,
-				67FF73C31DC1E36B00B1CDDB /* LaunchScreen.storyboard */,
 				67F1423E1DC82F4300C02A00 /* PLVNavigationController.m */,
+				67FF73C31DC1E36B00B1CDDB /* LaunchScreen.storyboard */,
 				67FF73BE1DC1E36B00B1CDDB /* Main.storyboard */,
 				67FF73BB1DC1E36B00B1CDDB /* LoginViewController.h */,
 				67FF73BC1DC1E36B00B1CDDB /* LoginViewController.m */,
@@ -1340,14 +1340,14 @@
 		67FF73B41DC1E36B00B1CDDB /* PLVLiveDemo */ = {
 			isa = PBXGroup;
 			children = (
-				67FF73B81DC1E36B00B1CDDB /* AppDelegate.h */,
-				67FF73B91DC1E36B00B1CDDB /* AppDelegate.m */,
-				6705F2521DC7324300EA4BA9 /* category */,
-				670FBFDD1E5C161C0018AF07 /* View Controllers */,
-				6705F24F1DC731FD00EA4BA9 /* PLVLivePreview.h */,
-				6705F2501DC731FD00EA4BA9 /* PLVLivePreview.m */,
+				6705F2521DC7324300EA4BA9 /* Category */,
 				67E701881DF7BD8B00E1F90D /* PLVChannel.h */,
 				67E701891DF7BD8B00E1F90D /* PLVChannel.m */,
+				6705F24F1DC731FD00EA4BA9 /* PLVLivePreview.h */,
+				6705F2501DC731FD00EA4BA9 /* PLVLivePreview.m */,
+				670FBFDD1E5C161C0018AF07 /* View Controllers */,
+				67FF73B81DC1E36B00B1CDDB /* AppDelegate.h */,
+				67FF73B91DC1E36B00B1CDDB /* AppDelegate.m */,
 				67FF73B51DC1E36B00B1CDDB /* Supporting Files */,
 			);
 			path = PLVLiveDemo;
@@ -1887,7 +1887,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 59E0843622EE1E5D4F455A56 /* Pods-PLVLiveDemo.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1909,7 +1909,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D99BBC41F28940CC035E90FC /* Pods-PLVLiveDemo.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (

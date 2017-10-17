@@ -32,14 +32,13 @@
     
     __weak typeof(self)weakSelf = self;
     [PLVStreamerLogin loginWithChannelId:self.channelIdTF.text password:self.passwordTF.text success:^(NSString *rtmpUrl, NSString *streamName, NSDictionary *userInfo) {
-
-        // 将频道号和推流等值保存到单例中
-        [PLVChannel sharedPLVChannel].channelId = self.channelIdTF.text;
-        [PLVChannel sharedPLVChannel].rtmpUrl = rtmpUrl;
-        [PLVChannel sharedPLVChannel].streamName = streamName;
-        [PLVChannel sharedPLVChannel].userInfo = userInfo;
-        
         dispatch_async(dispatch_get_main_queue(), ^{
+            // 将频道号和推流等值保存到单例中
+            [PLVChannel sharedPLVChannel].channelId = self.channelIdTF.text;
+            [PLVChannel sharedPLVChannel].rtmpUrl = rtmpUrl;
+            [PLVChannel sharedPLVChannel].streamName = streamName;
+            [PLVChannel sharedPLVChannel].userInfo = userInfo;
+            
             [weakSelf.navigationController pushViewController:[SettingViewController new] animated:YES];
             //[self presentViewController:[SettingViewController new] animated:YES completion:nil];
         });
