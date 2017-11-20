@@ -36,12 +36,12 @@
     
     // 配置数据源
     self.rtmpModeArr = @[@"竖屏模式",@"横屏模式"];
-    self.videoQualityArr = @[@"240p(弱网)",@"360p(流畅)",@"540p(普通)",@"540p(普通)",@"720p(高清)",@"720p(高清)"];
-    self.videoQualityDetailArr = @[@"15 240Kbps 64Kbps",@"15 400Kbps 96Kbps",@"15 600Kbps 96Kbps(默认)",@"20 800Kbps 96Kbps",@"15 900Kbps 96Kbps",@"20 1200Kbps 128Kbps"];    // 这里视频码率实际稍大一些，设置中为*1024非*1000
+    self.videoQualityArr = @[@"360p(标清)",@"540p(高清)",@"720p(超清)"];
+    self.videoQualityDetailArr = @[@"25 300Kbps 64Kbps",@"25 600Kbps 96Kbps(默认)",@"25 900Kbps 96Kbps"];    // 这里视频码率实际稍大一些，设置中为*1024非*1000
     
     // 设置默认值
     self.selectedRtmpModeRow = 1;
-    self.selectedVideoQualityRow = 2;
+    self.selectedVideoQualityRow = 1;
 
     // 添加底部按钮
     [self addTableFooterButton];
