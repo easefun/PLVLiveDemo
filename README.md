@@ -7,6 +7,15 @@
 - 优化代码，解决在iOS11下导致手机重启问题。更新推流参数，推流参数使用25帧率，15帧率测试在iOS11下可能存在问题
 - `SocketIO.framework` 库默认使用 cocopod 添加。`SocketIO` 当前版本为 `12.0` ，支持Xcode 9.0 编译环境。
 
+直接下载本项目后运行出现类似以下问题
+```
+dyld: Library not loaded: @rpath/libswiftCore.dylib
+  Referenced from: /private/var/containers/Bundle/Application/0C4FEBDC-AD75-4AAA-851A-2FA094623336/PLVLiveDemo.app/Frameworks/SocketIO.framework/SocketIO
+  Reason: image not found
+```
+升级cocoapods至1.4.0后可能出现此问题，可尝试设置 Always Embed Swift Standard Libraries 为 YES（Project -> Targets - Build Settings 下），然后重新运行。
+
+
 ## （一）下载须知
 
 - 建议支持最低系统版本：iOS 8.0
