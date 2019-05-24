@@ -1,0 +1,59 @@
+PODS:
+  - MBProgressHUD (1.1.0)
+  - PLVLiveKit (1.2.2):
+    - PLVLiveKit/capture (= 1.2.2)
+    - PLVLiveKit/coder (= 1.2.2)
+    - PLVLiveKit/configuration (= 1.2.2)
+    - PLVLiveKit/filter (= 1.2.2)
+    - PLVLiveKit/GPUImage (= 1.2.2)
+    - PLVLiveKit/objects (= 1.2.2)
+    - PLVLiveKit/pili-librtmp (= 1.2.2)
+    - PLVLiveKit/publish (= 1.2.2)
+  - PLVLiveKit/capture (1.2.2):
+    - PLVLiveKit/filter
+  - PLVLiveKit/coder (1.2.2):
+    - PLVLiveKit/objects
+  - PLVLiveKit/configuration (1.2.2)
+  - PLVLiveKit/filter (1.2.2):
+    - PLVLiveKit/GPUImage
+    - PLVLiveKit/objects
+  - PLVLiveKit/GPUImage (1.2.2)
+  - PLVLiveKit/objects (1.2.2):
+    - PLVLiveKit/configuration
+  - PLVLiveKit/pili-librtmp (1.2.2)
+  - PLVLiveKit/publish (1.2.2):
+    - PLVLiveKit/objects
+    - PLVLiveKit/pili-librtmp
+  - PolyvLiveAPI (0.7.1)
+  - PolyvSocketAPI (0.6.1):
+    - Socket.IO-Client-Swift (~> 13.2.0)
+  - Socket.IO-Client-Swift (13.2.1):
+    - Starscream (~> 3.0.2)
+  - Starscream (3.0.6)
+
+DEPENDENCIES:
+  - MBProgressHUD (~> 1.1.0)
+  - PLVLiveKit (~> 1.2.2)
+  - PolyvLiveAPI (~> 0.7.1)
+  - PolyvSocketAPI (~> 0.6.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - MBProgressHUD
+    - PLVLiveKit
+    - PolyvLiveAPI
+    - PolyvSocketAPI
+    - Socket.IO-Client-Swift
+    - Starscream
+
+SPEC CHECKSUMS:
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  PLVLiveKit: 307b6aa28fbdb98d6ff9e4f2af029b8cfd140662
+  PolyvLiveAPI: fd7cc3dee28ded69ef436b40396a5c5ae3bda702
+  PolyvSocketAPI: c157dd7f264b7a39258f418d834ba91619640ee2
+  Socket.IO-Client-Swift: b94943e2fb916fe2f95244b9ed21828634002280
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+
+PODFILE CHECKSUM: 5c267cf596dd71746d58d5d0dc0c7a82ddec9c18
+
+COCOAPODS: 1.6.0

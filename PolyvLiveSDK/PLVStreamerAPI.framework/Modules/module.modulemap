@@ -1,6 +1,0 @@
-framework module PLVStreamerAPI {
-  umbrella header "PLVStreamerAPI.h"
-
-  export *
-  module * { export * }
-}
