@@ -20,7 +20,6 @@
 		670B713A1DDDAA9500E97347 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 670B71391DDDAA9500E97347 /* libz.tbd */; };
 		670FBFE61E5C17440018AF07 /* ZJZDanMu.m in Sources */ = {isa = PBXBuildFile; fileRef = 670FBFE21E5C17440018AF07 /* ZJZDanMu.m */; };
 		670FBFE71E5C17440018AF07 /* ZJZDanMuLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 670FBFE51E5C17440018AF07 /* ZJZDanMuLabel.m */; };
-		677EFFA922544E5300ECE683 /* PLVAuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 677EFFA822544E5300ECE683 /* PLVAuthorizationManager.m */; };
 		67E08834224CBA49005C01D6 /* PLVRtmpSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E08832224CBA49005C01D6 /* PLVRtmpSetting.m */; };
 		67E08835224CBA49005C01D6 /* PLVSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E08833224CBA49005C01D6 /* PLVSettingViewController.m */; };
 		67F1423F1DC82F4300C02A00 /* PLVNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F1423E1DC82F4300C02A00 /* PLVNavigationController.m */; };
@@ -78,8 +77,6 @@
 		670FBFE31E5C17440018AF07 /* ZJZDanMuDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJZDanMuDefine.h; sourceTree = "<group>"; };
 		670FBFE41E5C17440018AF07 /* ZJZDanMuLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJZDanMuLabel.h; sourceTree = "<group>"; };
 		670FBFE51E5C17440018AF07 /* ZJZDanMuLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJZDanMuLabel.m; sourceTree = "<group>"; };
-		677EFFA722544E5300ECE683 /* PLVAuthorizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVAuthorizationManager.h; sourceTree = "<group>"; };
-		677EFFA822544E5300ECE683 /* PLVAuthorizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLVAuthorizationManager.m; sourceTree = "<group>"; };
 		67E08830224CBA49005C01D6 /* PLVRtmpSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVRtmpSetting.h; sourceTree = "<group>"; };
 		67E08831224CBA49005C01D6 /* PLVSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLVSettingViewController.h; sourceTree = "<group>"; };
 		67E08832224CBA49005C01D6 /* PLVRtmpSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLVRtmpSetting.m; sourceTree = "<group>"; };
@@ -173,19 +170,9 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		677EFFA622544E5300ECE683 /* PLVAuthorizationManager */ = {
-			isa = PBXGroup;
-			children = (
-				677EFFA722544E5300ECE683 /* PLVAuthorizationManager.h */,
-				677EFFA822544E5300ECE683 /* PLVAuthorizationManager.m */,
-			);
-			path = PLVAuthorizationManager;
-			sourceTree = "<group>";
-		};
 		67D59C5622364582009A3210 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				677EFFA622544E5300ECE683 /* PLVAuthorizationManager */,
 				670FBFE01E5C17440018AF07 /* ZJZDanMu */,
 			);
 			path = Library;
@@ -446,7 +433,6 @@
 				670FBFE61E5C17440018AF07 /* ZJZDanMu.m in Sources */,
 				67FF73BA1DC1E36B00B1CDDB /* AppDelegate.m in Sources */,
 				670FBFE71E5C17440018AF07 /* ZJZDanMuLabel.m in Sources */,
-				677EFFA922544E5300ECE683 /* PLVAuthorizationManager.m in Sources */,
 				6705F2571DC7324300EA4BA9 /* UIControl+YYAdd.m in Sources */,
 				67FF73B71DC1E36B00B1CDDB /* main.m in Sources */,
 				67E08835224CBA49005C01D6 /* PLVSettingViewController.m in Sources */,
@@ -607,6 +593,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8BMZBNN3Q5;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PolyvLiveSDK",
@@ -633,6 +620,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 8BMZBNN3Q5;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PolyvLiveSDK",

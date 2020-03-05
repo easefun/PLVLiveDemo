@@ -7,7 +7,13 @@ target 'PLVRtmpDemo' do
     pod 'MBProgressHUD', '~> 1.1.0'
     
     pod 'PLVLiveKit', '~> 1.2.3'        # polyv streamer.
-    pod 'PolyvLiveAPI', '~> 0.7.1'      # Polyv live api.
+    pod 'PolyvLiveAPI', '~> 0.7.3'      # Polyv live api.
+    pod 'PolyvFoundationSDK'
+    
+    # 默认依赖库
     pod 'PolyvSocketAPI', '~> 0.6.1'    # Polyv socket.io api.
+    # 如果同云课堂同时集成，注释默认依赖库，解注云课堂依赖库即可
+    #pod 'PolyvCloudClassSDK'            # 云课堂 SDK
+    
     #pod 'Starscream', '3.0.5'           # Xcode 10 以下解注释
 end

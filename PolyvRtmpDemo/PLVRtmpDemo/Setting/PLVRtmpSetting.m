@@ -8,7 +8,11 @@
 
 #import "PLVRtmpSetting.h"
 
-NSString *const PLVRTMP_SDK_VERSION = @"PolyvRtmpiOSSDK_v2.2.1+190726";
+/*
+ v2.2.1+190726
+ */
+
+NSString *const PLVRTMP_SDK_VERSION = @"PolyvRtmpiOSSDK_v2.2.2+200305";
 
 static PLVRtmpSetting *rtmpSetting = nil;
 

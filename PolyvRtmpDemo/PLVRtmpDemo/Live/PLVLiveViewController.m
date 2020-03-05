@@ -9,10 +9,15 @@
 #import "PLVLiveViewController.h"
 #import <PLVLiveAPI/PLVLiveAPI.h>
 #import <PLVLiveAPI/PLVLiveConfig.h>
-#import <PLVSocketAPI/PLVSocketAPI.h>
 #import "PLVLivePreview.h"
 #import "PLVRtmpSetting.h"
 #import "ZJZDanMu.h"
+
+#if __has_include(<PLVSocketAPI/PLVSocketAPI.h>)
+    #import <PLVSocketAPI/PLVSocketAPI.h>
+#elif __has_include(<PolyvBusinessSDK/PLVSocketIO.h>)
+    #import <PolyvBusinessSDK/PLVSocketIO.h>
+#endif
 
 @interface PLVLiveViewController () <PLVSocketIODelegate>
 
@@ -68,13 +73,21 @@
 }
 
 - (void)loadAuthorizationInfo {
-    __weak typeof(self)weakSelf = self;
+    NSString *nickName = @"主持人";
     PLVRtmpSetting *setting = [PLVRtmpSetting sharedRtmpSetting];
-    [PLVLiveAPI requestAuthorizationForLinkingSocketWithChannelId:self.channelId Appld:setting.appId appSecret:setting.appSecret success:^(NSDictionary *responseDict) {
-        [weakSelf initSocketWithToken:responseDict[@"chat_token"]];
-    } failure:^(PLVLiveErrorCode errorCode, NSString *description) {
-        NSString *message = [NSString stringWithFormat:@"name:%@, reason:%@",NameStringWithLiveErrorCode(errorCode),description];
-        [weakSelf showAlertWithTitle:@"聊天室未连接" message:message];
+    if (!setting.isMasterAccount) {
+        nickName = setting.channelAccountList[setting.accountId];
+    }
+    
+    self.login = [PLVSocketObject socketObjectForLoginEventWithRoomId:self.channelId nickName:nickName avatar:nil userType:PLVSocketObjectUserTypeTeacher];
+    
+    __weak typeof(self)weakSelf = self;
+    [PLVLiveAPI getChatTokenWithChannelId:self.channelId role:@"teacher" userId:self.login.userId appld:setting.appId appSecret:setting.appSecret completion:^(NSDictionary *responseDict, NSError *error) {
+        if (error) {
+            [weakSelf showAlertWithTitle:@"聊天室Token获取失败！" message:error.localizedDescription];
+        } else {
+            [weakSelf initSocketWithToken:responseDict[@"token"]];
+        }
     }];
 }
 
@@ -97,14 +110,6 @@
     self.socketIO.delegate = self;
     [self.socketIO connect];
     //self.socketIO.debugMode = YES;
-    
-    NSString *nickName = @"主持人";
-    PLVRtmpSetting *setting = [PLVRtmpSetting sharedRtmpSetting];
-    if (!setting.isMasterAccount) {
-        nickName = setting.channelAccountList[setting.accountId];
-    }
-    
-    self.login = [PLVSocketObject socketObjectForLoginEventWithRoomId:self.channelId nickName:nickName avatar:nil userType:PLVSocketObjectUserTypeTeacher];
 }
 
 - (void)clearSocketIO {

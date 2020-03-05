@@ -8,7 +8,7 @@
 
 #import "PLVSettingViewController.h"
 #import "PLVLiveViewController.h"
-#import "PLVAuthorizationManager.h"
+#import <PolyvFoundationSDK/PLVAuthorizationManager.h>
 
 @interface PLVSettingViewController ()
 
