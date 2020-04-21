@@ -84,7 +84,9 @@
                 PLVRtmpSetting *setting = [PLVRtmpSetting sharedRtmpSetting];
                 setting.definition = weakSelf.selectedVideoQualityRow;
                 setting.landscapeMode = weakSelf.selectedRtmpModeRow == 1 ? YES : NO;
-                [weakSelf presentViewController:[PLVLiveViewController new] animated:YES completion:nil];
+                PLVLiveViewController *liveViewController = [PLVLiveViewController new];
+                liveViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+                [weakSelf presentViewController:liveViewController animated:YES completion:nil];
             } else {
                 [PLVAuthorizationManager showAlertWithTitle:nil message:@"直播需要获取您的摄像机及音频权限，前往设置" viewController:weakSelf];
             }
