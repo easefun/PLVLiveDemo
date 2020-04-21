@@ -26,9 +26,9 @@
 
 
 
-[手机安装](https://www.pgyer.com/VN0u) （需使用 POLYV 直播账号登录使用）
+[手机安装](https://www.pgyer.com/Tmmv) （需使用 POLYV 直播账号登录使用）
 
-![GitHub set up-w140](https://static.pgyer.com/app/qrcode/VN0u)
+![GitHub set up-w140](https://static.pgyer.com/app/qrcode/Tmmv)
 
 
 
