@@ -84,6 +84,7 @@
                 PLVRtmpSetting *setting = [PLVRtmpSetting sharedRtmpSetting];
                 setting.definition = weakSelf.selectedVideoQualityRow;
                 setting.landscapeMode = weakSelf.selectedRtmpModeRow == 1 ? YES : NO;
+                
                 PLVLiveViewController *liveViewController = [PLVLiveViewController new];
                 liveViewController.modalPresentationStyle = UIModalPresentationFullScreen;
                 [weakSelf presentViewController:liveViewController animated:YES completion:nil];

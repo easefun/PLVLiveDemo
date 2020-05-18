@@ -4,16 +4,14 @@ platform :ios, "8.0"
 use_frameworks!
 
 target 'PLVRtmpDemo' do
-    pod 'MBProgressHUD', '~> 1.1.0'
+    pod 'PLVLiveKit', '~> 1.2.4'
+    pod 'PolyvLiveAPI', '~> 0.7.3'
+    pod 'PolyvSocketAPI', '~> 0.6.1'
+    pod 'PolyvFoundationSDK', '~> 0.10.1'
     
-    pod 'PLVLiveKit', '~> 1.2.3'        # polyv streamer.
-    pod 'PolyvLiveAPI', '~> 0.7.3'      # Polyv live api.
-    pod 'PolyvFoundationSDK'
+    # 如果同时集成云课堂SDK，则移除PolyvSocketAPI、PolyvFoundationSDK，使用云课堂SDK即可（最低0.13版本）
+    #pod 'PolyvCloudClassSDK', '~> 0.13'
     
-    # 默认依赖库
-    pod 'PolyvSocketAPI', '~> 0.6.1'    # Polyv socket.io api.
-    # 如果同云课堂同时集成，注释默认依赖库，解注云课堂依赖库即可
-    #pod 'PolyvCloudClassSDK'            # 云课堂 SDK
-    
-    #pod 'Starscream', '3.0.5'           # Xcode 10 以下解注释
+    # Xcode 10 以下解注释
+    #pod 'Starscream', '3.0.5'
 end

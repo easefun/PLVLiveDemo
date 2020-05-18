@@ -10,6 +10,12 @@
 #import <PLVLiveKit/LFLiveKit.h>
 #import <PLVLiveAPI/PLVPushChannel.h>
 
+#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 extern NSString *const PLVRTMP_SDK_VERSION;
@@ -26,7 +32,7 @@ typedef NS_ENUM(NSUInteger, PLVRtmpDefinition) {
 @interface PLVRtmpSetting : NSObject
 
 /// 推流地址
-@property (nonatomic, strong, readonly) NSString *rtmpUrl;
+@property (nonatomic, copy) NSString *rtmpUrl;
 /// 推流频道信息
 @property (nonatomic, strong, readonly) PLVPushChannel *pushChannel;
 

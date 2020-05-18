@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import <MBProgressHUD/MBProgressHUD.h>
+#import <PolyvFoundationSDK/PLVProgressHUD.h>
 #import <PLVLiveAPI/PLVLiveAPI.h>
 #import "PLVSettingViewController.h"
 
@@ -49,7 +49,7 @@
     }
     
     __weak typeof(self)weakSelf = self;
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    PLVProgressHUD *hud = [PLVProgressHUD showHUDAddedTo:self.view animated:YES];
     [PLVLiveAPI loadPushInfoWithChannelId:self.channelIdTF.text.integerValue password:self.passwordTF.text completion:^(PLVPushChannel *channel, NSString *rtmpUrl) {
         [hud hideAnimated:YES];
         

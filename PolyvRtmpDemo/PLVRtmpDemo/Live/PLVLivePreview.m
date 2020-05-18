@@ -7,40 +7,11 @@
 //
 
 #import "PLVLivePreview.h"
-#import <PLVLiveKit/LFLiveKit.h>
-#import "PLVRtmpSetting.h"
 #import "UIView+YYAdd.h"
 
-inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
-    if (elapsed_milli <= 0) {
-        return @"N/A";
-    }
-    if (bytes <= 0) {
-        return @"0 KB/s";
-    }
-    
-    float bytes_per_sec = ((float)bytes) * 1000.f /  elapsed_milli;
-    if (bytes_per_sec >= 1000 * 1000) {
-        return [NSString stringWithFormat:@"%.2fMB/s", ((float)bytes_per_sec) / 1000 / 1000];
-    } else if (bytes_per_sec >= 1000) {
-        return [NSString stringWithFormat:@"%.1fKB/s", ((float)bytes_per_sec) / 1000];
-    } else {
-        return [NSString stringWithFormat:@"%ldB/s", (long)bytes_per_sec];
-    }
-}
-
-@interface PLVLivePreview () <LFLiveSessionDelegate>
+@interface PLVLivePreview ()
 
 @property (nonatomic, strong) UIView *containerView;
-@property (nonatomic, strong) UIButton *beautyButton;
-@property (nonatomic, strong) UIButton *cameraButton;
-@property (nonatomic, strong) UIButton *closeButton;
-@property (nonatomic, strong) UIButton *waterMarkButton;
-@property (nonatomic, strong) UIButton *startLiveButton;
-@property (nonatomic, strong) UILabel *stateLabel;
-@property (nonatomic, strong) UILabel *rateLabel;
-
-@property (nonatomic, strong) LFLiveSession *liveSession;
 
 @end
 
@@ -55,6 +26,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
         self.backgroundColor = [UIColor clearColor];
 
         [self addSubview:self.containerView];
+        
         [self.containerView addSubview:self.stateLabel];
         [self.containerView addSubview:self.closeButton];
         [self.containerView addSubview:self.cameraButton];
@@ -66,126 +38,51 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
     return self;
 }
 
-#pragma mark --
+#pragma mark - Public
 
-- (void)setupSeesion {
-    self.liveSession = [[LFLiveSession alloc] initWithAudioConfiguration:[PLVRtmpSetting sharedRtmpSetting].audioConfig videoConfiguration:[PLVRtmpSetting sharedRtmpSetting].videoConfig captureType:LFLiveCaptureDefaultMask];
-    self.liveSession.captureDevicePosition = AVCaptureDevicePositionBack;   // 开启后置摄像头(默认前置)
-    self.liveSession.delegate = self;
-    self.liveSession.preView = self;
-    self.liveSession.showDebugInfo = YES;
-    self.liveSession.reconnectCount = 3;
-    self.liveSession.reconnectInterval = 3;
-    
-    [self.liveSession setRunning:YES];
-    
-    // 本地存储
-    //self.session.saveLocalVideo = YES;
-    //NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.mp4"];
-    //unlink([pathToMovie UTF8String]); // If a file already exists, AVAssetWriter won't let you record new frames, so delete the old movie
-    //NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
-    //self.session.saveLocalVideoPath = movieURL;
-    
-    //[self addWaterMark];
+- (void)liveState {
+    self.startLiveButton.enabled = NO;
+    [self.startLiveButton setTitle:@"直播中" forState:UIControlStateNormal];
+    [self.startLiveButton setBackgroundColor:[UIColor redColor]];
 }
 
-- (void)addWaterMark {
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.alpha = 0.8;
-    imageView.frame = CGRectMake(50, 110, 80, 80);
-    imageView.image = [UIImage imageNamed:@"pet"];
-    self.liveSession.warterMarkView = imageView;
+- (void)stopState {
+    self.rateLabel.text = @"0KB/s";
+    self.startLiveButton.enabled = YES;
+    [self.startLiveButton setTitle:@"未直播" forState:UIControlStateNormal];
+    [self.startLiveButton setBackgroundColor:[UIColor colorWithRed:50 green:32 blue:245 alpha:1]];
 }
 
 #pragma mark - Actions
 
-- (void)startLiveButton:(UIButton *)sender {
-    switch (self.liveSession.state) {
-        case LFLiveError:
-            [self.liveSession stopLive];
-        case LFLiveReady:
-        case LFLiveStop: {
-            [self.startLiveButton setTitle:@"结束直播" forState:UIControlStateNormal];
-            [self.startLiveButton setBackgroundColor:[UIColor redColor]];
-            // 配置推流Info
-            LFLiveStreamInfo *stream = [LFLiveStreamInfo new];
-            stream.appVersionInfo = PLVRTMP_SDK_VERSION;
-            stream.url = [PLVRtmpSetting sharedRtmpSetting].rtmpUrl;
-            [self.liveSession startLive:stream];
-        } break;
-        case LFLivePending:
-        case LFLiveStart:
-            [self.liveSession stopLive];
-            break;
-        default:
-            break;
+- (void)beautyButton:(UIButton *)sender {
+    if ([self.deleagte respondsToSelector:@selector(livePreview:didBeautyButtonClicked:)]) {
+        [self.deleagte livePreview:self didBeautyButtonClicked:sender];
+    }
+}
+
+- (void)cameraButton:(UIButton *)sender {
+    if ([self.deleagte respondsToSelector:@selector(livePreview:didCameraButtonClicked:)]) {
+        [self.deleagte livePreview:self didCameraButtonClicked:sender];
     }
 }
 
 - (void)waterMarkButton:(UIButton *)sender {
-    sender.selected = !sender.isSelected;
-    if (sender.isSelected) {
-        [self addWaterMark];
-    }else {
-        self.liveSession.warterMarkView = nil;
+    if ([self.deleagte respondsToSelector:@selector(livePreview:didWaterMarkButtonClicked:)]) {
+        [self.deleagte livePreview:self didWaterMarkButtonClicked:sender];
     }
 }
 
-- (void)beautyButton:(UIButton *)sender {
-    sender.selected = !sender.isSelected;
-    self.liveSession.beautyFace = !sender.isSelected;
-}
-
-- (void)cameraButton:(UIButton *)sender {
-    AVCaptureDevicePosition devicePositon = self.liveSession.captureDevicePosition;
-    self.liveSession.captureDevicePosition = (devicePositon == AVCaptureDevicePositionBack) ? AVCaptureDevicePositionFront : AVCaptureDevicePositionBack;
+- (void)startLiveButton:(UIButton *)sender {
+    if ([self.deleagte respondsToSelector:@selector(livePreview:didStartLiveButtonClicked:)]) {
+        [self.deleagte livePreview:self didStartLiveButtonClicked:sender];
+    }
 }
 
 - (void)closeButton:(UIButton *)sender {
-    [self.liveSession stopLive];
-    [self.viewController dismissViewControllerAnimated:YES completion:nil];
-    [self removeFromSuperview];
-}
-
-#pragma mark -- <LFStreamingSessionDelegate>
-
-- (void)liveSession:(nullable LFLiveSession *)session liveStateDidChange:(LFLiveState)state {
-    NSLog(@"%s liveStateDidChange: %lu", __FUNCTION__,state);
-    switch (state) {
-        case LFLiveReady:
-        case LFLiveStop: {
-            _stateLabel.text = @"未连接";
-            [self.startLiveButton setTitle:@"开始直播" forState:UIControlStateNormal];
-            [self.startLiveButton setBackgroundColor:[UIColor colorWithRed:50 green:32 blue:245 alpha:1]];
-            _rateLabel.text = @"0KB/s";
-        } break;
-        case LFLivePending:
-            _stateLabel.text = @"连接中";
-            break;
-        case LFLiveStart: {
-            _stateLabel.text = @"已连接";
-            [self.startLiveButton setTitle:@"结束直播" forState:UIControlStateNormal];
-            [self.startLiveButton setBackgroundColor:[UIColor redColor]];
-        } break;
-        case LFLiveError: {
-            _stateLabel.text = @"连接错误";
-            [self.startLiveButton setBackgroundColor:[UIColor colorWithRed:50 green:32 blue:245 alpha:1]];
-            [self.startLiveButton setTitle:@"开始直播" forState:UIControlStateNormal];
-            _rateLabel.text = @"0KB/s";
-        } break;
-        default:
-            break;
+  if ([self.deleagte respondsToSelector:@selector(livePreview:didCloseButtonClicked:)]) {
+        [self.deleagte livePreview:self didCloseButtonClicked:sender];
     }
-}
-
-- (void)liveSession:(nullable LFLiveSession *)session debugInfo:(nullable LFLiveDebug *)debugInfo {
-    NSString *speed  = formatedSpeed(debugInfo.currentBandwidth, debugInfo.elapsedMilli);
-    self.rateLabel.text = [NSString stringWithFormat:@"↑%@",speed];
-    //NSLog(@"%s debugInfo: %@ %@", __FUNCTION__,speed,debugInfo);
-}
-
-- (void)liveSession:(nullable LFLiveSession *)session errorCode:(LFLiveSocketErrorCode)errorCode {
-    NSLog(@"%s errorCode: %ld", __FUNCTION__,errorCode);
 }
 
 #pragma mark - Getter

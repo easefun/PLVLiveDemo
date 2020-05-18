@@ -10,15 +10,15 @@
 
 /*
  v2.2.1+190726
+ v2.2.2+200305
  */
 
-NSString *const PLVRTMP_SDK_VERSION = @"PolyvRtmpiOSSDK_v2.2.2+200305";
+NSString *const PLVRTMP_SDK_VERSION = @"PolyvRtmpiOSSDK_v2.2.3+200518";
 
 static PLVRtmpSetting *rtmpSetting = nil;
 
 @interface PLVRtmpSetting ()
 
-@property (nonatomic, strong) NSString *rtmpUrl;
 @property (nonatomic, strong) PLVPushChannel *pushChannel;
 
 @property (nonatomic, strong) NSString *appId;

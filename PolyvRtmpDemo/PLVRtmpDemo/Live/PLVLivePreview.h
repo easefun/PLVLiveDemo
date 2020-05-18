@@ -8,14 +8,33 @@
 
 #import <UIKit/UIKit.h>
 
-#ifdef DEBUG
-#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#else
-#   define DLog(...)
-#endif
+@class PLVLivePreview;
+
+@protocol PLVLivePreviewDelegate <NSObject>
+
+- (void)livePreview:(PLVLivePreview *)livePreview didBeautyButtonClicked:(UIButton *)sender;
+- (void)livePreview:(PLVLivePreview *)livePreview didCameraButtonClicked:(UIButton *)sender;
+- (void)livePreview:(PLVLivePreview *)livePreview didWaterMarkButtonClicked:(UIButton *)sender;
+- (void)livePreview:(PLVLivePreview *)livePreview didStartLiveButtonClicked:(UIButton *)sender;
+- (void)livePreview:(PLVLivePreview *)livePreview didCloseButtonClicked:(UIButton *)sender;
+
+@end
 
 @interface PLVLivePreview : UIView
 
-- (void)setupSeesion;
+@property (nonatomic, strong) UILabel *stateLabel;
+@property (nonatomic, strong) UILabel *rateLabel;
+
+@property (nonatomic, strong) UIButton *beautyButton;
+@property (nonatomic, strong) UIButton *cameraButton;
+@property (nonatomic, strong) UIButton *waterMarkButton;
+@property (nonatomic, strong) UIButton *startLiveButton;
+@property (nonatomic, strong) UIButton *closeButton;
+
+@property (nonatomic, weak) id<PLVLivePreviewDelegate> deleagte;
+
+- (void)liveState;
+
+- (void)stopState;
 
 @end
