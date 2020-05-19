@@ -6,7 +6,7 @@
 
 版本历史：[Releases](https://github.com/easefun/PLVLiveDemo/releases)
 
-   
+
 
 ### 运行环境
 
@@ -21,7 +21,6 @@
 1. 下载当前项目至本地
 2. 进入 PolyvRtmpDemo 目录，执行 `pod install` 或 `pod update`
 3. 打开生成的 `.xcworkspace` 文件，编译、运行即可
-
 
 
 [手机安装](https://www.pgyer.com/Tmmv) （需使用 POLYV 直播账号登录使用）
@@ -121,7 +120,6 @@ Socket API 接口 [PolyvSocketAPI](https://github.com/polyv/PolyvSocketAPI)
 #pragma mark - 【推流模块】
 #pragma mark - 【聊天室模块】
 ```
-
 
 
 1. 直播推流
@@ -242,11 +240,11 @@ Socket API 接口 [PolyvSocketAPI](https://github.com/polyv/PolyvSocketAPI)
        if (self.danmuLayer && content && content.length) {
            [self.danmuLayer insertDML:content];
        }
-}
+   }
    ```
    
    
-
+   
 ### FAQ（常见问题）
 
 1. 编译时控制台输出 “image not found”
