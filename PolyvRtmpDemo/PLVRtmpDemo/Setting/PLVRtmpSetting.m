@@ -11,9 +11,10 @@
 /*
  v2.2.1+190726
  v2.2.2+200305
+ v2.2.3+200518
  */
 
-NSString *const PLVRTMP_SDK_VERSION = @"PolyvRtmpiOSSDK_v2.2.3+200518";
+NSString *const PLVRTMP_SDK_VERSION = @"PolyvRtmpiOSSDK_v2.2.4+200810";
 
 static PLVRtmpSetting *rtmpSetting = nil;
 

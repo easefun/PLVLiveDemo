@@ -596,7 +596,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/PLVRtmpDemo/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.2.3;
+				MARKETING_VERSION = 2.2.4;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -649,7 +649,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/PLVRtmpDemo/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.2.3;
+				MARKETING_VERSION = 2.2.4;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = (
 					"$(inherited)",

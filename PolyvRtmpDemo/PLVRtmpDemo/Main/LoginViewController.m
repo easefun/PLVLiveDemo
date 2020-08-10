@@ -50,7 +50,7 @@
     
     __weak typeof(self)weakSelf = self;
     PLVProgressHUD *hud = [PLVProgressHUD showHUDAddedTo:self.view animated:YES];
-    [PLVLiveAPI loadPushInfoWithChannelId:self.channelIdTF.text.integerValue password:self.passwordTF.text completion:^(PLVPushChannel *channel, NSString *rtmpUrl) {
+    [PLVLiveAPI loadPushInfoWithChannelId:self.channelIdTF.text password:self.passwordTF.text completion:^(PLVPushChannel *channel, NSString *rtmpUrl) {
         [hud hideAnimated:YES];
         
         NSString *liveScene = channel.channelDict[@"liveScene"];

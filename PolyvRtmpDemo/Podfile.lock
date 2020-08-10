@@ -24,7 +24,7 @@ PODS:
     - PLVLiveKit/objects
     - PLVLiveKit/pili-librtmp
   - PolyvFoundationSDK (0.10.2)
-  - PolyvLiveAPI (0.7.3)
+  - PolyvLiveAPI (0.7.4)
   - PolyvSocketAPI (0.6.3):
     - PolyvSocketAPI/Core (= 0.6.3)
     - PolyvSocketAPI/Socket (= 0.6.3)
@@ -38,7 +38,7 @@ PODS:
 DEPENDENCIES:
   - PLVLiveKit (~> 1.2.4)
   - PolyvFoundationSDK (~> 0.10.1)
-  - PolyvLiveAPI (~> 0.7.3)
+  - PolyvLiveAPI (~> 0.7.4)
   - PolyvSocketAPI (~> 0.6.1)
 
 SPEC REPOS:
@@ -53,11 +53,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   PLVLiveKit: 19aa8ba83495e745d114a450f848f9251b6bbde5
   PolyvFoundationSDK: 7017a7b0eebe4fea10c83a090d9f8f18a372ce0a
-  PolyvLiveAPI: 3c4be6bbd9c6defcc20f3c6e27c381fa514ab358
+  PolyvLiveAPI: b44f21a3016bbc44d92627d75dd42a8f65a9696d
   PolyvSocketAPI: 3ebd9eed50d46826cc18f0346c5061dda62e5cf6
   Socket.IO-Client-Swift: b94943e2fb916fe2f95244b9ed21828634002280
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: c2f074bf29ef6dae91f44554a10ad6ab93786029
+PODFILE CHECKSUM: 42d1ca8d17e9ae465959f369434735fc74484345
 
 COCOAPODS: 1.8.4

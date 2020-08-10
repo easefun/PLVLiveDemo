@@ -5,7 +5,7 @@ use_frameworks!
 
 target 'PLVRtmpDemo' do
     pod 'PLVLiveKit', '~> 1.2.4'
-    pod 'PolyvLiveAPI', '~> 0.7.3'
+    pod 'PolyvLiveAPI', '~> 0.7.4'
     pod 'PolyvSocketAPI', '~> 0.6.1'
     pod 'PolyvFoundationSDK', '~> 0.10.1'
     
