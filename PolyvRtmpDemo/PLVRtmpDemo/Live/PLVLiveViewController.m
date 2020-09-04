@@ -205,7 +205,21 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
     if (self.liveSession.state == LFLivePending) {
         return;
     }
-    [self startLive];
+    
+    if (CGSizeEqualToSize(PLVRtmpSetting.sharedRtmpSetting.videoSize, CGSizeZero)) {
+        return;
+    }
+    
+    PLVRtmpSetting *setting = PLVRtmpSetting.sharedRtmpSetting;
+    
+    // 首次推流前需要调用该接口
+    __weak typeof(self) weakSelf = self;
+    [PLVLiveAPI notifyStreamModeWithChannelId:setting.channelId stream:setting.pushChannel.stream videowidth:setting.videoSize.width videoheight:setting.videoSize.height success:^(NSString *responseCont) {
+        [weakSelf startLive];
+    } failure:^(PLVLiveErrorCode errorCode, NSString *description) {
+        NSLog(@"notifyStreamModeWithChannelId failed: %ld, %@",errorCode,description);
+        [weakSelf startLive];
+    }];
 }
 
 - (void)livePreview:(PLVLivePreview *)livePreview didCloseButtonClicked:(UIButton *)sender {
@@ -428,11 +442,39 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 
 - (void)socketIO:(PLVSocketIO *)socketIO didConnectWithInfo:(NSString *)info {
     NSLog(@"%@--%@",NSStringFromSelector(_cmd),info);
-    [socketIO emitMessageWithSocketObject:self.loginSocket];       // 登录聊天室
+    // 登录 Socket 服务器
+    __weak typeof(self)weakSelf = self;
+    [socketIO loginSocketServer:self.loginSocket timeout:12.0 callback:^(NSArray *ackArray) {
+        NSLog(@"login ackArray: %@",ackArray);
+        if (ackArray) {
+            NSString *ackStr = [NSString stringWithFormat:@"%@",ackArray.firstObject];
+            if (ackStr && ackStr.length > 4) {
+                int status = [[ackStr substringToIndex:1] intValue];
+                if (status == 2) {
+                    weakSelf.loginSuccess = YES;
+                    [weakSelf showHUD:@"登录成功" detailMsg:nil afterDelay:3.0];
+                } else {
+                    [weakSelf loginToSocketFailed:ackStr];
+                }
+            } else {
+                [weakSelf loginToSocketFailed:ackStr];
+            }
+        }
+    }];
 }
 
-- (void)socketIO:(PLVSocketIO *)socketIO didUserStateChange:(PLVSocketUserState)userState {
-    NSLog(@"%s %ld", __FUNCTION__, userState);
+/*
+登陆LOGIN事件ack返回的数据格式改为一个整数，整数每位表示如下：
+第1位：登陆结果，2表示成功，4表示传递参数非法等问题，5表示报错
+第2位：房间是否合法，即找不到房间id，或者房间id类型不正确，1表示合法，0表示非法
+第3位：头像昵称错误，1表示正确，0表示错误
+第4位：是否被踢出，1表示没有被踢出房间，0表示已被踢出房间
+第5位：是否被禁言，1表示没有被禁言，0表示被禁言
+ */
+- (void)loginToSocketFailed:(NSString *)ackStr {
+    [self.socketIO disconnect];
+    self.loginSuccess = NO;
+    [self showHUD:@"登录失败" detailMsg:ackStr afterDelay:3.0];
 }
 
 - (void)socketIO:(PLVSocketIO *)socketIO connectOnErrorWithInfo:(NSString *)info {

@@ -12,9 +12,10 @@
  v2.2.1+190726
  v2.2.2+200305
  v2.2.3+200518
+ v2.2.4+200810
  */
 
-NSString *const PLVRTMP_SDK_VERSION = @"PolyvRtmpiOSSDK_v2.2.4+200810";
+NSString *const PLVRTMP_SDK_VERSION = @"PolyvRtmpiOSSDK_v2.3.0+200904";
 
 static PLVRtmpSetting *rtmpSetting = nil;
 
@@ -30,6 +31,8 @@ static PLVRtmpSetting *rtmpSetting = nil;
 @property (nonatomic, strong) NSDictionary *channelAccountList;
 
 @property (nonatomic, assign) NSUInteger maxRate;
+
+@property (nonatomic, assign) CGSize videoSize;
 
 @end
 
@@ -92,21 +95,24 @@ static PLVRtmpSetting *rtmpSetting = nil;
             videoConfig.videoMinBitRate = 500 * 1000;
             videoConfig.videoMaxBitRate = 700 * 1000;
             videoConfig.sessionPreset = LFCaptureSessionPreset360x640;
-            videoConfig.videoSize = self.landscapeMode ? CGSizeMake(640, 360) : CGSizeMake(360, 640);
+            _videoSize = self.landscapeMode ? CGSizeMake(640, 360) : CGSizeMake(360, 640);
+            videoConfig.videoSize = _videoSize;
         } break;
         case PLVRtmpDefinitionHigh: {
             videoConfig.videoBitRate = 1000 * 1000;  // 1Mkps
             videoConfig.videoMinBitRate = 900 * 1000;
             videoConfig.videoMaxBitRate = 1100 * 1000;
             videoConfig.sessionPreset = LFCaptureSessionPreset540x960;
-            videoConfig.videoSize = self.landscapeMode ? CGSizeMake(960, 540) : CGSizeMake(540, 960);
+            _videoSize = self.landscapeMode ? CGSizeMake(960, 540) : CGSizeMake(540, 960);
+            videoConfig.videoSize = _videoSize;
         } break;
         case PLVRtmpDefinitionUltra: {
             videoConfig.videoBitRate = self.maxRate * 1000;
             videoConfig.videoMinBitRate = self.maxRate * 1000 - 150;
             videoConfig.videoMaxBitRate = self.maxRate * 1000 + 150;
             videoConfig.sessionPreset = LFCaptureSessionPreset720x1280;
-            videoConfig.videoSize = self.landscapeMode ? CGSizeMake(1280, 720) : CGSizeMake(720, 1280);
+            _videoSize = self.landscapeMode ? CGSizeMake(1280, 720) : CGSizeMake(720, 1280);
+            videoConfig.videoSize = _videoSize;
         } break;
     }
     return videoConfig;

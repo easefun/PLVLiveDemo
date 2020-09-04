@@ -5,13 +5,9 @@ use_frameworks!
 
 target 'PLVRtmpDemo' do
     pod 'PLVLiveKit', '~> 1.2.4'
-    pod 'PolyvLiveAPI', '~> 0.7.4'
-    pod 'PolyvSocketAPI', '~> 0.6.1'
-    pod 'PolyvFoundationSDK', '~> 0.10.1'
+    pod 'PolyvLiveAPI', '~> 0.8.1'
+    pod 'PolyvBusinessSDK', '~> 0.15.0'
     
-    # 如果同时集成云课堂SDK，则移除PolyvSocketAPI、PolyvFoundationSDK，使用云课堂SDK即可（最低0.13版本）
-    #pod 'PolyvCloudClassSDK', '~> 0.13'
-    
-    # Xcode 10 以下解注释
-    #pod 'Starscream', '3.0.5'
+    # 如果同时集成云课堂SDK，移除 PolyvBusinessSDK 即可
+    #pod 'PolyvCloudClassSDK', '~> 0.13' # 最低0.13版本
 end

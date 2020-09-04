@@ -50,6 +50,8 @@ typedef NS_ENUM(NSUInteger, PLVRtmpDefinition) {
 /// 推流音频配置
 @property (nonatomic, strong, readonly) LFLiveAudioConfiguration *audioConfig;
 
+/// 推流尺寸
+@property (nonatomic, assign, readonly) CGSize videoSize;
 
 /// 频道号（主账号id）
 @property (nonatomic, strong, readonly) NSString *channelId;

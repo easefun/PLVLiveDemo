@@ -23,41 +23,43 @@ PODS:
   - PLVLiveKit/publish (1.2.4):
     - PLVLiveKit/objects
     - PLVLiveKit/pili-librtmp
-  - PolyvFoundationSDK (0.10.2)
-  - PolyvLiveAPI (0.7.4)
-  - PolyvSocketAPI (0.6.3):
-    - PolyvSocketAPI/Core (= 0.6.3)
-    - PolyvSocketAPI/Socket (= 0.6.3)
-  - PolyvSocketAPI/Core (0.6.3)
-  - PolyvSocketAPI/Socket (0.6.3):
-    - Socket.IO-Client-Swift (~> 13.2.0)
-  - Socket.IO-Client-Swift (13.2.1):
-    - Starscream (~> 3.0.2)
+  - PolyvBusinessSDK (0.15.0):
+    - PolyvBusinessSDK/Core (= 0.15.0)
+    - PolyvBusinessSDK/Socket (= 0.15.0)
+    - PolyvFoundationSDK (~> 0.12.0)
+  - PolyvBusinessSDK/Core (0.15.0):
+    - PolyvFoundationSDK (~> 0.12.0)
+  - PolyvBusinessSDK/Socket (0.15.0):
+    - PolyvFoundationSDK (~> 0.12.0)
+    - Socket.IO-Client-Swift (~> 14.0.0)
+  - PolyvFoundationSDK (0.12.0)
+  - PolyvLiveAPI (0.8.1)
+  - Socket.IO-Client-Swift (14.0.0):
+    - Starscream (~> 3.0.6)
   - Starscream (3.0.6)
 
 DEPENDENCIES:
   - PLVLiveKit (~> 1.2.4)
-  - PolyvFoundationSDK (~> 0.10.1)
-  - PolyvLiveAPI (~> 0.7.4)
-  - PolyvSocketAPI (~> 0.6.1)
+  - PolyvBusinessSDK (~> 0.15.0)
+  - PolyvLiveAPI (~> 0.8.1)
 
 SPEC REPOS:
   trunk:
     - PLVLiveKit
+    - PolyvBusinessSDK
     - PolyvFoundationSDK
     - PolyvLiveAPI
-    - PolyvSocketAPI
     - Socket.IO-Client-Swift
     - Starscream
 
 SPEC CHECKSUMS:
   PLVLiveKit: 19aa8ba83495e745d114a450f848f9251b6bbde5
-  PolyvFoundationSDK: 7017a7b0eebe4fea10c83a090d9f8f18a372ce0a
-  PolyvLiveAPI: b44f21a3016bbc44d92627d75dd42a8f65a9696d
-  PolyvSocketAPI: 3ebd9eed50d46826cc18f0346c5061dda62e5cf6
-  Socket.IO-Client-Swift: b94943e2fb916fe2f95244b9ed21828634002280
+  PolyvBusinessSDK: 33c19f17c948d1a1078ebefc160e5bb6e5f423d3
+  PolyvFoundationSDK: 2061221d2a34f3d4b208464a63e985ac66bad05c
+  PolyvLiveAPI: 8029a175592fd14f8a72e79b7e1917c06e33b5af
+  Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: 42d1ca8d17e9ae465959f369434735fc74484345
+PODFILE CHECKSUM: b7902b45196950dda881e99fa9f55a958a272af0
 
 COCOAPODS: 1.8.4
