@@ -244,3 +244,17 @@ end
 #### 8.1 编译时控制台输出 “image not found”
 
 基本为 SocketIO swift 库加载问题，如您的项目中为自动配置 Swift 版本，可尝试手动配置，Targets -> Build Settings -> User-Defined 添加 SWIFT_VERSION 字段，设置值为 4.2。
+
+#### 8.2 Socket.io 冲突问题
+
+出现 `Socket.IO-Client-Swift` 库冲突时可以以下方式解决，将 pod 'PolyvSocketAPI' 更新为 pod 'PolyvSocketAPI/Core'（PolyvSocketAPI的子依赖库Core不含Socket.IO-Client-Swift依赖）
+
+如
+```
+pod 'PolyvSocketAPI', '~> 0.6.1'
+```
+等同以下
+```
+pod 'PolyvSocketAPI/Core', '~> 0.6.1'
+pod 'Socket.IO-Client-Swift', '~> 14.0.0'
+```
