@@ -1,9 +1,9 @@
 # PLVRtmpDemo
 
 [![build passing](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
-[![GitHub release](https://img.shields.io/badge/release-v2.2.4-blue.svg)](https://github.com/easefun/PLVLiveDemo/releases/tag/v2.2.4)
+[![GitHub release](https://img.shields.io/badge/release-v2.2.4-blue.svg)](https://github.com/easefun/PLVLiveDemo/releases/tag/v2.3.0)
 
-本项目从属于广州易方信息科技股份有限公司旗下的POLYV保利威视频云核心产品“云直播”，展示了如何使用保利威 PLVLiveKit、PolyvLiveAPI、PolyvSocketAPI 这四个 SDK 实现视频直播、聊天室功能。想要集成本项目提供的 SDK 或使用本 demo，需要在[保利威视频云平台](http://www.polyv.net/)注册账号，并开通相关服务。
+本项目从属于广州易方信息科技股份有限公司旗下的POLYV保利威视频云核心产品“云直播”，展示了如何使用保利威 PLVLiveKit、PolyvLiveAPI、PolyvBusinessSDK 这三个 SDK 实现视频直播、聊天室功能。想要集成本项目提供的 SDK 或使用本 demo，需要在[保利威视频云平台](http://www.polyv.net/)注册账号，并开通相关服务。
 
 本项目包含如下功能：选择推流清晰度、选择横竖屏推流、支持美颜、支持切换前后置摄像头。
 
@@ -57,7 +57,7 @@
 
 ### 5 依赖库
 
-使用 CocoaPods 将各个依赖库集成到项目中。首先，在项目中新建一个 Podfile 文件：
+使用 CocoaPods 将各个依赖库集成到项目中。首先，在项目中新建一个 Podfile 文件，添加以下内容（2.3.0之前版本）
 
 ```ruby
 #source 'https://github.com/CocoaPods/Specs.git'
@@ -77,6 +77,21 @@ target 'PLVRtmpDemo' do
     
     # Xcode 10 以下解注释
     #pod 'Starscream', '3.0.5'
+end
+```
+
+或以下方式（2.3.0 版本及以上）
+
+
+```ruby
+platform :ios, "8.0"
+
+use_frameworks!
+
+target 'PLVRtmpDemo' do
+  pod 'PLVLiveKit', '~> 1.2.4'
+  pod 'PolyvLiveAPI', '~> 0.8.1'
+  pod 'PolyvBusinessSDK', '~> 0.15.0'
 end
 ```
 
@@ -249,12 +264,17 @@ end
 
 出现 `Socket.IO-Client-Swift` 库冲突时可以以下方式解决，将 pod 'PolyvSocketAPI' 更新为 pod 'PolyvSocketAPI/Core'（PolyvSocketAPI的子依赖库Core不含Socket.IO-Client-Swift依赖）
 
-如
-```
-pod 'PolyvSocketAPI', '~> 0.6.1'
-```
-等同以下
-```
+如 `pod 'PolyvSocketAPI', '~> 0.6.1'` 等同
+
+```ruby
 pod 'PolyvSocketAPI/Core', '~> 0.6.1'
 pod 'Socket.IO-Client-Swift', '~> 14.0.0'
 ```
+
+或 `pod 'PolyvBusinessSDK', '~> 0.15.0'` 等同
+
+```ruby
+pod 'PolyvBusinessSDK/Core', '~> 0.6.1'
+pod 'Socket.IO-Client-Swift', '~> 14.0.0'
+```
+

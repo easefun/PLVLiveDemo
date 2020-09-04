@@ -217,7 +217,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
     [PLVLiveAPI notifyStreamModeWithChannelId:setting.channelId stream:setting.pushChannel.stream videowidth:setting.videoSize.width videoheight:setting.videoSize.height success:^(NSString *responseCont) {
         [weakSelf startLive];
     } failure:^(PLVLiveErrorCode errorCode, NSString *description) {
-        NSLog(@"notifyStreamModeWithChannelId failed: %ld, %@",errorCode,description);
+        NSLog(@"notifyStreamModeWithChannelId failed: %ld, %@",(long)errorCode,description);
         [weakSelf startLive];
     }];
 }
@@ -247,7 +247,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
     PLVReachability* reachability = [note object];
     if ([reachability isKindOfClass:PLVReachability.class]) {
         PLVNetworkStatus netStatus = reachability.currentReachabilityStatus;
-        NSLog(@"netStatus：%ld",netStatus);
+        NSLog(@"netStatus：%ld",(long)netStatus);
         if (self.liveStreaming) { // 已开始直播
             if (netStatus == NotReachable) {
                 [self.liveSession stopLive];
@@ -354,7 +354,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 
 /// live status changed will callback
 - (void)liveSession:(nullable LFLiveSession *)session liveStateDidChange:(LFLiveState)state {
-    NSLog(@"%@ %lu", NSStringFromSelector(_cmd),state);
+    NSLog(@"%@ %ld", NSStringFromSelector(_cmd),(long)state);
     switch (state) {
         case LFLivePending: {
             self.livePreview.stateLabel.text = @"连接中";
@@ -389,7 +389,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 /// callback socket errorcode
 - (void)liveSession:(nullable LFLiveSession *)session errorCode:(LFLiveSocketErrorCode)errorCode {
     //NSLog(@"%@ %ld", NSStringFromSelector(_cmd),errorCode);
-    [self showLiveErrorAlert:[NSString stringWithFormat:@"当前网络不佳，请稍后再试 #%lu",errorCode]];
+    [self showLiveErrorAlert:[NSString stringWithFormat:@"当前网络不佳，请稍后再试 #%ld",(long)errorCode]];
 }
 
 #pragma mark - 【聊天室模块】
