@@ -3,6 +3,9 @@
 [![build passing](https://img.shields.io/badge/build-passing-brightgreen.svg)](#)
 [![GitHub release](https://img.shields.io/badge/release-v2.2.4-blue.svg)](https://github.com/easefun/PLVLiveDemo/releases/tag/v2.3.0)
 
+⚠️注意：本项目已迁移到新的 Github 地址：https://github.com/polyv/PLVLiveDemo 此仓库将弃用。
+
+
 本项目从属于广州易方信息科技股份有限公司旗下的POLYV保利威视频云核心产品“云直播”，展示了如何使用保利威 PLVLiveKit、PolyvLiveAPI、PolyvBusinessSDK 这三个 SDK 实现视频直播、聊天室功能。想要集成本项目提供的 SDK 或使用本 demo，需要在[保利威视频云平台](http://www.polyv.net/)注册账号，并开通相关服务。
 
 本项目包含如下功能：选择推流清晰度、选择横竖屏推流、支持美颜、支持切换前后置摄像头。
